@@ -4116,3 +4116,34 @@ text-component {
   transform: none;
   box-shadow: none;
 }
+
+
+a.menu-list__link {
+  height: 44px;
+  padding: 4px 20px 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white !important;
+}
+
+.header__columns.spacing-style {
+  padding: 0;
+}
+
+input#inline-search-input {
+  height: 42px !important;
+}
+
+.header--collapse-row-paddings .header__row--top .header__columns {
+  padding: 5px 0 0 0;
+}
+
+.inline-search-input-wrapper {
+  border-color: white !important;
+}
+
+search-button.inline-search-mobile-toggle.desktop\:hidden:last-of-type {
+  display: none;
+}

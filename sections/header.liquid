@@ -73,6 +73,7 @@
     else
       assign order = 'logo,search,menu,localization,mobile_search,actions'
     endif
+    assign search_style = 'inline'
   endif
   capture search
     render 'search', style: search_style, class: search_class
@@ -263,7 +264,7 @@
   }
 
   body:has(> #header-group > header) {
-    --header-height: 60px;
+    --header-height: 50px; /* Reduced from 60px for more compact header */
   }
 
   body:has(> #header-group:empty) {
@@ -591,6 +592,104 @@
     .sticky-content {
       margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
     }
+  }
+
+  /* Compact header improvements */
+  .header__columns {
+    padding-block: 8px; /* Reduced padding for more compact look */
+    min-height: unset;
+  }
+
+  .header__column {
+    align-items: center;
+    gap: 12px; /* Tighter spacing between elements */
+  }
+
+  .header__column--left {
+    justify-content: flex-start;
+  }
+
+  .header__column--center {
+    justify-content: center;
+  }
+
+  .header__column--right {
+    justify-content: flex-end;
+  }
+
+  /* Inline search specific styles */
+  .header__column--left:has(.inline-search) {
+    flex: 1;
+    max-width: 350px;
+    margin-right: 20px;
+  }
+
+  /* Mobile search icon for inline search */
+  @media screen and (max-width: 749px) {
+    .header__column--left:has(.inline-search) {
+      flex: unset;
+      max-width: unset;
+      margin-right: unset;
+    }
+    
+    .header__column--left .inline-search {
+      display: none;
+    }
+    
+    .header__column--left .inline-search-mobile-toggle {
+      display: flex;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .header__column--left .inline-search-mobile-toggle {
+      display: none;
+    }
+  }
+
+  /* Logo adjustments for compact header */
+  .header-logo {
+    line-height: 1;
+  }
+
+  .header-logo img,
+  .header-logo svg {
+    max-height: 32px; /* Slightly smaller logo for compact header */
+  }
+
+  /* Menu adjustments */
+  .header-menu {
+    height: auto;
+  }
+
+  .menu-list__link {
+    padding-block: 6px; /* Reduced menu item padding */
+    font-size: 14px; /* Slightly smaller font for compact look */
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
+
+  /* Actions area improvements */
+  .header-actions {
+    gap: 8px; /* Tighter spacing for action items */
+  }
+
+  .header-actions__action {
+    width: 36px; /* Smaller action buttons */
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  /* Country/language selector improvements */
+  .dropdown-localization {
+    font-size: 13px;
+  }
+
+  .dropdown-localization__button {
+    padding: 4px 8px;
+    height: auto;
+    min-height: unset;
   }
 {% endstylesheet %}
 
