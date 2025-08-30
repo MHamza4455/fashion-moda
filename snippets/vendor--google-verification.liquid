@@ -1,0 +1,10 @@
+<!-- Google Site Verification -->
+{% if settings.google_site_verification_id != blank %}
+    {% assign gsv_ids = settings.google_site_verification_id | newline_to_br | split: '<br />' %}
+    {% for gsv_string in gsv_ids %}
+        {% unless gsv_string == blank %}
+            <meta name="google-site-verification" content="{{ gsv_string }}" />
+        {% endunless %}
+    {% endfor %}
+{% endif %}
+<!-- End Google Site Verification -->

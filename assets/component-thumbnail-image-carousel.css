@@ -1,0 +1,273 @@
+.section-thumbnail-image-carousel{
+	position: relative;
+	aspect-ratio: initial;
+	display: grid;
+}
+
+.section-thumbnail-image-carousel .slide{
+	display: flex;
+	padding:0px;
+	max-width:100%;
+	margin:0px auto;
+	visibility: hidden;
+	transition: visibility 0s 400ms;
+	grid-area: 1 / 1;
+	overflow: hidden;
+	z-index: 10;
+}
+
+.section-thumbnail-image-carousel .slide.card-style{
+	padding:4px;
+	column-gap:4px;
+}
+
+
+.section-thumbnail-image-carousel .slide.active{
+	visibility: visible;
+	transition: visibility 0s 0s;
+	z-index: 20;
+}
+
+
+.section-thumbnail-image-carousel .slide .content-part > *{
+	transition: opacity 200ms;
+	opacity: 0;
+}
+.section-thumbnail-image-carousel .slide.active .content-part > *{
+	transition: opacity 200ms 200ms;
+	opacity: 1;
+}
+
+
+
+
+
+
+.section-thumbnail-image-carousel .slide .main-image{
+	opacity: 0;
+	transition: opacity 0ms 400ms;
+}
+.section-thumbnail-image-carousel .slide.active .main-image{
+	transition: opacity 400ms 0ms;
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+.section-thumbnail-image-carousel .content-part{
+	width:50%;
+	padding: 64px;
+	display: flex;
+	flex-direction: column;
+	gap:40px;
+	align-items: flex-start;
+	justify-content: end;
+}
+.section-thumbnail-image-carousel .card-style .content-part,
+.section-thumbnail-image-carousel .card-style .main-image{
+	border-radius: 4px;
+}
+
+.section-thumbnail-image-carousel .main-image{
+	width: 50%;
+    height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+
+.section-thumbnail-image-carousel ul{
+	list-style: none;
+	margin:0px;
+	padding: 0px;
+	display: flex;
+	gap:24px;
+	margin-bottom: auto;
+	z-index: 100;
+	position: absolute;
+	padding: 64px 64px 0px;
+	max-width: calc(50% - 4px);
+	left: 50%;
+	transform: translateX(-100%);
+}
+
+.section-thumbnail-image-carousel ul.card-style{
+	left: calc(50% + 4px);
+}
+
+.section-thumbnail-image-carousel li{
+	margin:0px;
+	border-radius: 4px;
+	overflow: hidden;
+    width: 137.5px;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    max-width: calc(25% - 12px);
+}
+
+
+.section-thumbnail-image-carousel li.active{
+	border:1px solid #000;
+	padding:3px;
+}
+
+
+.section-thumbnail-image-carousel li img{
+	display: block;
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.section-thumbnail-image-carousel h3{
+	margin:0px;
+	font-size: 48px;
+	line-height: 110%;
+	letter-spacing: -0.96px;	
+}
+
+.section-thumbnail-image-carousel .text{
+	font-size: 22px;
+    line-height: 120%;
+}
+.section-thumbnail-image-carousel .text p:first-child{
+	margin-top:0px;
+}
+
+
+.section-thumbnail-image-carousel .controls{
+	position: absolute;
+	bottom:36px;
+	right:36px;
+	display: flex;
+	gap:16px;
+	z-index: 30;
+	width:96px;
+}
+.section-thumbnail-image-carousel .controls > div{
+	padding:5.5px;
+}
+.section-thumbnail-image-carousel .controls .left{
+	transform: scaleX(-1);
+}
+.section-thumbnail-image-carousel .controls svg{
+	cursor: pointer;
+	display: block;
+	height: 29px;
+    stroke-width: 7px;
+}
+
+
+.section-thumbnail-image-carousel .controls path{
+	transition: stroke 300ms;
+}
+.section-thumbnail-image-carousel .controls.light path{
+	stroke:#FFF;
+}
+.section-thumbnail-image-carousel .controls.dark path{
+	stroke:#000;
+}
+
+
+.section-thumbnail-image-carousel .controls.end .right,
+.section-thumbnail-image-carousel .controls.start .left{
+	cursor: default;
+	opacity: 0.3;
+}
+
+
+
+@media(max-width:1504px){
+	.section-thumbnail-image-carousel ul{
+		padding:24px 24px 0px;
+	}
+	.section-thumbnail-image-carousel .content-part{
+		padding:24px;
+	}	
+}
+
+@media(max-width:1050px){
+	.section-thumbnail-image-carousel h3{
+		font-size: 28px;
+		line-height: 110%;
+		letter-spacing: -0.56px;
+	}
+
+	.section-thumbnail-image-carousel .text{
+		font-size: 16px;
+	    letter-spacing: 0.32px;
+	    margin-bottom: 8px;
+	}
+
+	.section-thumbnail-image-carousel .content-part{
+		gap:16px;
+	}
+}
+
+@media(max-width:900px){
+	.section-thumbnail-image-carousel ul{
+		gap:16px;
+	}
+}
+@media(max-width:700px){
+	.section-thumbnail-image-carousel .slide{
+		flex-direction: column-reverse;
+		position: relative;
+		width:100%;
+		justify-content: flex-end;
+	}
+	.section-thumbnail-image-carousel .content-part{
+		flex-grow: 1;
+	}
+	.section-thumbnail-image-carousel .btn{
+		width:100%;
+		margin-top:auto;
+	}
+	.section-thumbnail-image-carousel ul{
+		max-width: 100%;
+		width:100%;
+		top: 100vw;
+		left: 0px;
+		transform: none;
+	}
+	.section-thumbnail-image-carousel ul.card-style{
+		left:4px;
+		max-width: calc(100% - 8px);
+	}
+
+
+
+	.section-thumbnail-image-carousel .content-part,
+	.section-thumbnail-image-carousel .main-image{
+		width:100%;
+		height: auto;
+	}
+	.section-thumbnail-image-carousel .main-image{
+		aspect-ratio: 1/1;
+	}
+
+	.section-thumbnail-image-carousel .content-part{
+		padding-top: calc(25vw + 26px);
+		
+	}
+	.section-thumbnail-image-carousel .card-style .content-part{
+		margin-top: 4px;
+		padding-top: calc(25vw + 24px);
+	}
+
+
+
+	.section-thumbnail-image-carousel .controls{
+		bottom:initial;
+        top: calc(100vw - 20px);
+        right:20px;
+        transform: translateY(-100%);
+	} 
+}

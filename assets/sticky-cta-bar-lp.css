@@ -1,0 +1,49 @@
+.section-sticky-cta-bar {
+    border-radius: 4px 4px 0px 0px;
+    background: linear-gradient(0deg, rgba(139, 129, 126, 0.15) 0%, rgba(139, 129, 126, 0.15) 100%), #F9F5F4;
+    box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
+.section-sticky-cta-bar form .btn {
+    border-radius: 4px;
+    color: #F9F5F4;
+    font-size: calc(14px * var(--adjust-button));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    padding: 13px 32px;
+}
+
+.section-sticky-cta-bar .sold-out-button {
+    border-radius: 4px;
+    font-size: calc(14px * var(--adjust-button));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    padding: 13px 32px;
+}
+
+.section-sticky-cta-bar .product__price {
+    font-size: inherit;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+    .section-sticky-cta-bar .wrapper {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    .section-sticky-cta-bar .wrapper {
+        width: 1384px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-sticky-cta-bar .wrapper {
+        padding: 0 16px;
+    }
+
+    .section-sticky-cta-bar .right {
+        width: auto;
+    }
+}

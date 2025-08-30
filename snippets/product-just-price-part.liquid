@@ -1,0 +1,24 @@
+<span class='price-box' {% unless dont_change_on_variant_change %} data-price-wrapper {% endunless %}>
+  <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+    {%- liquid
+      if current_variant.price == 0
+        echo 'products.product.free' | t
+      else
+        echo current_variant.price | money_without_trailing_zeros 
+      endif 
+      if settings.currency_code_enable
+        echo shop.currency
+      endif
+    -%}
+  </span>
+  <s data-compare-price class="product__price--compare">
+    {%- liquid
+      if current_variant.compare_at_price > current_variant.price 
+        echo current_variant.compare_at_price | money_without_trailing_zeros
+        if currency_code_enable
+          echo shop.currency
+        endif
+      endif 
+    -%}
+  </s>
+</span>

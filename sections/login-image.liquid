@@ -1,0 +1,28 @@
+{% schema %}
+{
+  "name": "Accounts Page Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "login_image",
+      "label": "Login Page Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Login Page Image",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.login_image %}
+  <div class="login-image-container">
+    {{ section.settings.login_image | image_url: width: 800 | image_tag:
+      loading: 'lazy',
+      class: 'login-page-image',
+      alt: section.settings.login_image.alt | escape
+    }}
+  </div>
+{% endif %}

@@ -1,0 +1,2744 @@
+/* Fonts for Living Proof */
+
+@font-face {
+  font-family: "Documenta Regular";
+  src: url("./DocumentaRegular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Suisse Book";
+  src: url("./SuisseBook.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Suisse Book';
+  src: url("./SuisseLight.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Suisse Book';
+  src: url("./SuisseSemiBold.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Suisse Book';
+  src: url("./SuisseBold.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Suisse Book';
+  src: url("./SuisseSemiBold.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Fonts for Tatcha */
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-Light-Web.woff2") format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-Light-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-LightItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-Medium-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-Medium-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-Medium-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-MediumItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-MediumItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url("./AtlasGrotesk-MediumItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: 'Austin News Headline Web';
+  src: url("./AustinNewsHeadline-Light-Web.woff2") format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Austin News Headline Web';
+  src: url("./AustinNewsHeadline-Light-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Austin News Headline Web';
+  src: url("./AustinNewsHeadline-LightItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Austin News Headline Web';
+  src: url("./AustinNewsHeadline-Medium-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Austin News Headline Web';
+  src: url("./AustinNewsHeadline-MediumItalic-Web.woff2") format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Fonts for REN */
+
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Regular.woff2") format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Light.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Regular.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Bold.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Bold.woff2") format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'RENPackaging';
+  src: url("./RENPackaging-Bold.woff2") format('woff2');
+  font-display: swap;
+  font-style: bold;
+}
+
+/* Fonts for Living Proof US */
+
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('SuisseIntl-Regular.woff2') format('woff2'),
+       url('SuisseIntl-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-suisse-intl: 'Suisse Intl', sans-serif;
+}
+
+/* general class  for hidden elements */
+.hidden-element{
+  display: none !important;
+}
+
+
+/*
+* Location popup Section CSS
+* UK-14 - International Site Detection / Redirection
+*/
+.country_selector .model-location-content-inner {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 500px;
+}
+.country_selector .model-location-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.country_selector .modal-location {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.country_selector .modal-location-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.country_selector .close-button {
+  float: right;
+  text-align: center;
+  cursor: pointer;
+  font-size: 36px;
+}
+.country_selector .show-modal-location {
+  opacity: 1;
+  z-index: 9999;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+/*
+* Header Section CSS
+* UK-81 - Add Profile Icon
+*/
+.menu__item--icon .navlink--icon {
+  padding: 4px;
+}
+.site-header .menu__item--icon {
+  margin-right: 4px;
+}
+.menu__item--icon svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 10px !important;
+}
+
+
+/*
+* Custom Content Section CSS
+* UK-77 - Custom Content - Add Column Ratios
+*/
+@media only screen and (min-width: 768px){
+  .brick__section .brick__blocks__flex {
+    flex-flow: row wrap;
+  }
+  .brick__section .brick__block{
+    flex: 0 0 var(--desktop-width);
+  }
+  .brick__blocks__flex--gap .brick__block{
+    flex: 0 0 calc(var(--desktop-width) - 15px);
+  }
+  .brick__blocks__flex--gap .brick__block:first-child{
+    margin: 0 15px 0 0;
+  }
+  .brick__blocks__flex--gap .brick__block:last-child{
+    margin: 0 0 0 15px;
+  }
+}
+
+
+/*
+* Text Columns with Images Section CSS
+* UK-78 - Text Columns with Images - Add Tabs
+*/
+.tabs_text_image .current {
+  border-bottom: 3px solid #000;
+}
+.tabs_text_image {
+  margin-bottom: 20px;
+}
+
+
+/*
+* Product Detail Page CSS
+* UK-26 - Klaviyo Integration - Back in Stock Functionality
+*/
+.btn.btn-klaviyo-not-available{
+  border-color: transparent;
+  background-color: var(--text-alpha-10);
+  color: var(--text-alpha-50);
+  width: 100% !important;
+}
+.btn.btn-klaviyo-not-available:before{
+  background-color: var(--text-alpha-25);
+}
+
+
+/*
+* PDP - Formulated Without Section CSS
+* UK-110 - PDP - Formulated Without Section
+*/
+.icons-row__icon img {
+  width: 100%;
+}
+.icons-row_object {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+.icons-row__icon {
+  max-width: 100%;
+}
+
+
+/*
+* Update Promotion Tile to collection_list
+* UK-26 - Update Promotion Tile to collection_list
+*/
+.repeatClass {
+  display:none;
+}
+
+
+/*
+* Cart Drawer CSS
+* UK-36 - Cart / Bag Setup
+*/
+.cart-drawer__head h3 {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+/*
+* Collection Page CSS
+* UK-119 - Move text under the banner image on mobile
+*/
+.under-the-image .item--right{
+  text-align: right;
+}
+.under-the-image .hide_desktop{
+  display: none;
+}
+.under-the-image .hide_mobile{
+  display: flex;
+}
+@media only screen and (max-width: 768px) {
+  .under-the-image .hide_mobile{
+    display: none;
+  }
+  .under-the-image .hide_desktop{
+    display: block;
+  }
+  .item--right .banner-image__text-container, .item--bottom-right .banner-image__text-container, .item--top-right .banner-image__text-container {
+    justify-content: right;
+  }
+}
+
+
+/*
+* All Pages CSS
+* UK-137 - Support frizz® strikethrough
+*/
+.strikethrough {
+  text-decoration: line-through;
+}
+.registeredSymbol {
+  margin-left: 2px;
+  transform: translateY(-2px);
+  display: inline-block;
+}
+.product__title .registeredSymbol {
+  font-size: 24px;
+  transform: translateY(-8px);
+}
+
+
+/*
+* Cart Drawer & GWP
+* UK-37
+*/
+.cart-drawer .upsell-recommendation.cart__pair{
+    margin: 0px var(--inner) 30px;
+    border-top: 2px solid #ccc;
+}
+
+.cart-drawer .cart-body-scroller{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px 0px 14px;
+    cursor: pointer;
+    margin-top:-32px;
+    display: flex;
+    visibility: hidden;
+}
+
+.cart-drawer .scroller-button-active .cart-body-scroller{
+    visibility: visible;
+}
+.cart-drawer .cart__message{
+  justify-content: center;
+}
+.cart-drawer .upsell-recommendation.cart__pair{
+  padding-top:0px;
+}
+
+.cart-drawer .cart__message{
+  border-top: 2px solid var(--border);
+}
+.cart-drawer .cart-drawer__foot{
+  padding-top: 0px;
+}
+
+.cart-drawer .cart__foot-inner .additional-links-block{
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+}
+.cart-drawer .cart__foot-inner .additional-links-block a{
+  font-size: 12px;
+}
+.cart-drawer .cart__foot-inner .additional-links-block span{
+  display: block;
+  width: 1px;
+  height: 13px;
+  background: #000;
+}
+.cart-drawer .cart-drawer__foot .cart__discounts{
+    margin-bottom: 0px;
+    border-top: 2px solid #e9eaea;
+    padding: 2px 6px;
+}
+
+  .cart-drawer .cart-drawer__foot [data-cart-price-holder] > .cart__total{
+    display: none;
+}
+
+/* Cart Drawer & GWP END*/
+
+
+/*
+* Upsell
+* UK-37
+*/
+.cart-drawer .product-upsell__subtitle a{
+    margin-left: 8px;
+}
+.product-upsell__subtitle a{
+    font-size: 12px;
+    color: #444;
+    font-weight: 400;
+    opacity: 0.6;
+    text-decoration: underline;
+}
+.cart-drawer .upsell-recommendation.cart__pair{
+    margin: 0px var(--inner) 30px;
+    border-top: 2px solid #ccc;
+}
+.cart-drawer .upsell-recommendation .product-upsell__holder{
+  border-radius: 0px;
+}
+.product-upsell__image__link {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    padding-top: 100%;
+}
+.product-upsell__image__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.template-cart .product-upsell__holder{
+    width:calc(33% - 8px);
+    margin-right: 10px;
+    height:175px;
+}
+.template-cart .product-upsell__holder .product-upsell{
+    height:100%;
+}
+
+.template-cart .product-upsell__holder .product-upsell__content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.template-cart .product-upsell__holder .price_range_text{
+    margin-top:0px !important;
+}
+.template-cart .product-upsell__holder .product-upsell__btn{
+    margin-top:auto;
+}
+
+.template-cart .upsell-cart-title{
+    text-align: center;
+    font-weight: 400;
+    margin: 42px 0px 25px;
+}
+
+.template-cart .cart__items  h2{
+    margin-top:36px;
+}
+
+.template-cart .buy-it-with-label{
+    display: none;
+}
+
+@media(max-width:1250px){
+    .template-cart .product-upsell__holder{
+        width:calc(50% - 12px);
+    }
+}
+@media(max-width:750px){
+    .template-cart .product-upsell__holder{
+        width:100%;
+    }
+}
+
+/* Upsell END */
+
+
+.element-arrow-down{
+    width:12px;
+    height:12px;
+    display: block;
+    transform: scaleX(1.1);
+}
+.element-arrow-down span{
+    display: block;
+    transform: rotate(45deg);
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Header Cart Counter - DIFFERENT BETWEEN TATCHA & LP */
+.cart__toggle .cart-drawer__item-qty {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    min-height: 18px;
+    min-width: 18px;
+    position: absolute;
+    top: 0px;
+    left: 70%;
+    transform: translateX(-50%);
+}
+.cart__toggle .cart-drawer__item-qty::before,
+.cart__toggle .cart-drawer__item-qty::after {
+    content: '';
+}
+.mobile-menu .cart__toggle .cart-drawer__item-qty{
+  top: 6px;
+}
+.cart__toggle .cart-indicator{
+  visibility: hidden;
+}
+
+/* Header Cart Counter END */
+
+
+/*
+* Links appear as a link in text block CSS
+* UK-145 - Make Links within Custom Content Blocks Appear as Links
+*/
+
+.brick__block__inner .rich-text__text a {
+  text-decoration: underline;
+}
+
+/*
+* Custom Content - Video & Image - Maintain aspect ratio
+* UK-100 - Custom Content - Video & Image - Maintain aspect ratio
+*/
+.mobile_video{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile_video{
+    display: inline-block;
+  }
+  .desktop_video{
+    display: none;
+  }
+}
+
+.video-aspect-ratio-saver .brick__video{
+  min-height: unset;
+}
+@media(min-width:767px){
+  .video-aspect-ratio-saver .video__player{
+    min-width: 1px; /* IntersectionObserver hack */
+    min-height: 1px;
+  } 
+  .video-aspect-ratio-saver.brick__blocks__flex{
+    min-height: unset;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .video-aspect-ratio-saver .brick__video{
+    height: 100%;
+    min-height: unset;
+  }
+
+  .video-aspect-ratio-saver .brick__block.brick__block--video{
+    width: auto;
+    flex: auto;
+    flex-grow: 0;
+    height: 100%;
+  }
+
+  .video-aspect-ratio-saver .brick__block.brick__block--text{
+    flex-grow: 1;
+    align-self: stretch;
+  }
+
+  .video-aspect-ratio-saver .brick__block .video__container,
+  .video-aspect-ratio-saver .brick__block .video__player{
+    position: static;
+    transform: none;
+  }
+
+  .video-aspect-ratio-saver .brick__block .video-background{
+    position: relative;
+  }
+
+  .video-aspect-ratio-saver .brick__block video{
+    object-fit: contain !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    min-height: unset !important;
+    min-width: unset !important;
+    display: block;
+  }
+
+  .video-aspect-ratio-saver .brick__block .overlay,
+  .video-aspect-ratio-saver .brick__block .text-inside,
+  .video-aspect-ratio-saver .brick__block .video-background--image{
+    position: absolute;
+  }
+}
+
+
+/*
+* Video Section CSS
+* UK-103 - Do not show Shopify image as a pre-loaded image
+*/
+.display_none {
+  display: none;
+}
+
+
+/*
+* PLP Section CSS
+* UK-158 - Show rich-text format on the promo tile
+*/
+/* .collection-promo__body .collection-promo__text p {
+  margin: 0;
+} */
+
+
+/*
+* PDP CSS
+* UKSHOP-56 - Move the Add To Bag button on the same level with Quantity selector
+*/
+.product__block .flex_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.flex_container .selector-wrapper--qty {
+  flex: 0 0 25%;
+  @media only screen and (max-width: 767px) {
+      flex: 0 0 40%;
+  }
+  @media(max-width:450px){
+    flex: 0 0 auto;
+
+  }
+}
+
+.flex_container .addTocart_container {
+  flex: 0 0 72%;
+  @media only screen and (max-width: 767px) {
+      flex: 0 0 58%;
+  }
+  @media(max-width:450px){
+    flex: 0 0 auto;
+    min-width:58%;
+  }
+}
+.full_width .addTocart_container {
+  flex: 0 0 100%;
+}
+
+
+/*
+* UK-63
+* Quantity Selector Buttons
+*/
+.product__form .purchased-limit-reached-message{
+    display: none;
+    color:#a00;
+}
+.product__form.purchase-limit-reached .purchased-limit-reached-message{
+    display: block;
+}
+.product__form.purchase-limit-reached .selector-wrapper--qty .select__fieldset,
+.product__form.purchase-limit-reached .product__submit__holder{
+    display: none;
+}
+
+.popup-quick-view__item .product__form.purchase-limit-reached .product__submit__holder{
+  display: none;
+}
+
+.popup-quick-view__item .product__form.purchase-limit-reached .popup-quick-view__foot{
+  padding-top:25px;
+}
+.popup-quick-view__item .product__form.purchase-limit-reached .popup-quick-view__foot:before{
+  content:'Sorry maximum quantity already added';
+  position: absolute;
+  color:#a00;
+  top:7px;
+  width:100%;
+  text-align: center;
+}
+
+.input-field-notification{
+    position: absolute;
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+    display: block;
+    width: 160px;
+    z-index: 99999;
+    text-align: center;
+    padding: 5px;
+    line-height: 16px;
+    border-radius: 6px 5px;
+    margin-top: -52px;
+    margin-left: -102px;
+}
+
+.input-field-notification:after{
+    content: " ";
+    background: transparent;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #000;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+}
+
+#cart-drawer .cart-drawer__items h2{
+  font-size: 18px;
+}
+.template-cart .cart__items h2{
+  font-size:22px;
+}
+
+@media(max-width:767px){
+  .template-cart .cart{
+    margin-top:0px;
+    padding-top:0px;
+  }
+  .template-cart .gwp-wrapper{
+    margin-bottom:10px;
+  }
+  .template-cart .cart__title{
+    margin-top:20px;
+  }
+}
+/* END Quantity Selector Buttons */
+
+
+/*
+* UKSHOP-73
+* Update profile, search, and bag icons in the header
+*/
+
+.cartitems {
+  display: none;
+}
+.active_cart_icon .cartitems {
+  display: block;
+}
+.active_cart_icon .empty_cart {
+  display: none;
+}
+.product-grid-item__quick-buy .btn__inner .icon,
+.quick__form .btn--quick .icon{
+  flex: 2 0 24px;
+}
+
+
+/* 
+* UK-196
+* Sticky CTA Bar CSS
+*/
+.section-sticky-cta-bar{
+    position: fixed;
+    bottom: 0px;
+    z-index: 8900;
+    width:100%;
+    transition: transform .15s;
+    box-shadow: 0 -3px 8px 0 rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+}
+
+.section-sticky-cta-bar .wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.sticky-cta-bar-active .section-sticky-cta-bar{
+    transform: translateY(0px);
+}
+
+/* 
+  UK-188 Task
+  Move "Cookie Policy" and Chat block up when Sticky CTA Bar is visible 
+*/
+body .cc-revoke.cc-bottom, #launcher{
+  transition: transform 150ms !important;
+}
+
+.js-drawer-open-cart .cc-revoke.cc-bottom, .js-drawer-open-cart #launcher{
+  z-index: 8920;
+}
+
+
+
+
+
+.section-sticky-cta-bar .bar-text{
+    margin-right: auto;
+}
+.section-sticky-cta-bar .right{
+    margin-left:auto;
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+
+
+.section-sticky-cta-bar .price-box{
+    gap:4px;
+    display:flex;
+}
+
+.section-sticky-cta-bar .sold-out-button{
+    display: none;
+    border-color: transparent;
+    background-color: var(--text-alpha-10);
+    color: var(--text-alpha-50);
+    cursor: default;
+}
+.section-sticky-cta-bar .sold-out-button:before{
+    content: none;
+}
+.section-sticky-cta-bar .sold-out-button.active{
+    display: block;
+}
+.section-sticky-cta-bar .sold-out-button.active + form{
+    display: none;
+}
+.section-sticky-cta-bar form .btn{
+  display: flex;
+  gap:4px;
+}
+
+
+.section-sticky-cta-bar .product__price--regular,
+.section-sticky-cta-bar .product__price--compare{
+  margin:0px;
+}
+
+
+@media(max-width:767px){
+    
+    .section-sticky-cta-bar .right{
+        width: 100%;
+    }
+
+    .section-sticky-cta-bar .price-box{
+        margin-right: auto;
+        margin-left: 0px;
+    }
+
+    .section-sticky-cta-bar .cta-button{
+        flex-grow: 1;
+    }
+    .section-sticky-cta-bar .with-price .cta-button{
+        flex-grow: 0;
+    }
+    .section-sticky-cta-bar .btn{
+        width: auto;
+    }
+    .section-sticky-cta-bar form .btn{
+        width:100%;
+    }
+}
+
+/* END Stick CTA Bar CSS */
+
+
+/*
+* PLP Section CSS
+* UK-186 - Keep Header on Collection Pages
+*/
+@media only screen and (min-width: 768px){
+  .show_header .collection__filters {
+     top: 60px;
+  }
+  .show_header .collection__sticky-bar {
+    top: 60px;
+  }
+}
+
+
+/*
+* Newsletter form CSS
+* UK-156 - Newsletter block with Klaviyo code
+*/
+@media only screen and (max-width: 768px){
+.newsletter-section__content {
+  width: 100%;
+ }
+}
+
+
+/*
+* UK-20 Badge Image
+*/
+.product-grid-item__image deferred-loading:first-child figure.product__media::after,
+.product-single__media-slide:first-child .product-single__media a:after{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 67px;
+}
+
+
+/* 
+* UK-214 - Badges
+*/
+.product__badge__item.badge-form-circle{
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  padding:0px;
+  margin-left:auto;
+  margin-right: auto;
+}
+.product__badge__item.badge-form-circle span{
+  height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50% 8px;
+  max-width: 70px;
+  text-align: center;
+}
+
+@media(max-width:1000px) and (min-width:479px){
+  .product__badge__item.badge-form-circle span{
+    max-width: 57px;
+  }
+}
+
+.product__media__container:hover .badges-hover-false{
+  display: none;
+}
+
+
+/* UKSHOP-88 */
+.shopify-section.slideshow .slide__text__wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.shopify-section.slideshow .slide-content-alignment-center{
+  align-items: center;
+  text-align: center;
+}
+.shopify-section.slideshow .slide-content-alignment-left{
+  align-items: start;
+  text-align: left;
+}
+.shopify-section.slideshow .slide-content-alignment-right{
+  align-items: end;
+  text-align: right;
+}
+
+@media(max-width: 768px){
+  .shopify-section.slideshow .slide-content-mobile-vertical-top{
+    margin-bottom: auto !important;
+  }
+  .shopify-section.slideshow .slide-content-mobile-vertical-center{
+    margin: auto !important;
+  }
+  .shopify-section.slideshow .slide-content-mobile-vertical-bottom{
+    margin-top:auto !important;
+  }
+  .shopify-section.slideshow .vertical-mobile-top,
+  .shopify-section.slideshow .vertical-mobile-center,
+  .shopify-section.slideshow .vertical-mobile-bottom{
+    justify-content: center !important;
+  }
+  .shopify-section.slideshow .slide__text__wrapper .slide__btn{
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+.banner-image .banner__text__wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.banner-image.banner-content-alignment-center .banner-image__text-wrapper{
+  text-align: center;
+}
+.banner-image.banner-content-alignment-center .banner-image__text-wrapper .banner-image__buttons{
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-image.banner-content-alignment-left .banner-image__text-wrapper{
+  text-align: left;
+}
+.banner-image.banner-content-alignment-left .banner-image__text-wrapper .banner-image__buttons{
+  justify-content: start;
+  align-items: start;  
+}
+
+.banner-image.banner-content-alignment-right .banner-image__text-wrapper{
+  text-align: right;
+}
+.banner-image.banner-content-alignment-right .banner-image__text-wrapper .banner-image__buttons{
+  justify-content: end;
+  align-items: end;
+}
+
+
+@media(max-width: 768px){ 
+  .banner-content-mobile-vertical-top .banner-image__text-wrapper{
+    margin-bottom: auto !important;
+  }
+  .banner-content-mobile-vertical-center .banner-image__text-wrapper{
+    margin-top:auto !important;
+    margin-bottom: auto !important;
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+  }
+  .banner-content-mobile-vertical-bottom .banner-image__text-wrapper{
+    margin-top:auto !important;
+  }
+}
+
+@media(max-width: 479px){
+  .banner-image .banner-image__buttons .banner-image__btn{
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+}
+
+/* UKSHOP-88 END */
+
+
+.product__block--auto {
+  width: max-content;
+}
+@media only screen and (max-width: 480px) {
+  .product__block--half {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+
+/* UKSHOP-102 */
+.email_marketing {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.email_marketing label {
+  text-align: left;
+  margin-left: 10px;
+}
+.accepts-marketing a {
+  text-decoration: underline;
+}
+/* UKSHOP-102 END */
+
+
+/*
+* PDP CSS
+* REN-244 - Adjust icon layout for the Dynamic Icons block on the PDP
+*/
+.text-inline-center .icons-row__icon, .text-inline-left .icons-row__icon{
+    display: grid;
+}
+@media only screen and (min-width: 768px) {
+    .icons-row__wrapper .icons-row__slider {
+        gap: 15px;
+    }
+    .text-inline-center .icons-row__item, .text-inline-left .icons-row__item{
+        align-items: flex-start;
+    }
+    .text-inline-center .icons-row__content, .text-inline-left .icons-row__content {
+        margin: -2px 0 0 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .icons-row__slider.grid--mobile{
+        justify-content: left;
+    }
+    .icons-row__content{
+        text-align: left;
+        word-break: break-word;
+        width: 100%;
+        margin: -2px 0 0 0;
+    }
+    .icons-row__slider .icons-row__item {
+        display: flex !important;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .icons-row__wrapper .icons-row__icon {
+        margin: 0 8px 0 0;
+    }
+}
+
+
+/*
+* PDP CSS
+* REN-223 - Collapse long Product Description
+*/
+.description-content p:empty {
+    display: none;
+}
+.description-content .read-more {
+    margin: 12px 0 0;
+}
+
+
+/*
+* REN-193 - Add mobile image to a Grid block
+*/
+.mosaic__item__image .grid-mobile-image{
+    display: none;
+}
+@media(max-width:767px){
+    .mosaic__item__image .grid-mobile-image{
+        display: block;
+    }
+    .mosaic__item__image .grid-mobile-image ~ .grid-desktop-image{
+        display: none;
+    }
+}
+
+
+/*
+* PDP CSS
+* REN-224 - Show blogs in a list on mobile view
+*/
+.featured-blog__container .flex {
+    margin: 0 20px;
+}
+.featured-blog__container .flex .blog__post-item {
+    border-bottom: 1px solid var(--COLOR-BORDER);
+    padding: 16px 0 8px 0;
+}
+.featured-blog__container .flex .blog__post-item:last-child {
+    border-bottom: none;
+}
+.featured-blog__container .blog__post-title a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.featured-blog__container .blog__post-title .arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-flex;
+    padding: 4px;
+    margin: 0 2px 0 22px;
+}
+.featured-blog__container .blog__post-title .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.featured-blog__container .show_desktop{
+    display: grid;
+ }
+ .featured-blog__container .show_mobile{
+    display: none;
+ }
+@media(max-width:767px){
+ .featured-blog__container .show_desktop{
+    display: none;
+ }
+ .featured-blog__container .show_mobile{
+    display: block;
+ }
+ .featured-blog__container .hide_mobile{
+    display: none;
+ }
+ .blog_title_list .blog__post-content, .blog_title_list .blog__post-title-link, .blog_title_list .blog__post-tags-link, .blog_title_list .blog__post-comments a{
+    color: var(--heading);
+    position: initial;
+    padding: 0;
+ }
+ .blog_title_list .blog__post-title{
+    margin: 0 0 8px;
+ }
+ .blog_title_list .blog__post-item{
+    overflow: initial;
+ }
+}
+
+
+/*
+* REN-136 - Custom Background Color and Images Support
+*/
+.top-bar-image{
+  position: relative;
+}
+
+
+/* 
+* REN-228 Cart Drawer Elements Positions
+*/
+.cart-drawer__body{
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*
+* Grid item CSS
+* UKSHOP-122 - Grid item CSS
+*/
+
+.item-atc-button svg {
+  width: 24px;
+  height: 24px;
+  margin-top: -4px;
+}
+
+.product-grid-item__info .yotpo-widget-instance {
+  display: flex;
+  justify-content: center;
+}
+.product-grid-item__info.product-grid-item__info--left .yotpo-widget-instance,
+.product-grid-item__info.product-grid-item__info--inline .yotpo-widget-instance{
+  display: flex;
+  justify-content: start;
+}
+
+
+/*
+* Mobile PDP improvement: next image + thumbnail dots CSS
+* UKSHOP-121 - Mobile PDP improvement: next image + thumbnail dots CSS
+*/
+.product-single__thumbnails .flickity-prev-next-button{
+  display: none;
+}
+.product-single__thumbnails .mobile-video-icon {
+  display: none;
+}
+
+@media(max-width:767px){
+  .carousel-with-icons  .product-single__media-slide {
+    width: 80%;
+    padding-right: 5px;
+  }
+  .carousel-with-icons .product-single__thumbnails .flickity-prev-next-button:not([disabled]){
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(-50%);
+  }
+.carousel-with-icons .product-single__thumbnail-link{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #CCCCCC;
+}
+.carousel-with-icons .video_thumbnail .mobile-video-icon{
+  display: block;
+  margin-top: -6px;
+}
+.carousel-with-icons .is-selected .product-single__thumbnail-link{
+  background: #333333;
+}
+.carousel-with-icons .is-selected svg path{
+  fill: #333333;
+}
+.carousel-with-icons .product-single__thumbnail-link figure{
+  display: none;
+}
+.video_thumbnail .product-single__thumbnail-link {
+  display: none;
+}
+.carousel-with-icons .flickity-prev-next-button, 
+.carousel-with-icons .pswp__button--arrow--left, 
+.carousel-with-icons .pswp__button--arrow--right {
+  background: transparent; 
+  box-shadow: none;
+  border-radius: unset;
+}
+.carousel-with-icons .flickity-prev-next-button.next {
+  right: 22px;
+}
+.carousel-with-icons .flickity-prev-next-button.previous {
+  left: 22px;
+}
+.carousel-with-icons .noVideoMedia .product-single__thumbnail{
+  margin-top: 3px;
+}
+.carousel-with-icons .hasVideoMedia .product-single__thumbnail{
+  margin-top: 12px;
+}
+}
+
+
+/* Recharge Widget Customization */
+.recharge-subscription-widget-title{
+  margin-bottom:-7px;
+}
+.recharge-subscription-widget .rc-widget .rc-subscription-details{
+  padding:0px !important;
+  display:none;
+}
+.recharge-subscription-widget .rc-subscription-details ul{
+  margin-bottom: 0px;
+  font-size:14px;
+}
+.recharge-subscription-widget .rc-subscription-details ul{
+    list-style-type: none; /* Remove default bullets */
+    margin-left: 0px;
+}
+.recharge-subscription-widget .rc-subscription-details li{
+  background-image:url('data:image/svg+xml,<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 18a.997.997 0 01-.707-.293l-6-6a1 1 0 011.414-1.414l5.236 5.236 11.298-13.18a1 1 0 011.518 1.3l-12 14a1.001 1.001 0 01-.721.35H7" fill="%235C5F62"/></svg>');
+  background-position: 0px, 50%;
+  background-size: 12px;
+  padding-left: 20px;
+  background-repeat: no-repeat;
+}
+
+.recharge-subscription-widget .rc-subscription-details a{
+  text-decoration: underline;
+}
+
+.recharge-subscription-widget .rc-subscription-details button,
+.recharge-subscription-widget .rc-subscription-details .arrow{
+  display: none !important;
+}
+.recharge-subscription-widget .rc-subscription-details .rc-tooltip{
+  display: block !important;
+  position: static;
+  max-width: 100%; 
+  box-shadow: none;  
+}
+.recharge-subscription-widget .rc-subscription-details .rc-tooltip__content{
+  background-color: #efefef !important;
+  color:#333 !important;
+  padding-left: 45px;
+  padding-bottom: 16px;  
+}
+
+.recharge-subscription-widget .rc-selling-plans-dropdown select{
+  background-image:url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="%235B6670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px), 50%;
+}
+
+/* END Recharge Widget Customization */
+
+
+/*
+* Quick Cart Icon & PDP Add to cart CSS
+* UKSHOP-240 - Fix Couple Minor UI Issues
+*/
+.btn--quick .btn__text {
+  line-height: 20px;
+  padding: 2px 0 0;
+}
+
+@media only screen and (max-width: 767px) {
+.btn--half .addTocart_container  .product__submit__buttons {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+
+/*
+* Add Mobile Position to Sections
+* UKSHOP-147 - Fix Couple Minor UI Issues
+*/
+.mobile_only{
+  display: none;
+}
+@media(max-width: 768px){
+  .featured-video-section .video-content-mobile-vertical-top{
+    margin-bottom: auto;
+  }
+  .featured-video-section .video-content-mobile-vertical-center{
+    margin-top:auto;
+    margin-bottom: auto;
+  }
+  .featured-video-section .video-content-mobile-vertical-bottom{
+    margin-top:auto;
+  }
+  .featured-collection .promo-content-mobile-vertical-top{
+    margin-bottom: auto;
+  }
+  .featured-collection .promo-content-mobile-vertical-center{
+    margin-top:auto;
+    margin-bottom: auto;
+  }
+  .featured-collection .promo-content-mobile-vertical-bottom{
+    margin-top:auto;
+  }
+  .desktop_only{
+    display: none;
+  }
+  .mobile_only{
+    display: block;
+  }
+}
+
+.align--left-center{
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+.align--left-center .wrapper--narrow{
+  margin-left: 0;
+}
+.align--right-center{
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+.align--right-center .wrapper--narrow{
+  margin-right: 0;
+}
+.item--top-center .collection-promo__content {
+  margin: 0 auto;
+}
+.item--right-center .collection-promo__content,
+.item--top-right .collection-promo__content,
+.item--bottom-right .collection-promo__content {
+  width: fit-content;
+  margin-left: auto;
+}
+.item--top-left .collection-promo__content,
+.item--left-center .collection-promo__content,
+.item--bottom-left .collection-promo__content{
+  width: fit-content;
+  margin-right: auto;
+}
+.item--bottom-top .collection-promo__content,
+.item--bottom-center .collection-promo__content{
+  width: fit-content;
+  margin-right: auto;
+}
+.item--middle-center .collection-promo__content {
+  margin: auto;
+}
+.item--bottom-center .collection-promo__content {
+  margin: 0 auto;
+}
+.slideshow .item--left-center .slide__text__container{
+  align-items: center;
+}
+.slideshow .item--left-bottom .slide__text__container{
+  align-items: end;
+}
+.slideshow .item--top-center .slide__text__container{
+  align-items: flex-start;
+}
+.slideshow .item--top-center .slide-content-alignment-center,
+.slideshow .item--center .slide-content-alignment-center,
+.slideshow .item--bottom-center .slide-content-alignment-center{
+  align-items: center !important;
+}
+.slideshow .item--bottom-center .slide__text__container{
+  align-items: flex-end;
+}
+.slideshow .item--top-right .slide__text__container{
+  align-items: flex-start;
+  justify-content: end;
+}
+.slideshow .item--center .slide__text__container{
+  align-items: center;
+}
+.slideshow .item--right-center .slide__text__container{
+  align-items: center;
+}
+.slideshow .item--right-bottom .slide__text__container{
+  align-items: flex-end;
+}
+
+.banner-image .item--right-center .banner-image__text-container {
+  justify-content: flex-end;
+  align-items: center;
+}
+.banner-image .item--right-bottom .banner-image__text-container {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.banner-image .item--left-center .banner-image__text-container {
+  align-items: center;
+}
+.banner-image .item--left-bottom .banner-image__text-container {
+  align-items: flex-end;
+}
+.banner-image .item--top-center .banner-image__text-container {
+  justify-content: center;
+  align-items: flex-start;
+}
+.banner-image .item--center .banner-image__text-container {
+  justify-content: center;
+  align-items: center;
+}
+.banner-image .item--bottom-center .banner-image__text-container {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.item--right-center .collection-promo__content .collection-promo__body,
+.item--bottom-right .collection-promo__content .collection-promo__body,
+.item--top-right .collection-promo__content .collection-promo__body{
+  align-items: flex-end;
+  text-align: right;
+}
+.item--bottom-center .collection-promo__content {
+  justify-content: flex-end;
+}
+.item--top-center .collection-promo__content {
+  justify-content: flex-start;
+}
+.item--bottom-left .collection-promo__content .collection-promo__body,
+.item--left-center .collection-promo__content .collection-promo__body,
+.item--top-left .collection-promo__content .collection-promo__body{
+  align-items: flex-start;
+  text-align: left;
+}
+
+.item--top-center .slide__text__wrapper,.item--bottom-center .slide__text__wrapper {
+  justify-content: center;
+}
+.slideshow .item--top-center .slide__text__container,.slideshow .item--bottom-center .slide__text__container{
+  justify-content: center;
+}
+.slideshow .item--right-center .slide__text__container,.slideshow .item--right-bottom .slide__text__container{
+  justify-content: flex-end;
+}
+
+
+/*
+* Add video to the Promo block CSS
+* UKSHOP-67 - Add video to the Promo block
+*/
+
+.promo_video-wrapper{
+position: relative;
+}
+ .promo-video {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+}
+ .promo-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: none;
+}
+
+ .promo-video .video-desktop {
+   display: block;
+}
+
+ .promo-video .video-mobile {
+   display: none;
+}
+
+.collection-promo__inner .video-play-pause {
+  width: 40px;
+  height: 40px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  margin: 1rem;
+  cursor: pointer;
+  bottom: 0
+}
+.video-play-pause:after {
+  content: unset !important;
+}
+
+.collection-promo__inner .video-play-pause.play .icon-play {
+  display: block
+}
+
+.collection-promo__inner .video-play-pause.play .icon-pause {
+  display: none
+}
+
+/* .collection-promo__inner .video-play-pause {
+  background: var(--black);;
+  font-size: 14px
+} */
+
+
+.collection-promo__inner .video-play-pause.pause .icon-play {
+  display: none
+}
+
+.collection-promo__inner .video-play-pause.pause .icon-pause {
+  display: block
+}
+.collection-promo__inner .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  border: 0;
+  box-shadow: unset;
+  border-radius: 0;
+}
+.promo_video-btn .btn-reset {
+  position: absolute;
+  bottom: 0px;
+  z-index: 9999;
+  right: 0;
+}
+.promo_video-btn {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  right: 0;
+}
+.promo_video-btn .btn-reset path,
+.promo_video-btn .btn-reset rect {
+  fill: var(--white);
+}
+.promo_video-btn:hover .btn-reset path,
+.promo_video-btn:hover .btn-reset rect {
+  fill: var(--white);
+}
+.video-play-pause:before {
+  content: "";
+  position: absolute;
+  display: flex;
+  left: calc(var(--BORDER-WIDTH)* -1);
+  top: calc(var(--BORDER-WIDTH)* -1);
+  right: calc(var(--BORDER-WIDTH)* -1);
+  bottom: calc(var(--BORDER-WIDTH)* -1);
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+  z-index: -1;
+  opacity: .3;
+  transition: transform .3s ease;
+  background: var(--btn-bg-hover);
+}
+.video-play-pause:hover:before {
+  transform-origin: bottom center;
+  transform: none;
+}
+ @media (max-width: 767px) {
+   .promo-video .video-desktop {
+     display: none;
+  }
+   .promo-video .video-mobile {
+     display: block;
+     height: 100%;
+  }
+}
+ 
+
+/*
+* Reduce space between text and buttons CSS
+* UKSHOP-149 - Reduce space between text and buttons
+*/
+
+.slide__text__wrapper .main-buttons__item,
+.slide__text__wrapper .main-buttons,
+.video-text-wrapper-inner .main-buttons__item,
+.video-text-wrapper-inner .main-buttons{
+  margin-top: 0;
+}
+.collection-promo__content .collection-promo__button{
+  margin: 0;
+}
+.collection-promo__content .collection-promo__text{
+  margin-bottom: 0;
+}
+.slide__text__wrapper .slide__text {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+/*
+* Add 'Mobile Text Layout' to Video, Slideshow, and Promo CSS
+* UKSHOP-146 - Add 'Mobile Text Layout' to Video, Slideshow, and Promo
+*/
+
+.hide_desktop_video,
+.under-the-video .desktop_hide{
+  display:none;
+}
+
+@media(max-width:767px){
+  .under-the-video .hide_desktop_video{
+    display:flex;
+  }
+  .under-the-video .hide_desktop_video .video__container {
+    display: none;
+  }
+  .under-the-video .text-inside.under-the-video {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .under-the-video .hide_desktop_video .text-inside.under-the-video {
+    opacity: 1;
+    visibility: visible;
+  }
+  .under-the-video .under-the-video .video__container {
+    display: none;
+  }
+  .under-the-video .text-light,
+  .under-the-video .main-text {
+    color: #000 !important;
+  }
+  .under-the-video .hide_desktop_video .backdrop--radial:before{
+    background: unset;
+  }
+  .under-the-image .item .slide__image{
+    position: unset;
+  }
+  .under-the-image .slide__image img{
+    height: unset;
+  }
+  .under-the-image .item .slide__image__container{
+    padding-top: 0;
+  }
+  .under-the-image .slider .overlay, 
+  .under-the-image .slide__image__container, 
+  .under-the-image .slide__text__container {
+    grid-row-start: unset;
+    background: #fff;
+  }
+  .under-the-image .slide__text__container .backdrop--radial:before{
+    background: unset;
+  }
+  .under-the-image .text-light {
+    --text: var(--black);
+    --heading: var(--black);
+    --overlay: var(--black);
+  }
+  .full-height_mob{
+    height: var(--full-height);
+  }
+  .two-thirds-height_mob{
+    height: var(--two-thirds);
+  }
+  .one-half-height_mob{
+    height: var(--one-half);
+  }
+  .one-third-height_mob{
+    height: var(--one-third);
+  }
+  .one-fifth-height_mob{
+    height: var(--one-fifth);
+  }
+  .seven-fifty-height_mob{
+    height: 750px;
+  }
+  .six-fifty-height_mob{
+    height: 650px;
+  }
+  .five-fifty-height_mob{
+    height: 550px;
+  }
+  .four-fifty-height_mob{
+    height: 450px;
+  }
+  .three-quarters-height_mob{
+    height: var(--three-quarters);
+  }
+  .original-height_mob picture{
+    position: unset;
+  }
+  .slide__image__inner {
+    height: 100%;
+  }
+  .mobile_height{
+    max-height: var(--min-h);
+  }
+}
+
+@media(max-width:479px){
+  .under-the-image .collection-promo__inner {
+    grid-template-rows: auto 1fr;
+  }
+  .under-the-image .collection-promo__content {
+    grid-row-start: 2;
+  }
+  .under-the-image .collection-promo__bg .collection-promo__bg {
+    grid-column-start: 1;
+  }
+}
+
+
+/*
+* Video section CSS
+* UK-247 - Add "Enable mobile height" to Video section CSS
+*/
+@media (max-width:768px){
+  .unset-min-height {
+    min-height: unset;
+  }
+  }
+
+
+/*
+* Ability to set different heading size on Desktop and Mobile CSS
+* UK-250 - Ability to set different heading size on Desktop and Mobile
+*/
+
+.main-heading p,
+.main-heading .p,
+.collection-promo__heading p,
+.collection-promo__heading .p{
+  font-size: inherit;
+}
+.main-heading p{
+margin: inherit;
+}
+
+.position-relative {
+  position: relative;
+}
+
+
+/*
+* Add Control of Add to Bag Button Settings to Collection Page CSS
+* REN-263 - Add Control of Add to Bag Button Settings to Collection Page
+*/
+.cta-alignment--center .item-atc-button {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.cta-alignment--inline .item-atc-button,
+.cta-alignment--left .item-atc-button {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+}
+
+
+.product-grid-item__info {
+  padding-bottom: 60px;
+}
+
+
+/* UKSHOP-167 Variant Selectors */
+.product__selectors.enhanced-style .radio__label .price{
+  display: block;
+  text-align: center;
+}
+.product__selectors.enhanced-style .option-value{
+  font-weight: bold;
+}
+
+.product__selectors.selected-style-fill .radio__input:checked ~ .radio__label,
+.product__selectors.selected-style-fill .radio__label:hover{
+  background: var(--variant-selected-color);
+}
+
+.product__selectors.selected-style-outline .radio__input:checked ~ .radio__label,
+.product__selectors.selected-style-outline .radio__label:hover{
+  background: #FFF;
+  color: var(--text);
+  border: 1px solid var(--variant-selected-color);
+}
+.product__selectors.selected-style-outline .radio__label:hover{
+  border-width: 1px;
+}
+.product__selectors.selected-style-outline .radio__input:checked ~ .radio__label{
+  outline: 1px solid var(--variant-selected-color);
+}
+
+.product__selectors .radio__button{
+  margin:0px 0px 12px 0px;
+  text-align: center;
+  width:calc(25% - 9px);
+}
+
+.popup-quick-view__wrapper .product__selectors .radio__button{
+  width:calc(50% - 6px);
+}
+
+.product__selectors .radio__fieldset{
+  column-gap:12px;
+}
+.product__selectors .radio__fieldset .radio__label{
+  padding-left:5px;
+  padding-right:5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:5px;
+}
+
+
+.product__selectors.enhanced-style .radio__fieldset .radio__label.border-radius-square{
+  border-radius: 0px;
+}
+.product__selectors.enhanced-style .radio__fieldset .radio__label.border-radius-rounded{
+  border-radius: 8px;
+}
+.product__selectors.enhanced-style .radio__fieldset .radio__label.border-radius-pill{
+  border-radius: 30px;
+}
+
+.product__selectors .selector-wrapper .price .subscription-price,
+.product__selectors .selector-wrapper.purchase-type-subscription .price:not(.variant-wihtout-subscription-price) s{
+  display: none;
+}
+
+.product__selectors .selector-wrapper.purchase-type-subscription .price:not(.variant-wihtout-subscription-price) .subscription-price{
+  display: inline;
+}
+
+.product__selectors .selector-wrapper.purchase-type-subscription .price:not(.variant-wihtout-subscription-price) .product__price--regular{
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+
+
+@media(max-width:1000px){
+  .product__selectors .radio__button{
+    width:calc(50% - 6px);
+  }
+}
+
+
+/*
+* REN-288  - improved control for Yotpo widget on collection page
+*
+*/
+
+.yotpo-sr-bottom-line-summary {
+  flex-direction:row!important;
+}
+
+
+@media only screen and (max-width: 479px) {
+  .form-vertical-wrapper button {
+    width: auto;
+  }
+
+  .btn {
+    width: auto;
+  }
+}
+
+/*
+*
+* UK-SHOP171 --slider styles
+*
+*/
+
+@media only screen and (min-width: 768px) {
+  .featured-ingredients .ingredients-list .ingridient-div-img {
+    max-width: 130px;
+  }
+}
+
+
+.featured-ingredients .ingredients-list .ingridient-div-img img {
+  border-radius: 50%;
+  height: auto;
+  width: 100%;
+}
+
+.glide__arrows {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768.98px) {
+  .ingredients-list {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .glide {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+  }
+
+  .glide__track {
+    overflow: hidden;
+  }
+
+  .glide * {
+    box-sizing: inherit;
+  }
+
+  .glide__slide {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    flex-shrink: 0;
+    height: 100%;
+    position: relative;
+    user-select: none;
+    white-space: normal;
+    width: 100%;
+  }
+
+  .glide__slides {
+    backface-visibility: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin-top: 48px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    touch-action: pan-Y;
+    transform-style: preserve-3d;
+    white-space: nowrap;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .ingridient-div-img {
+    max-width: 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+
+.glide__slide.glide__slide--active ~ .glide__slide:nth-child(n+2) .ingridient-div-img {
+    transform-origin: 40px;
+}
+
+.featured-ingredients .ingredients-list .ingredient-item.left-slide .ingridient-div-img {
+  transform-origin: calc(100% - 40px);
+}
+
+  .glide__slide .ingredient-info {
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+    min-width: 356px;
+    opacity: 0;
+    padding-left: 1.625rem;
+    padding-right: 1.625rem;
+  }
+
+  .glide__slide--active .ingredient-info {
+    opacity: 1;
+    transition: all 0.4s linear;
+  }
+
+  .featured-ingredients .ingredients-list .ingredient-item {
+    flex-direction: column;
+  }
+
+  .featured-ingredients .ingredients-list .ingredient-item {
+    margin-bottom: 0;
+  }
+
+  .glide__arrows {
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .glide__arrow {
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    border: none;
+    bottom: 3rem;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 1.5rem;
+    justify-content: center;
+    position: absolute;
+    width: 1.5rem;
+  }
+
+  .glide__arrow--prev {
+    left: 0rem;
+  }
+  .glide__arrow--next {
+    right: 0rem;
+  }
+
+  .featured-ingredients .ingredient-info p {
+    font-size: 14px;
+  }
+
+  .glide .prev .ingridient-div-img {
+    transform-origin: 170px;
+  }
+
+  .glide .next .ingridient-div-img {
+    transform-origin: 40px;
+  }
+}
+
+.ingridient-div-img{
+  transition:all 0.4s ease-in-out !important;
+}
+#ingredients.without-transition .ingridient-div-img{
+  transition:none !important;
+}
+
+.ingredient-item:has(+ .moving-process) .ingridient-div-img,
+.ingredient-item:has(+ .active) .ingridient-div-img{
+  transform-origin: 170px !important;
+}
+
+.moving-process ~ .ingredient-item .ingridient-div-img,
+.active:not(.glide__slide--clone) ~ .ingredient-item .ingridient-div-img{
+  transform-origin: 40px !important;
+}
+.ingredient-item.moving-process .ingridient-div-img{
+  transform: scale(1) !important;
+}
+.brick__block--featured_ingredients .featured-main-block{
+  padding:0px;
+}
+
+
+/*
+  UKSHOP-188 - Create Account Popup Section 
+*/
+html.create-account-popup-active{
+  overflow-y:hidden;
+}  
+.create-account-popup{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0006;
+  z-index: 1100;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  z-index:91000;
+}
+.create-account-popup-active .create-account-popup.main-create-account-popup{
+  display: flex;
+}
+.create-account-popup .page-customer{
+    background: #fff;
+    width: 680px;
+    max-width: calc(100% - 40px);
+    padding: 50px 20px;
+    position: relative;
+    margin-top:50px;
+    margin-bottom: 50px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    border-radius: 0px;
+}
+.create-account-popup .return{
+  display: none;
+}
+.create-account-popup .wrapper{
+  padding:0px;
+}
+.create-account-popup .icon-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.create-account-button{
+  display: flex;
+}
+.create-account-button .create-account-popup-call{
+  margin:0px auto;
+  cursor: pointer;
+}
+
+#CreateCustomer .opt-in-info{
+  text-align: left;
+  margin-bottom: 21px;
+}
+#CreateCustomer .opt-in-info ul{
+  margin-bottom: 15px;
+}
+#CreateCustomer .opt-in-info em,
+#CreateCustomer .opt-in-info em a{
+  font-style: italic;
+  font-size: 15px;
+}
+
+input[name="customer[accepts_marketing]"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+
+/* UKSHOP-168 */
+.product__price--regular + .product__price--compare{
+  margin-right:0px;
+}
+.product__price--compare:empty{
+  display: none;
+}
+@media(nax-width:420px){
+  .product__form .product__submit__add{
+    padding-left:15px;
+    padding-right:15px;
+  }
+  .product__form .select-popout--small{
+    max-width:105px;
+  }
+}
+
+
+/*
+  REN-295 Product Grid Image Swiper
+*/
+.product-grid-item.product-grid-item-image-slider .product__media__holder{
+  display: flex;
+  transition: transform 300ms;
+}
+.product-grid-item.product-grid-item-image-slider .product__media__holder.drag{
+  transition: transform 0ms;
+}
+.product-grid-item.product-grid-item-image-slider .product__media__holder > *{
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+.swipe-animation-demo{
+  animation-name: swipe-animation-demo;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+}
+
+
+.product-grid-item .swipe-animation-demo.product__media__holder > *:nth-child(2):after{
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  content: '';
+  position: absolute;
+  width: 33%;
+  height: 100%;
+  left: 0px;
+  z-index: 10;
+}
+
+@keyframes swipe-animation-demo {
+  0% {transform: translateX(0px);}
+  50% {transform: translateX(-33%)}
+  100% {transform: translateX(0px)}
+}
+
+.product-grid-item .product-grid-image-swiper-arrow{
+  position: absolute;
+  z-index: 10;
+  width: 29px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  cursor: pointer;
+  border: 1px solid #aaa;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 29px;
+  padding: 3px;  
+  opacity: 1;
+  transition: opacity 100ms;
+}
+.product-grid-item .product-grid-image-swiper-arrow.disabled{
+  opacity: 0;
+  cursor: default;
+}
+
+.product-grid-item .product-grid-image-swiper-arrow.left{
+  right: initial;
+  left:5px;
+  transform: translateY(-50%) rotateY(180deg);
+}
+
+.product-grid-item .product-grid-image-pagination{
+  list-style: none;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  bottom: 19px;
+  padding-left: 5px;
+  z-index: 2;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+
+.product-grid-item .product-grid-image-pagination li{
+  width:10px;
+  height:10px;
+  border-radius: 100px;
+  border:1px solid #000;
+  background:#fff;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+.product-grid-item .product-grid-image-pagination li.active{
+  background:#000;
+  border-color: #000;
+  outline: 1px solid #fff;
+}
+
+.product-grid-item .product__media__container .hide-by-default{
+  display: none;
+}
+@media(min-width:768px){
+  .product-grid-item .product__media__container .show-desktop:not(.only-on-hover-desktop),
+  .product-grid-item:hover .product__media__container .show-desktop{
+    display: flex;
+  }
+  .product-grid-item .product-grid-image-pagination{
+    padding-left: 17px;
+  }
+}
+@media(max-width:768px){
+  .product-grid-item .product__media__container .show-mobile{
+    display: flex;
+  }
+}
+
+
+/*
+  UK-268 Cookie Button
+*/
+.pieeye-floating-btn-container > *{
+  bottom:20px !important;
+  left:20px !important;
+  z-index: 999990 !important;
+  transition: all 150ms !important;
+}
+.js-drawer-open-cart .pieeye-floating-btn-container > *,
+.js-drawer-open .pieeye-floating-btn-container > *{
+  left: -200px !important;
+}
+
+
+/*
+  UK-278 - Sold Out Element
+*/
+.product-single__details .variant--soldout .addTocart_container:not(.sold-out-type-none) .product__submit__add,
+.product-single__details .variant--soldout .selector-wrapper--qty,
+.product-single__details .sold-out-block{
+  display: none;
+}
+.product-single__details .variant--soldout .sold-out-type-email .sold-out-block{
+  display: block;
+}
+.product-single__details .sold-out-block{
+  font-size:15px;
+}
+.product-single__details .sold-out-block p{
+  margin:5px auto;
+  font-size:15px;
+}
+.product-single__details .sold-out-consent-block{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  gap: 9px;
+}
+.product-single__details .sold-out-consent-block input{
+  margin-top: 7px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.product-single__details .sold-out-consent-block p{
+  font-size:14px;
+}
+.product-single__details .sold-out-block .btn{
+  cursor: pointer;
+  margin-top:6px;
+}
+.product-single__details .sold-out-block .btn.completed{
+  pointer-events: none;
+  border-radius: 8px;
+}
+.product-single__details .sold-out-block .btn .completed-state,
+.product-single__details .sold-out-block .btn.completed .initial-state{
+  display: none;
+}
+.product-single__details .sold-out-block .btn.completed .completed-state{
+  display: inline;
+}
+.product-single__details .sold-out-block input[name=email]{
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 13px;
+  margin: 6px auto 8px;
+  width: 100%;
+}
+
+.change-size-link {
+  -webkit-text-stroke-color: #000000;
+  -webkit-text-stroke-width: 0.2px;
+  border-bottom: 1px solid rgba(139, 129, 126, 0.50);
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 120%;
+  max-width: 100%;
+  padding: 3px 0;
+  width: fit-content;
+}
+
+  .section-sticky-cta-bar .variant-image {
+    width: 53px;
+    height: 53px;
+    object-fit: cover;
+    margin-right: 4px;
+  }
+
+/* Full width button on mobile */
+@media (max-width: 768px) {
+  .item--top-left .collection-promo__content,
+  .item--left-center .collection-promo__content,
+  .item--bottom-left .collection-promo__content{
+    width: 100%;
+  }
+
+  .main-buttons__item {
+    width: 100%;
+  }
+
+  .btn--full-width-mobile {
+    width: 100% !important;
+    display: block;
+  }
+
+  .section-sticky-cta-bar .variant-image {
+    display: none;
+  }
+}
+
+
+/* B2C-513 - Collection Navigation */ 
+.collection-navigation{
+  padding:0px calc(var(--gutter) + 4px);
+}
+.collection-navigation .item-nav{
+  height:80px;
+  border-radius:4px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  background:#e9e4e2;
+  padding-right:24px;
+  letter-spacing: 0.32px;
+  width:auto;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.collection-navigation .item-nav + .item-nav{
+  margin-left:8px;
+}
+.collection-navigation .item-nav img{
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.collection-navigation .inner-wrapper-nav{
+  padding-right:58px;
+  overflow:hidden;
+  display:flex;
+}
+.collection-navigation .inner-wrapper-nav.active-slider{
+  display:block;
+}
+
+.collection-navigation .flickity-prev-next-button.previous{
+  display:none !important;
+}
+.collection-navigation .flickity-prev-next-button.next{
+  opacity: 1;
+  visibility: visible !important;
+  transform: none;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 50px;
+  background: #e9e4e2;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.collection-navigation .flickity-prev-next-button.next[disabled],
+.collection-navigation .arrow-right-disabled .flickity-prev-next-button{
+  opacity:0.3 !important;
+  cursor:default !important;
+}
+
+@media(max-width:1024px){
+  .collection-navigation{
+    padding:0px calc(var(--gutter-mobile) + 4px);
+  }
+  .collection-navigation .item-nav{
+    font-size:14px;
+    gap:16px;
+    padding-right:16px;
+    height:40px;
+  }
+  .collection-navigation .inner-wrapper-nav{
+    padding-right:48px;
+  }
+  .collection-navigation .flickity-prev-next-button.next{
+    width:40px;
+  }
+}
+
+/* B2C-523 */
+.product__subs__wrap{
+  display: none;
+}
+.product__subs__wrap.active{
+  display: block;
+}
+
+.product__subs__wrap .product__subs__option,
+.product__subs__wrap .subscription-title,
+.product__subs__wrap .subscription-selector-line,
+.product__subs__wrap .subscription-additional-info{
+  font-size:14px;
+  line-height: 120%; /* 16.8px */
+  letter-spacing: 0.28px;
+}
+.product__subs__wrap .subscription-title{
+  margin-bottom: 8px;
+}
+.product__subs__group + .product__subs__group{
+  margin-top:8px;
+}
+
+.product__subs__wrap .product__subs__group{
+  border-radius: 4px;
+  border:1px solid #e9e4e2;
+  background:#e9e4e2;
+  padding-bottom: 12px;
+}
+.product__subs__wrap .product__subs__group:has(input[type="radio"]:checked){
+  border:1px solid #000;
+}
+.product__subs__wrap .product__subs__option{
+  padding:12px 12px 0px;
+}
+.product__subs__option input[type=radio]{
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  background: #FFF;
+}
+
+
+.product__subs__wrap .product__subs__plans{
+  margin:0px;
+  padding:0px 12px;
+  display: block;
+  overflow: hidden;
+  transition: all 300ms;
+  display: grid;
+  transition: all 300ms;
+  grid-template-rows: 1fr;
+}
+.product__subs__wrap .product__subs__plans.hidden{
+  grid-template-rows: 0fr;
+}
+.product__subs__wrap .product__subs__plans-inner-wrapper{
+  overflow: hidden;
+}
+
+
+.product__subs__wrap .subscription-additional-info {
+  margin-top:12px;
+  font-size:13px;
+}
+
+.product__subs__wrap select{
+  padding: 0px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0px;
+  font-size: 15px;
+  appearance: auto;
+  padding: 5px;
+}
+
+.product__subs__wrap .subscription-selector-line {
+  display: flex;
+  align-items: center;
+  gap:17px;
+  margin-top:12px;
+}
+
+.popup-quick-view__body .product__subs__wrap{
+  padding:0px 24px 12px;
+}
+
+.product__subs__wrap .subscription-additional-info a{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.product__subs__wrap .subscription-additional-info p{
+  padding:0px;
+  font-size:13px;
+}
+
+.product__subs__wrap .subscription-additional-info > *{
+  margin-bottom:0px;
+}
+
+.product__subs__wrap .subscription-additional-info > * + *{
+  margin-top:10px;
+}
+
+.product__subs__wrap .subscription-additional-info >*:last-child{
+  margin-bottom: 0px;
+}

@@ -1,0 +1,25 @@
+{% if settings.claripCookieManagerID != blank %}
+    <!-- Clarip Scripts Start -->
+
+        <link rel="stylesheet" type="text/css" href="//cdn.clarip.com/ulp/cookieconsent/assets/css/cookieconsent.min.css" />
+        <script src="//cdn.clarip.com/ulp/cookieconsent/assets/js/cookieconsent.min.js"></script>
+        <script>
+            var claripCdnHost = "cdn.clarip.com";
+            var claripClientName = "ulp";
+            var claripCookieConsentHost = "ulp.clarip.com";
+            var claripCookieManagerIdentifier = "{{ settings.claripCookieManagerID }}";
+        </script>
+        <script src="//cdn.clarip.com/ulp/cookieconsent/assets/js/clarip-cookie-manager.min.js"></script>
+    {% if settings.enable_clarip_donotsell %}
+        <link rel="stylesheet" type="text/css" href="https://cdn.clarip.com/ulp/donotsell/assets/css/donotsell-extended.min.css"/>
+        <script>
+            var globalDnsDeployment = false;
+            var claripHost = "ulp.clarip.com";
+            var claripCdnHost = "cdn.clarip.com";
+            var clientName = "ulp";
+        </script>
+        <script src="https://cdn.clarip.com/ulp/donotsell/assets/js/donotsell.min.js"></script>
+    {% endif %}
+
+    <!-- Clarip Scripts End -->
+{% endif %}

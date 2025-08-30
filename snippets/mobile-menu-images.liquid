@@ -1,0 +1,54 @@
+{%- comment -%}
+  Mobile-only images from header blocks
+  Usage:
+  {%- render 'mobile-menu-images', section: section -%}
+{%- endcomment -%}
+
+{%- if section.blocks -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'image' and block.settings.image_mobile_menu -%}
+      <div class="mobile-menu-image">
+        {%- if block.settings.image != blank -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="mobile-menu-image__link">
+          {%- endif -%}
+
+          {%- assign img = block.settings.image -%}
+          {%- assign img_width = img.width -%}
+          {%- assign img_height = img.width | divided_by: block.settings.aspect_ratio -%}
+
+          <div class="mobile-menu-image__container{% if block.settings.wide_image %} mobile-menu-image__container--wide{% endif %}">
+            {{ img | image_url: width: 800 | image_tag:
+              width: img_width,
+              height: img_height,
+              class: 'mobile-menu-image__img',
+              loading: 'lazy'
+            }}
+
+            {%- if block.settings.title != blank or block.settings.link_text != blank or block.settings.button_text != blank -%}
+              <div class="mobile-menu-image__content">
+                {%- if block.settings.title != blank -%}
+                  <h3 class="mobile-menu-image__heading h4" style="--adjust-heading: {{ block.settings.heading_size | divided_by: 100.00 }}">{{ block.settings.title }}</h3>
+                {%- endif -%}
+
+                {%- if block.settings.link_text != blank -%}
+                  <p class="mobile-menu-image__text">{{ block.settings.link_text }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.button_text != blank and block.settings.button_link != blank -%}
+                  <div class="menu__block-button">
+                    <a href="{{ block.settings.button_link }}" class="btn {{ block.settings.button_color }} {{ block.settings.button_style }} {{ block.settings.button_size }}">{{ block.settings.button_text }}</a>
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

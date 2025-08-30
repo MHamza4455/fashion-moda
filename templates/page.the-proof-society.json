@@ -1,0 +1,201 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": false,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_banner_image_eJiktg": {
+      "type": "section-banner-image",
+      "blocks": {
+        "heading_Rxj9Mz": {
+          "type": "heading",
+          "settings": {
+            "text": "<h1>The Proof Society</h1>",
+            "size": 100,
+            "size_mobile": 90,
+            "line_height": 110,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "button_tJcgHc": {
+          "type": "button",
+          "settings": {
+            "button_1_text": "Apply Now",
+            "entire_image_is_link": false,
+            "button_1_link": "https://members.loudcrowd.com/campaign/cHJvZ3JhbV9ob3N0OjY4OA?buttonText=Apply%20Now",
+            "button_1_color": "btn--primary",
+            "button_1_style": "btn--solid",
+            "button_1_size": "btn--small",
+            "button_1_full_width_mobile": false,
+            "button_2_text": "Login",
+            "button_2_link": "https://creators.loudcrowd.com/s/living-proof/login?intent=edit-storefront",
+            "button_2_color": "btn--secondary",
+            "button_2_style": "btn--outline",
+            "button_2_size": "btn--small",
+            "button_2_full_width_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rxj9Mz",
+        "button_tJcgHc"
+      ],
+      "settings": {
+        "height": "full-height",
+        "enable_mobile_height": true,
+        "mobile_height": "one-half-height-mobile",
+        "image": "shopify://shop_images/2025_AffiliateProgram_LandingPage_DeskB_1.jpg",
+        "image_mobile": "shopify://shop_images/2025_AffiliateProgram_LandingPage_MobileB_1.jpg",
+        "enable_zoom_animation": false,
+        "text_width": "normal",
+        "text_position": "bottom-left",
+        "text_position_vertical_mobile": "same_as_desktop",
+        "text_alignment": "left",
+        "text_alignment_mobile": "default",
+        "text_position_mobile": "over-the-image",
+        "text_color": "text-light",
+        "overlay_opacity": 20,
+        "limitTextoverlaytoBox": false,
+        "limitTextoverlayBoxPadding": 0,
+        "addBlurLayer": false
+      }
+    },
+    "section_text_Y6tPBG": {
+      "type": "section-text",
+      "blocks": {
+        "heading_Fdknfd": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>We're a community of passionate haircare lovers on a mission to tacklereal hair challenges. We believe in products that solve, not conceal.By working together, we can spread the word about groundbreakingsolutions for hair, backed by science and powered by your experiences.</p>",
+            "heading_size": 70,
+            "heading_size_mobile": 70,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Fdknfd"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color": "#f9f5f4",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "section_custom_html_RY9Mfn": {
+      "type": "section-custom-html",
+      "name": "Custom code",
+      "settings": {
+        "custom_code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>The Perks Component</title>\n  <style>\n    :root {\n      --Brand-color-gray: #676767;\n      --Basic-color-black: #000;\n      --Basic-color-whiteoff: #F9F5F4;\n      --Font-Regular: 16px;\n      --Font-Small: 14px;\n      --Font-Large: 32px;\n      --Font-Medium: 28px;\n      --Primary: \"Suisse Int'l\", Arial, sans-serif;\n    }\n\n    .perks-label {\n      color: var(--Brand-color-gray);\n      font-size: var(--Font-Regular);\n      font-style: normal;\n      font-weight: 400;\n      line-height: 120%;\n      letter-spacing: 0.32px;\n      margin-bottom: 16px;\n      font-family: var(--Primary);\n    }\n\n    .perks-header-row {\n      display: flex;\n      align-items: flex-start;\n      width: 100%;\n      gap: 24px;\n      margin-bottom: 40px;\n      justify-content: space-between;\n    }\n\n    .perks-btn.perks-btn-mobile {\n      display: none;\n    }\n    .perks-btn-desktop {\n      display: block;\n    }\n\n    .perks-title {\n      color: var(--Basic-color-black);\n      font-size: var(--Font-Large);\n      font-style: normal;\n      font-weight: 400;\n      line-height: 120%;\n      letter-spacing: -0.64px;\n      margin-bottom: 0;\n      font-family: var(--Primary);\n      max-width: 700px;\n      flex: 1 1 auto;\n    }\n\n    .perks-grid {\n      display: grid;\n      grid-template-columns: repeat(4, 1fr);\n      gap: 4px;\n      width: 100%;\n      margin-bottom: 40px;\n      align-items: stretch;\n    }\n\n    .perk-box {\n      background: #244C5A;\n      border-radius: 4px;\n      padding: 64px 32px;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      box-sizing: border-box;\n      justify-content: flex-start;\n      /* No min-height or height, so height is equal to tallest in row */\n    }\n\n    .perk-heading {\n      color: #F9F5F4;\n      font-family: var(--Primary);\n      font-size: 28px;\n      font-style: normal;\n      font-weight: 400;\n      line-height: 120%;\n      margin-bottom: 24px;\n      text-align: center;\n    }\n\n    .perk-text {\n      color: var(--Basic-color-whiteoff);\n      text-align: center;\n      font-family: var(--Primary);\n      font-size: var(--Font-Regular);\n      font-style: normal;\n      font-weight: 400;\n      line-height: 120%;\n      letter-spacing: 0.32px;\n    }\n\n    .perks-btn {\n      color: var(--Basic-color-whiteoff);\n      background: #000;\n      border: none;\n      border-radius: 4px;\n      font-family: var(--Primary);\n      font-size: var(--Font-Small);\n      font-style: normal;\n      font-weight: 400;\n      line-height: 120%;\n      letter-spacing: 0.28px;\n      padding: 13.5px 32px;\n      cursor: pointer;\n      margin-top: 0;\n      transition: background 0.2s;\n      margin-bottom: 0;\n      display: block;\n      width: auto;\n      position: static;\n    }\n\n    .perks-btn:hover {\n      background: #333;\n    }\n\n    /* Responsive styles */\n    @media (max-width: 900px) {\n      .perks-grid {\n        grid-template-columns: 1fr 1fr;\n      }\n    }\n\n    @media (max-width: 600px) {\n      .perks-label {\n        font-size: var(--Font-Small);\n        margin-bottom: 8px;\n      }\n      .perks-header-row {\n        flex-direction: column;\n        align-items: flex-start;\n        gap: 0;\n        margin-bottom: 16px;\n      }\n      .perks-title {\n        margin-bottom: 16px;\n      }\n      .perks-grid {\n        grid-template-columns: 1fr 1fr;\n        gap: 4px;\n        margin-bottom: 24px;\n      }\n      .perk-box {\n        padding: 24px 12px;\n      }\n      .perk-heading {\n        font-size: var(--Font-Regular);\n        margin-bottom: 12px;\n        letter-spacing: 0.32px;\n        text-align: center;\n      }\n      .perk-text {\n        font-size: var(--Font-Small);\n        letter-spacing: 0.28px;\n        line-height: 120%;\n        text-align: center;\n      }\n      .perks-btn-desktop {\n        display: none;\n      }\n      .perks-btn.perks-btn-mobile {\n        display: block;\n        width: 100%;\n        align-self: stretch;\n        margin-top: 24px;\n        position: static;\n      }\n    }\n\n    @media only screen and (min-width: 1024px) and (max-width: 1439px) {\n        .custom-code .wrapper {\n            width: 100vw;\n        }\n    }\n\n    @media (min-width: 1400px) {\n        .custom-code .wrapper {\n            width: 1384px;\n            padding: 0;\n        }\n    }\n\n    @media (max-width: 768px) {\n        .custom-code .wrapper {\n            padding: 0 16px;\n        }\n    }\n  </style>\n</head>\n<body>\n  <section class=\"perks-section\">\n    <div class=\"perks-label\">The Perks</div>\n    <div class=\"perks-header-row\">\n      <h2 class=\"perks-title\">\n        Get rewarded, score free products, and grow with a brand you believe in.\n      </h2>\n      <a href=\"https://members.loudcrowd.com/campaign/cHJvZ3JhbV9ob3N0OjY4OA?buttonText=Apply%20Now\" class=\"perks-btn perks-btn-desktop\">APPLY HERE</a>\n    </div>\n    <div class=\"perks-grid\">\n      <div class=\"perk-box\">\n        <div class=\"perk-heading\">Earn Money</div>\n        <div class=\"perk-text\">\n          We offer competitive commissions on Living Proof products sold through your affiliate links and storefront, plus opportunities to share personal discount codes during monthly campaigns.\n        </div>\n      </div>\n      <div class=\"perk-box\">\n        <div class=\"perk-heading\">1:1 Support</div>\n        <div class=\"perk-text\">\n          The Proof Society offers direct access to your team for support, questions, and guidance – an \"always-on\" resource to help you succeed.\n        </div>\n      </div>\n      <div class=\"perk-box\">\n        <div class=\"perk-heading\">Earn Rewards</div>\n        <div class=\"perk-text\">\n          Participate in monthly challenges to earn rewards including exclusive offers, perks, products, and extra cash.\n        </div>\n      </div>\n      <div class=\"perk-box\">\n        <div class=\"perk-heading\">Exclusive Access</div>\n        <div class=\"perk-text\">\n          Get ready to be in the know 24/7. We will be sharing newsletters and communication about new product launches, product tips and tricks, and early access to our promotions.\n        </div>\n      </div>\n    </div>\n    <a href=\"https://members.loudcrowd.com/campaign/cHJvZ3JhbV9ob3N0OjY0OA\" class=\"perks-btn perks-btn-mobile\" target=\"_blank\" rel=\"noopener noreferrer\">APPLY HERE</a>\n  </section>\n</body>\n</html>",
+        "width": "wrapper",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "section_image_with_text_8LWMdn": {
+      "type": "section-image-with-text",
+      "settings": {
+        "maintain_aspect_ratio": false,
+        "section_height": "seven-fifty-height",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "enable_card_style": true,
+        "image": "shopify://shop_images/AffiliateProgram_LandingPage.jpg",
+        "subheading": "",
+        "title": "<p>Requirements</p>",
+        "heading_size": 120,
+        "heading_size_mobile": 100,
+        "heading_highlight_type": "circle",
+        "highlight_color": "#d43747",
+        "highlight_text_color": "#000000",
+        "content": "",
+        "custom_content": "<style>\n  .requirements {\n    display: flex;\n    flex-direction: column;\n    gap: 16px;\n    font-family: sans-serif;\n  }\n\n  .requirement-item {\n    display: flex;\n    align-items: flex-start;\n    gap: 12px;\n  }\n\n  .requirement-number {\n    width: 28px;\n    height: 28px;\n    min-width: 28px;\n    border: 1px solid black;\n    border-radius: 50%;\n    text-align: center;\n    line-height: 28px;\n    font-size: 14px;\n    font-weight: 500;\n  }\n\n  .requirement-text {\n    flex: 1;\n    font-size: 15px;\n  }\n</style>\n\n<div class=\"requirements\">\n  <div class=\"requirement-item\">\n    <div class=\"requirement-number\">1</div>\n    <div class=\"requirement-text\">Have a public Instagram and/or Tik Tok with at least 1k followers.</div>\n  </div>\n  <div class=\"requirement-item\">\n    <div class=\"requirement-number\">2</div>\n    <div class=\"requirement-text\">Create content that aligns with the Living Proof brand identity.</div>\n  </div>\n  <div class=\"requirement-item\">\n    <div class=\"requirement-number\">3</div>\n    <div class=\"requirement-text\">Follow @livingproofinc on Instagram and TikTok.</div>\n  </div>\n  <div class=\"requirement-item\">\n    <div class=\"requirement-number\">4</div>\n    <div class=\"requirement-text\">Must be based in the USA.</div>\n  </div>\n  <div class=\"requirement-item\">\n    <div class=\"requirement-number\">5</div>\n    <div class=\"requirement-text\">Must be over 18 years old.</div>\n  </div>\n</div>",
+        "text_alignment": "left",
+        "text_vertical_alignment": "bottom",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "button_full_width_mobile": false,
+        "video_link": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "gradient": "",
+        "section_width": "wrapper--full",
+        "padding_top": 6,
+        "padding_bottom": 6,
+        "text_width": 90
+      }
+    },
+    "section_text_7R8NcV": {
+      "type": "section-text",
+      "blocks": {
+        "heading_3JAM9t": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Terms and conditions</h2>",
+            "heading_size": 100,
+            "heading_size_mobile": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#D43747",
+            "highlight_text_color": "#000"
+          }
+        },
+        "text_Nrzigh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Review the <a href=\"/pages/the-proof-society-terms-and-conditions\" title=\"Living Proof The Proof Society Terms and Conditions\">full program terms</a>. The program terms include the following:</p><ul><li>Creators must follow FTC guidelines.</li><li>Living Proof may update the program at any time.</li><li>Living Proof may share creator photos or videos for marketing purposes.</li></ul><p>Have any questions? Please see the <a href=\"/pages/the-proof-society-terms-and-conditions\" title=\"Living Proof The Proof Society Terms and Conditions\">frequently asked questions</a> or reach out to affiliate@livingproof.com.</p>",
+            "text_size": 100,
+            "text_size_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_3JAM9t",
+        "text_Nrzigh"
+      ],
+      "name": "Text",
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_banner_image_eJiktg",
+    "section_text_Y6tPBG",
+    "section_custom_html_RY9Mfn",
+    "section_image_with_text_8LWMdn",
+    "section_text_7R8NcV"
+  ]
+}

@@ -1,0 +1,478 @@
+{% liquid
+  if template == 'product' or template contains 'product.'
+    assign its_product_template = true
+  endif 
+%}
+<style>
+  .section-sticky-cta-bar{
+    height: {{section.settings.height}}px;
+    transform: translateY({{section.settings.height}}px);
+    background: {{section.settings.bg_color}};
+    color:{{section.settings.color}};
+  }
+
+  /* Move "Cookie Policy" and Chat block up when Sticky CTA Bar is visible */
+  .sticky-cta-bar-active .cc-revoke.cc-bottom,
+  .sticky-cta-bar-active #launcher,
+  .sticky-cta-bar-active .pieeye-floating-btn-container > *{
+    transform: translateY(-{{section.settings.height | minus: 5}}px) !important;
+  }
+
+
+  {% if section.settings.devices == 'mobile' %}
+    @media (min-width:767px){
+      .section-sticky-cta-bar{
+        display:none;
+      }
+    }
+  {% endif %}
+  {% if section.settings.devices == 'desktop' %}
+    @media (max-width:767px){
+      .section-sticky-cta-bar{
+        display:none;
+      }
+    }    
+  {% endif %}
+
+
+  {% if section.settings.always_visible_on_mobile == true %}
+    @media(max-width:767px){
+      .section-sticky-cta-bar{
+        transform: translateY(0px);
+      }
+    }
+  {% endif %}
+
+
+</style>
+
+<script>
+
+
+  let sticky_bar_product_data = [];
+  {% for sticky_bar_product_variant in section.settings.product_link.variants %}
+    sticky_bar_product_data.push({
+      id:"{{sticky_bar_product_variant.id}}",
+      price:{{sticky_bar_product_variant.price}},
+      {% if sticky_bar_product_variant.compare_at_price != blank %}
+        compare_at_price: {{sticky_bar_product_variant.compare_at_price}},
+      {% endif %}
+      available:{{sticky_bar_product_variant.available}},
+      title:"{{sticky_bar_product_variant.title}}",
+      image: "{{ sticky_bar_product_variant.featured_image | img_url: '100x' }}"
+    })
+  {% endfor %}
+
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    let sticky_cta_bar = document.querySelector('.section-sticky-cta-bar')
+
+
+
+
+
+    {% if its_product_template %}
+      {% unless section.settings.always_visible_on_mobile %}
+        const sticky_atc_observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            sticky_add_to_cart_status(!entry.isIntersecting)
+          });
+        },{threshold: 0.3, rootMargin: `-${(document.getElementById('SiteHeader')?.offsetHeight || 0)}px 0px 0px 0px` }); // Trigger when 50% of the element is visible
+        sticky_atc_observer.observe(document.querySelector('.product__form .product__submit__add'));
+      {% endunless %}
+    {% else %}
+      let has_scrolled_observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.attributeName === 'class'){
+            sticky_add_to_cart_status(document.body.classList.contains('has-scrolled'))
+          }
+        }
+      });
+      has_scrolled_observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    {% endif %}
+
+
+
+    function sticky_add_to_cart_status(new_status){
+      if(new_status && !document.body.classList.contains('sticky-cta-bar-active')){
+        document.body.classList.add('sticky-cta-bar-active');
+      }
+      if(!new_status && document.body.classList.contains('sticky-cta-bar-active')){
+        document.body.classList.remove('sticky-cta-bar-active');
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Add to cart
+    sticky_cta_bar.querySelector('.buy-button')?.addEventListener('click', function(e){
+      e.preventDefault();
+    })
+
+
+
+    {% if its_product_template %}
+
+      //Change quantity
+      sticky_cta_bar.querySelector('form').addEventListener('submit', function(e){
+        this.querySelector('input[name=quantity]').value = document.querySelector('.product__form .quantity__selector').value;
+      })
+
+
+      //Change variant callback
+      document.querySelector('.product__form input[name=id]').addEventListener('change', e=>{
+        let new_variant = e.target.value;
+        
+        sticky_cta_bar.querySelector('input[name=id]').value = new_variant;
+
+        sticky_bar_product_data.forEach(item=>{
+          if(item.id == new_variant){
+            sticky_cta_bar.querySelectorAll('.product__price--regular').forEach(one_price => {
+              one_price.textContent = ("{{cart.currency.symbol}}" + (item.price/100).toFixed(2)).replace('.00','');
+
+
+              let old_price = document.querySelector('.section-sticky-cta-bar .price-box s');
+
+              //Change the selected variant price (actual and "old")
+              if(item.compare_at_price && item.compare_at_price > item.price){
+                old_price.textContent = ("{{cart.currency.symbol}}" + (item.compare_at_price/100).toFixed(2)).replace('.00','');
+              }
+              else{
+                old_price.textContent = '';
+              }
+
+              //Check if the selected variant is available
+              if(item.available){
+                sticky_cta_bar.querySelector('.sold-out-button').classList.remove('active');
+              }
+              else{
+                sticky_cta_bar.querySelector('.sold-out-button').classList.add('active');
+              }
+              
+              //Change active variant title
+              sticky_cta_bar.querySelector('.variant-title').textContent = item.title;
+
+              // Update variant image
+              const variantImage = sticky_cta_bar.querySelector('.variant-image');
+              if (variantImage && item.image) {
+                variantImage.src = item.image;
+              }
+            })
+          }
+        })
+
+      })
+
+    {% endif %}
+
+    // Add scroll to product title for change size link
+    document.querySelector('.change-size-link')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      var productTitle = document.querySelector('.product__title, h1.product__title, .product-title, h1.product-title');
+      if (productTitle) {
+        var y = productTitle.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+
+  })
+
+</script>
+
+{%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}
+  <link href="{{ 'sticky-cta-bar-lp.css' | asset_url }}" rel="stylesheet" type="text/css">
+{% endif %}
+
+<div class='wrapper'>
+  {% if section.settings.show_image %}
+    {% assign variant_image = section.settings.product_link.media | where: "alt", sticky_bar_product_current_variant.title | first %}
+    <img 
+      class="variant-image" 
+      src="{{ variant_image | default: section.settings.product_link.featured_image | img_url: '100x' }}" 
+      alt="{{ sticky_bar_product_current_variant.title }}"
+    >
+  {% endif %}
+
+  {% liquid 
+
+
+    assign sticky_bar_product_current_variant = section.settings.product_link.selected_or_first_available_variant
+
+    comment
+    if its_product_template      
+      if product.metafields.custom.default_variant.value != blank and product.selected_variant == blank
+        assign sticky_bar_product_current_variant = product.metafields.custom.default_variant.value
+      endif 
+    else
+       if section.settings.product_link.metafields.custom.default_variant.value != blank
+        assign sticky_bar_product_current_variant = section.settings.product_link.metafields.custom.default_variant.value
+      endif      
+    endif
+    endcomment 
+
+    
+  %}
+
+
+
+
+    <div class='bar-text'>
+      {{section.settings.bar_text}}
+      {% if section.settings.show_variant and its_product_template %}
+        {% if product.variants.size > 1 %}
+          <span class='variant-title'>{{sticky_bar_product_current_variant.title}}</span>
+        {% elsif product.variants.size == 1 and sticky_bar_product_current_variant.title != 'Default Title' %}
+          <span class='variant-title'>{{sticky_bar_product_current_variant.title}}</span>
+        {% endif %}
+      {% endif %}
+      {% if section.settings.show_variant_selector and its_product_template and product.variants.size > 1 %}
+        <a href="#" class="change-size-link">{{ 'general.change_size' | t }}</a>
+      {% endif %}
+    </div>
+
+
+
+  <div class='right {% if section.settings.show_price %}with-price{% endif %}'>
+
+
+
+
+    {% if section.settings.product_link != blank %}
+      {% comment %}
+        If we use "Add Product" option
+      {% endcomment %}
+
+      
+
+
+      {% if section.settings.show_price %}
+        {% capture price_string %}       
+          <div class="product__price" data-price-wrapper>
+            {% render 'product-just-price-part', product:section.settings.product_link, current_variant:sticky_bar_product_current_variant %}
+          </div>
+        {% endcapture %}
+      {% endif %}
+
+
+      {% if section.settings.price_position == 'outside' %}
+        {{ price_string }}
+      {% endif %}
+
+
+      {% if section.settings.product_link.variants.size == 1 or its_product_template %}
+        {% comment %}
+          If the product has only 1 variant - just add it to the cart
+          or if we use this element on the product page - just add the active variant
+        {% endcomment %}  
+
+
+
+        {% comment %}
+          When we are on a product page and the active variant is sold out
+        {% endcomment %}
+        <button class='btn btn--primary btn--small sold-out-button {% if its_product_template and sticky_bar_product_current_variant.available == false %}active{% endif %}'>Sold Out</button>
+
+        {%- form 'product', section.settings.product_link, class:'cta-button' -%}
+          <input type="hidden" name="quantity" value="1">
+          <input type="hidden" name="id" value="{{ sticky_bar_product_current_variant.id }}">
+          <button type="submit" name="add" data-add-to-cart class="buy-button btn {{ section.settings.btn_style }}">
+            {{section.settings.button_text}}
+
+            {% if section.settings.price_position == 'within' %}
+              -  {{ price_string }}
+            {% endif %}            
+
+          </button>
+        {%- endform -%}
+        
+
+
+      {% else %}
+        {% comment %}
+          If the product has several variants - show Quick Add Popup
+        {% endcomment %}
+        <a data-handle="{{ section.settings.product_link.handle}}" data-button-quick-view class='cta-button buy-button btn {{section.settings.btn_style}}' href='#'>
+          {{section.settings.button_text}}
+        </a>
+      {% endif %}
+
+
+    {% else %}
+      {% if section.settings.link != blank %}
+        <a class='cta-button link-button btn {{section.settings.btn_style}}' href='{{section.settings.link}}'>
+          {{section.settings.button_text}}
+        </a>  
+      {% endif %}
+    {% endif %}
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Sticky CTA Bar",
+    "class":"section-sticky-cta-bar",
+    "settings": [
+      {
+        "type": "select",
+        "id": "devices",
+        "label":"Target Devices",
+        "default":"all",
+        "options":[
+          {
+            "value":"all",
+            "label":"Show on all devices"
+          },
+          {
+            "value":"mobile",
+            "label":"Only show on mobile"
+          },
+          {
+            "value":"desktop",
+            "label":"Only show on desktop"
+          }
+        ]
+      },
+
+      {
+        "type":"checkbox",
+        "id":"always_visible_on_mobile",
+        "label":"Always visible on mobile",
+        "default":true
+      },
+
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background",
+        "default": "#87B09A"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text",
+        "default": "#FFFFFF"
+      },
+
+
+      {
+        "type":"number",
+        "id":"height",
+        "label":"Bar height",
+        "default":50
+      },
+
+
+
+
+      {
+        "type": "header",
+        "content": "Button"
+      },
+
+      {
+        "type":"text",
+        "id":"button_text",
+        "label":"Text",
+        "default":"Add to Cart"
+      },
+      {
+        "label":"Add to cart product",
+        "type":"product",
+        "id":"product_link",
+        "info":"This settings will override \"link\" setting"
+      },
+      {
+        "label":"Display product price",
+        "type":"checkbox",
+        "id":"show_price",
+        "default":true
+      },
+      {
+        "label":"Price position",
+        "type":"select",
+        "id":"price_position",
+        "default":"outside",
+        "options":[
+          {"label":"Within Add To Cart button", "value":"within"},
+          {"label":"Outside of Add To Cart button", "value":"outside"}
+        ],
+        "visible_if":"{{ section.settings.show_price == true }}"
+      },
+
+      {
+        "label":"or Link",
+        "type":"url",
+        "id":"link"
+      },
+      {
+        "type": "select",
+        "id": "btn_style",
+        "label": "Style",
+        "default": "btn--primary btn--small",
+        "options": [
+          { "label": "Text", "value": "btn--text" },
+          { "label": "Small button", "value": "btn--primary btn--small" },
+          { "label": "Large button", "value": "btn--primary" },
+          { "label": "Small secondary button", "value": "btn--secondary btn--small" },
+          { "label": "Large secondary button", "value": "btn--secondary" }
+        ]
+      },
+
+
+      {
+        "type":"header",
+        "content":"Bar info"
+      },
+      {
+        "label":"Display variant image (Desktop Only)",
+        "type":"checkbox",
+        "id":"show_image",
+        "default":false
+      },
+      {
+        "label":"Display variant option",
+        "type":"checkbox",
+        "id":"show_variant",
+        "default":true
+      },
+      {
+        "label":"Display variant selector",
+        "type":"checkbox",
+        "id":"show_variant_selector",
+        "default":false
+      },
+      {
+        "type":"text",
+        "id":"bar_text",
+        "label":"Optional text (Desktop Only)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sticky CTA Bar"
+      }
+    ]
+  }
+{% endschema %}

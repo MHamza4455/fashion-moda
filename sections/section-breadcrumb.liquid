@@ -1,0 +1,130 @@
+<!-- /sections/section-breadcrumb.liquid -->
+{%- liquid
+  assign section_width = section.settings.width
+  assign device_visibility = section.settings.device_visibility
+  assign visibility_class = ''
+  
+  case device_visibility
+    when 'desktop_only'
+      assign visibility_class = 'hide-mobile'
+    when 'mobile_only'
+      assign visibility_class = 'hide-desktop'
+  endcase
+-%}
+
+{%- style -%}
+  #Breadcrumb--{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | append: 'px' }};
+    padding-bottom: {{ section.settings.padding_bottom | append: 'px' }};
+  }
+  
+  .hide-mobile {
+    display: block;
+  }
+  .hide-desktop {
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    .hide-mobile {
+      display: none !important;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .hide-desktop {
+      display: none !important;
+    }
+  }
+{%- endstyle -%}
+
+{%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}
+  <link href="{{ 'breadcumbs-lp.css' | asset_url }}" rel="stylesheet" type="text/css">
+{% endif %}
+
+<section id="Breadcrumb--{{ section.id }}"
+  class="breadcrumb-section {{ section_width }} {{ visibility_class }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="breadcrumb">
+  <div>
+    {% render 'breadcrumbs' %} 
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "enabled_on": {
+    "templates": ["product", "article"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_root_text",
+      "label": "Root text",
+      "info": "Leave blank to not display a Root link"
+    },
+    {
+      "type": "url",
+      "id": "breadcrumb_root_link",
+      "label": "Root link"
+    },
+    {
+      "type": "checkbox",
+      "id": "breadcrumb_display_product_title",
+      "label": "Display product title",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "device_visibility",
+      "label": "Device visibility",
+      "options": [
+        { "value": "desktop_mobile", "label": "Desktop & Mobile" },
+        { "value": "desktop_only", "label": "Desktop Only" },
+        { "value": "mobile_only", "label": "Mobile Only" }
+      ],
+      "default": "desktop_mobile",
+      "info": "Control which devices this breadcrumb appears on"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wrapper",
+      "options": [
+        { "value": "wrapper--full", "label": "Full width" },
+        { "value": "wrapper--full-padded", "label": "Full width padded" },
+        { "value": "wrapper", "label": "Page width" },
+        { "value": "wrapper--narrow", "label": "Page width narrow" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb"
+    }
+  ]
+}
+{% endschema %}

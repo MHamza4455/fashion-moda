@@ -1,0 +1,67 @@
+<div {% if template != 'cart' %} style="order:{{settings.cart_drawer_position_gwp_coupon | times: 10}}" {% endif %} class='gwp-coupon-block {% if settings.gwp_coupon_initial_show %}open{% endif %}'>
+  <div class='head'>
+    {{ 'gift_with_purchase.gwp_coupon.block_title' | t }}
+    {%- render 'icon-toggle-plus' -%}{%- render 'icon-toggle-minus' -%}</div>
+  <div class='body'>
+    
+    <div class='field-and-button'>  
+      <input class="gwp_coupon_field" type="text"/>
+      <span class='apply-button btn {%- if settings.site_brand != 'livingproof' and settings.site_region != 'us'-%} btn--primary {%- endif -%}'>{{ 'gift_with_purchase.gwp_coupon.apply_button' | t }}</span>
+      <span class='clear'>{{ 'gift_with_purchase.gwp_coupon.remove_button' | t }}</span>
+    </div>
+
+    <div class='validation'>
+      <span class='success applying'>
+        {{ 'gift_with_purchase.gwp_coupon.status_discount_applying' | t }}
+      </span>
+      <span class='invalid error'>
+        {{ 'gift_with_purchase.gwp_coupon.status_invalid' | t }}
+      </span>
+
+
+
+      <span class='shopify-discount success shopify-discount-related'>
+        {{ 'gift_with_purchase.gwp_coupon.status_discount_applied' | t }}
+      </span>
+
+      <span class='threshold error gwp-related'>
+        {{ 'gift_with_purchase.gwp_coupon.status_threshold_problem_html' | t : value : "<span class='value'></span>" }}
+      </span>
+      <span class='items-condition-problem error gwp-related'>
+        {{ 'gift_with_purchase.gwp_coupon.status_items_condition_problem' | t }}
+      </span>
+
+      <span class='success complete gwp-related'>
+        {{ 'gift_with_purchase.gwp_coupon.status_gwp_added' | t }}
+      </span>
+      <span class='success select gwp-related'>
+        {{ 'gift_with_purchase.gwp_coupon.status_gwp_added_need_to_choose_html' | t }}
+        <span class='show-gwp-coupon-popup'>
+          {{ 'gift_with_purchase.gwp_coupon.status_gwp_added_need_to_chose_clickable_element' | t }}
+        </span>
+      </span>
+      
+
+
+
+
+
+    </div>
+
+    <div class='description'>
+      {{ settings.gwp_coupon_description }}
+    </div>
+
+  </div>
+</div>
+
+<div style="display:none" class="applied_discount_codes">
+  {%- for discount in cart.cart_level_discount_applications -%}
+    {{discount.title | downcase }},
+  {%- endfor -%}
+  {%- for line_item in cart.items -%}
+    {%- for discount in line_item.line_level_discount_allocations -%}
+      {{discount.discount_application.title | downcase }},
+    {%- endfor -%}
+  {%- endfor -%}
+</div>

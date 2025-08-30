@@ -1,0 +1,19 @@
+<div class="country_selector">
+    <div class="modal-location">
+        <div class="modal-location-content">
+            <span class="close-button">×</span>
+            <div class="model-location-content-inner">
+                <div class="model-location-heading"><h1>{{ settings.country_selector_heading }}</h1></div>
+                <div class="model-location-details"><p>{{ settings.country_selector_message }}</p></div>
+                <div class="model-location-buttons">
+                    {% if settings.country_selector_first_button != blank %}
+                        <button class="btn btn--primary btn--solid btn--large">{{ settings.country_selector_first_button }}</button>
+                    {% endif %}
+                    {% if settings.country_selector_second_button != blank %}
+                        <a class="btn btn--primary btn--solid btn--large" href="{{ settings.country_selector_second_button_url }}">{{ settings.country_selector_second_button }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

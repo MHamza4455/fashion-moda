@@ -1,0 +1,95 @@
+<nav class="breadcrumbs">
+
+  {%- if template contains 'collection' -%}
+    <a href="{{ routes.root_url }}" title="{{ 'collections.breadcrumbs.back_to_home' | t }}" class="breadcrumbs__link">
+      {{- 'collections.breadcrumbs.home' | t -}}
+    </a>
+    <span class="breadcrumbs__sep">/</span>
+    <a href="{{ routes.collections_url }}" class="breadcrumbs__link">
+      {{- 'collections.breadcrumbs.collections' | t -}}
+    </a>
+    <span class="breadcrumbs__sep">/</span>
+
+    {%- if collection.handle -%}
+      <span class="breadcrumbs__current">
+        {%- if collection.handle == 'all' -%}
+          {{- 'collections.breadcrumbs.default_collection' | t -}}
+        {%- else -%}
+          {{- collection.title -}}
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if template contains 'article' -%}
+    <a href="{{ routes.root_url }}" title="{{ 'collections.breadcrumbs.back_to_home' | t }}" class="breadcrumbs__link">
+      {{- 'collections.breadcrumbs.home' | t -}}
+    </a>
+    <span class="breadcrumbs__sep">/</span>
+    <a href="{{ blog.url }}" class="breadcrumbs__link">
+      {{- blog.title -}}
+    </a>
+    <span class="breadcrumbs__sep">/</span>
+    <span class="breadcrumbs__current">
+      {{- article.title -}}
+    </span>
+  {%- endif -%}
+
+  {%- if template contains 'product' -%}
+    {%- assign breadcrumb_block = section.blocks | where: "type", "breadcrumb" | first -%}
+      {%- if breadcrumb_block != blank -%}
+        {%- assign root_text = breadcrumb_block.settings.breadcrumb_root_text -%}
+        {%- assign root_link = breadcrumb_block.settings.breadcrumb_root_link -%}
+        {%- assign display_product_title = breadcrumb_block.settings.breadcrumb_display_product_title -%}
+      {%- else -%}
+        {%- assign root_text = section.settings.breadcrumb_root_text -%}
+        {%- assign root_link = section.settings.breadcrumb_root_link -%}
+        {%- assign display_product_title = section.settings.breadcrumb_display_product_title -%}
+      {%- endif -%}
+  
+    {%- if root_text != blank and root_link != blank -%}
+      <a href="{{ root_link }}" class="breadcrumbs__link">{{ root_text }}</a>
+      <span class="breadcrumbs__sep">/</span>
+    {%- endif -%}
+
+    {%- assign product_collection = collection -%}
+    {%- assign custom_breadcrumb_collections = product.metafields.custom.breadcrumb_collection_path.value -%}
+    {%- assign product_fallback_collection = product.collections[0] -%}
+    
+    {%- if product_collection.handle != blank -%}
+      {% capture strikethrough_breadcrumb %}
+        {{- product_collection.title | link_to: product_collection.url | replace: '<a ', '<a class="breadcrumbs__link" ' -}}
+      {% endcapture %}
+      {% assign strikethrough_breadcrumb = strikethrough_breadcrumb | replace: "No Frizz", "<span class='strikethrough'>frizz</span><span class='registeredSymbol'>®</span>" %}
+      {{- strikethrough_breadcrumb -}}
+      
+    {%- elsif custom_breadcrumb_collections -%}
+      {%- for collection in custom_breadcrumb_collections -%}
+        {% capture strikethrough_breadcrumb %}
+          <a href="{{ collection.url }}" class="breadcrumbs__link">{{ collection.title }}</a>
+        {% endcapture %}
+        {% assign strikethrough_breadcrumb = strikethrough_breadcrumb | replace: "No Frizz", "<span class='strikethrough'>frizz</span><span class='registeredSymbol'>®</span>" %}
+        {{- strikethrough_breadcrumb -}}
+        {%- unless forloop.last -%}
+          <span class="breadcrumbs__sep">/</span>
+        {%- endunless -%}
+      {%- endfor -%}
+      
+    {%- elsif product_fallback_collection != blank -%}
+      {% capture strikethrough_breadcrumb %}
+        {{- product_fallback_collection.title | link_to: product_fallback_collection.url | replace: '<a ', '<a class="breadcrumbs__link" ' -}}
+      {% endcapture %}
+      {% assign strikethrough_breadcrumb = strikethrough_breadcrumb | replace: "No Frizz", "<span class='strikethrough'>frizz</span><span class='registeredSymbol'>®</span>" %}
+      {{- strikethrough_breadcrumb -}}
+    {%- endif -%}
+
+    {%- if product.handle and display_product_title -%}
+      <span class="breadcrumbs__sep">/</span>
+      {% capture strikethrough_breadcrumb %}
+        <span class="breadcrumbs__current">{{ product.title | strip_html | escape }}</span>
+      {% endcapture %}
+      {% assign strikethrough_breadcrumb = strikethrough_breadcrumb | replace: "No Frizz", "<span class='strikethrough'>frizz</span><span class='registeredSymbol'>®</span>" %}
+      {{- strikethrough_breadcrumb -}}
+    {%- endif -%}
+  {%- endif -%}
+</nav>

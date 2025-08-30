@@ -1,0 +1,19 @@
+.breadcrumb-section.wrapper--full-padded .breadcrumbs {
+    color: #716865;
+    font-family: var(--FONT-STACK-HEADING);
+    font-size: calc(11px * var(--adjust-body));
+    letter-spacing: 0.24px;
+    line-height: 120%;
+}
+
+.breadcrumb-section.wrapper--full-padded .breadcrumbs a {
+    color: #676767;
+    font-family: var(--font-suisse-intl);
+    margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+    .breadcrumb-section.wrapper--full-padded {
+        padding: 16px 16px 0 !important;
+    }
+}

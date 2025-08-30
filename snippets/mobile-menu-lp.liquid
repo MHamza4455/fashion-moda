@@ -1,0 +1,71 @@
+{%- comment -%}
+  Living Proof US Mobile Menu - Displays only first top level menu item contents
+  Used in nav-drawer.liquid
+  Usage:
+  {%- render 'mobile-menu-lp', section: section, mobile_menu_behaviour: mobile_menu_behaviour -%}
+{%- endcomment -%}
+
+{%- assign first_link = linklists[section.settings.main-menu].links | first -%}
+{%- if first_link.links != blank -%}
+  {%- assign menuItemsExpand = settings.mobile_menu_expanded_items -%}
+  {%- for sub_link in first_link.links -%}
+    {%- assign sub_link_title = sub_link.title | strip_html | escape -%}
+    {%- assign sub_link_title_lowercase = sub_link.title | downcase | strip_html | escape -%}
+
+    {%- assign expandedCheck = false -%}
+    {%- if menuItemsExpand contains "," -%}
+      {%- assign menuItemsExpand_array = menuItemsExpand | split: "," -%}
+      {%- for menuItemExpand in menuItemsExpand_array -%}
+        {%- assign menuItemExpandd = menuItemExpand | downcase | strip -%}
+        {%- assign link__title = sub_link_title | downcase -%}
+        {%- if menuItemExpandd contains link__title -%}
+          {%- assign expandedCheck = true -%}
+        {%- endif-%}
+      {%- endfor-%}
+    {%- else-%}
+      {%- assign menuItemsExpand_downcase = menuItemsExpand | downcase -%}
+      {%- assign link__title = sub_link_title | downcase -%}
+      {%- if menuItemsExpand_downcase contains link__title -%}
+        {%- assign expandedCheck = true -%}
+      {%- endif-%}
+    {%- endif-%}
+
+    <li class="mobile-menu__item mobile-menu__item--level-1{% if sub_link.levels == 1 %} mobile-menu__item--has-items{% endif %}{% if sub_link.active %} mobile-menu__item--active{% endif %} {%- if mobile_menu_behaviour == 'text' -%} {% if expandedCheck %}is-expanded{% endif %}{% endif %} {%- if mobile_menu_behaviour != 'text' -%}link-text{% endif %}">
+      {%- if sub_link.levels == 1 -%}
+        <button type="button"
+          class="mobile-navlink mobile-navlink--level-1 mobile-navlink--toggle {% if expandedCheck %}is-expanded{% endif %}"
+          aria-controls="MobileNav--{{ sub_link.handle }}-{{ forloop.index0 }}"
+          data-collapsible-trigger
+          {% if expandedCheck %}aria-expanded="true"{% endif %}
+          style="width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;">
+          <span>{{ sub_link_title }}</span>
+          <span class="chevron-icon">{%- render 'icon-chevron-down' -%}</span>
+        </button>
+      {%- else -%}
+        <a href="{{ sub_link.url }}" class="mobile-navlink mobile-navlink--level-1{% if mobile_menu_behaviour == 'trigger' and sub_link.levels == 1 %} mobile-navlink--trigger{% endif %}">
+          {{ sub_link_title }}
+        </a>
+      {%- endif -%}
+
+      {%- if sub_link.levels == 1 -%}
+        <div class="mobile-dropdown {% if expandedCheck %}is-expanded{% endif %}" id="MobileNav--{{ sub_link.handle }}-{{ forloop.index0 }}" data-collapsible-container {% if expandedCheck %}aria-expanded="true" style="height: auto;"{% endif %}>
+          <ul class="mobile-nav__sublist" data-collapsible-content>
+            {%- for sub_sub_link in sub_link.links -%}
+              <li class="mobile-menu__item mobile-menu__item--level-2{% if sub_sub_link.active %} mobile-menu__item--active{% endif %}">
+                <a href="{{ sub_sub_link.url }}" class="mobile-navlink mobile-navlink--level-2">
+                  {{ sub_sub_link.title | strip_html | escape }}
+                </a>
+              </li>
+            {%- endfor -%}
+
+            <li class="mobile-menu__item mobile-menu__item--level-2">
+              <a href="{{ shop.url }}/collections/all" class="mobile-navlink mobile-navlink--level-2 mobile-navlink-shop-all-link">
+                {{ 'layout.navigation.shop_all' | t }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+{%- endif -%}

@@ -1,0 +1,638 @@
+<div data-form-wrapper class="data-form-wrapper">
+  {%- comment -%} Product Form Variants {%- endcomment -%}
+  <!-- /partials/product-form-quickview-body.liquid -->
+
+  {%- liquid
+    assign variants_style = settings.variants_style
+    assign show_payment_button = false
+    assign gift_card_recipient_feature_active = false
+
+    if settings.show_gift_card_recipient and product.gift_card?
+      assign gift_card_recipient_feature_active = true
+    endif
+
+    if settings.show_payment_button and gift_card_recipient_feature_active == false
+      assign show_payment_button = true
+    endif
+
+    comment
+      Override buy button setting if there are selling plan groups and cart terms
+    endcomment
+    if show_payment_button and product.selling_plan_groups.size < 1 and settings.enable_accept_terms == false
+      assign show_payment_button = true
+    else
+      assign show_payment_button = false
+    endif
+
+    comment
+      Default variant logic for Quick View - ensure correct variant is selected (LP US only)
+    endcomment
+    if settings.site_brand == 'livingproof' and settings.site_region == 'us'
+      assign customDefaultVariant = product.metafields.custom.default_variant.value
+      if customDefaultVariant != blank and product.selected_variant == nil
+        assign current_variant = customDefaultVariant
+      else 
+        assign current_variant = product.selected_or_first_available_variant
+      endif
+    endif
+  -%}
+  {%- comment -%}
+    Size chart
+
+    Inherited variables:
+      - product: {Object} Product object.
+      - section: {Object} the current Section this code block belongs to.
+    Returns variables:
+      - specific_pages_arr: {Array} Page handles array from product tags
+      - info_page: {Object} Page object || blank
+      - show_size_guide: {Boolean}
+      - size_chart_button_as_label: {Boolean}
+      - size_chart_button: {String} captured markup of a button that opens the size chart drawer
+      - size_chart_drawer: {String} captured markup of the size chart drawer
+  {%- endcomment -%}
+
+  {%- liquid
+    assign show_size_guide = false
+    assign size_guide_string = 'general.size_chart.button' | t
+    assign info_page_title_override = settings.info_page_title_override
+
+    capture size_chart_button_text
+      if info_page_title_override != blank
+        echo info_page_title_override
+      else
+        echo size_guide_string
+      endif
+    endcapture
+
+    assign tags_string = product.tags | join: ','
+    assign size_separator = '_size_'
+    assign specific_pages = ''
+    if tags_string contains size_separator
+      for tag in product.tags
+        if tag contains size_separator
+          assign page_handle = tag | split: size_separator | last | split: ',' | first
+          assign specific_pages = specific_pages | append: page_handle | append: ','
+        endif
+      endfor
+    endif
+    assign specific_pages_arr = specific_pages | split: ','
+    if specific_pages_arr.size > 0
+      assign show_size_guide = true
+    endif
+
+    assign product_size_chart = product.metafields.theme.size_chart.value
+    assign info_page = settings.info_page
+    if product_size_chart != blank or info_page != blank
+      if product_size_chart != blank
+        assign info_page = product_size_chart
+      elsif info_page != blank
+        assign info_page = pages[info_page]
+      endif
+
+      assign show_size_guide = true
+    endif
+
+    assign size_chart_button_as_label = false
+    assign has_size_option = false
+    unless product.has_only_default_variant
+      for option in product.options_with_values
+        assign separator = option.name | handle | prepend: ',' | append: ','
+        assign size_translation = 'general.size_chart.size' | t
+        assign translation_string = size_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+        unless translation_string contains separator
+          continue
+        endunless
+
+        assign has_size_option = true
+      endfor
+    endunless
+
+    if has_size_option and show_labels
+      assign size_chart_button_as_label = true
+    endif
+  -%}
+
+  {%- if show_size_guide -%}
+    {%- liquid
+      assign empty_size_guide = true
+
+      capture drawer_classes
+        echo 'popup-chart drawer drawer--right'
+        if section_type == 'quickview'
+          echo ' popup-chart--quickview'
+        else
+          echo ' cv-h'
+        endif
+      endcapture
+
+      capture drawer_close_icon
+        if section_type == 'quickview'
+          render 'icon-chevron-right'
+        else
+          render 'icon-close'
+        endif
+      endcapture
+
+      assign show_tabs_nav = false
+      assign tabs_navigation = ''
+      assign tabs = ''
+      assign has_current = false
+      assign index = 0
+      assign pages_count = 0
+    -%}
+
+    {%- for page_handle in specific_pages_arr -%}
+      {%- assign page_size_chart = pages[page_handle] -%}
+
+      {%- if page_size_chart.title != blank -%}
+        {%- capture tabs_navigation -%}
+        {{ tabs_navigation }}
+        <li class="tabs__link" data-tabs-link="{{ forloop.index0 }}" tabindex="0">{{ page_size_chart.title }}</li>
+      {%- endcapture -%}
+
+        {%- capture tabs -%}
+        {{ tabs }}
+        <div class="tab{% unless has_current %} current{% endunless %}" data-tab="{{ forloop.index0 }}">
+          {%- if page_size_chart.content != blank -%}
+            {{ page_size_chart.content }}
+          {%- else -%}
+            {{ 'homepage.onboarding.no_page_content' | t }}
+          {%- endif -%}
+        </div>
+      {%- endcapture -%}
+
+        {%- assign has_current = true -%}
+        {%- assign pages_count = pages_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if info_page != blank -%}
+      {%- assign index = specific_pages_arr.size -%}
+
+      {%- capture tabs_navigation -%}
+      {{ tabs_navigation }}
+      {%- if info_page.title != blank -%}
+        <li class="tabs__link" data-tabs-link="{{ index }}" data-lock-scroll tabindex="0">{{ info_page.title }}</li>
+      {%- endif -%}
+    {%- endcapture -%}
+
+      {%- capture tabs -%}
+      {{ tabs }}
+      <div class="tab{% unless has_current %} current{% endunless %}" data-tab="{{ index }}">
+        {%- if info_page.content != blank -%}
+          {{ info_page.content }}
+        {%- else -%}
+          {{ 'homepage.onboarding.no_page_content' | t }}
+        {%- endif -%}
+      </div>
+    {%- endcapture -%}
+
+      {%- assign has_current = true -%}
+      {%- assign pages_count = pages_count | plus: 1 -%}
+    {%- endif -%}
+
+    {%- liquid
+      if tabs != blank
+        assign empty_size_guide = false
+      endif
+      if pages_count > 1 and tabs_navigation != blank
+        assign show_tabs_nav = true
+      endif
+    -%}
+
+    {%- capture size_chart_drawer -%}
+    {%- unless empty_size_guide -%}
+      <div class="{{ drawer_classes }}" id="size-chart--{{ unique }}" aria-hidden="true" role="dialog" data-drawer>
+        <button type="button" class="drawer__close-button" aria-controls="size-chart--{{ unique }}" data-drawer-toggle>
+          <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
+          {{- drawer_close_icon -}}
+        </button>
+
+        <div class="popup-chart__inner" data-scroll>
+          <div class="popup-chart__content">
+            <div class="rte tabs" data-tabs-holder>
+              {%- if show_tabs_nav -%}
+                <div class="tabs__head">
+                  <div class="tabs-scrollbar" data-custom-scrollbar-parent>
+                    <div class="tabs-scrollbar__holder" data-custom-scrollbar-holder>
+                      <ul class="tabs__nav" data-custom-scrollbar-items>
+                        {{ tabs_navigation }}
+                      </ul>
+
+                      <div class="custom-scrollbar" data-custom-scrollbar>
+                        <div class="custom-scrollbar__thumb" data-custom-scrollbar-thumb></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if tabs != '' -%}
+                <div class="tabs__contents" data-tabs-contents>
+                  {{ tabs }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endunless -%}
+  {%- endcapture -%}
+
+    {%- capture size_chart_button -%}
+    {%- unless empty_size_guide -%}
+      <button type="button" class="product__popup__link label-typography" href="{{ info_page.url | default: '#!' }}" aria-controls="size-chart--{{ unique }}" data-drawer-toggle>
+        {% render 'icon-ruler' %}
+        <span>{{ size_chart_button_text }}</span>
+      </button>
+    {%- endunless -%}
+  {%- endcapture -%}
+  {%- endif -%}
+  <div class="product__form">
+    {% comment %} The input with name="id" submits to cart {% endcomment %}
+
+    <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-select>
+
+    {%- unless show_quantity -%}
+      <input type="hidden" name="quantity" value="1">
+    {%- endunless -%}
+
+    {%- if show_remaining -%}
+      {%- render 'inventory-countdown', current_variant: current_variant, product_variants: product.variants -%}
+    {%- endif -%}
+
+    {%- unless size_chart_button_as_label or size_chart_button == blank -%}
+      <div
+        class="product__form__size-chart"
+        {% if animations_enabled %}
+          data-aos="fade-up"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-delay="{{ animation_delay }}"
+          {%- assign animation_delay = animation_delay | plus: 100 -%}
+        {% endif %}
+      >
+        {{- size_chart_button -}}
+      </div>
+    {%- endunless -%}
+
+    {% if block.settings.show_shopPay_installments_info %}
+      {% comment %} Shop pay split payment terms {% endcomment %}
+      <div
+        class="shop-pay-terms"
+        {% if animations_enabled %}
+          data-aos="hero"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-order="{{ animation_order }}"
+          {%- assign animation_order = animation_order | plus: 1 -%}
+        {% endif %}
+      >
+        {{ form | payment_terms }}
+      </div>
+    {% endif %}
+
+    {%- capture quantity_selector -%}
+
+    <div class='purchased-limit-reached-message'>
+      Sorry maximum quantity already added
+    </div>
+
+    <div class="select__fieldset">
+      <!--
+        I have added "select-popout--alt" to initially show quantity selector with "+"/"-" buttons, instead of dropdown select
+        If you remove this class - there will be dropdown quantity select 
+      -->
+
+      <span class="select__label label-typography" id="{{ unique }}-select-quantity-label">{{ 'products.product.quantity' | t }}</span>
+
+      <div class="select-popout select-popout--small select-popout--alt" data-popout data-popout-prevent="true">
+        <button type="button" class="select-popout__toggle{% if variants_style == 'boxes' %} select-popout__toggle--qty{% endif %}" aria-expanded="false" aria-controls="{{ unique }}-select-quantity" aria-labelledby="{{ unique }}-select-quantity-label" data-popout-toggle data-popout-quantity>
+          <span class="select-popout__value" data-popout-text data-quantity-select>1</span>
+          {%- render 'icon-select' -%}
+        </button>
+
+        <div id="{{ unique }}-select-quantity" class="select-popout__list" data-popout-list>
+          <ul class="select-popout__list__scroll">
+            {%- for idx in (1..settings.max_purchase_count_1_item) -%}
+              <li class="select-popout__item{% if forloop.index == 1 %} select-popout__item--current{% endif %}">
+                <a class="select-popout__option" href="#" {% if forloop.index == 1 %}aria-current="true"{% endif %} data-value="{{ forloop.index }}" data-popout-option>
+                  <span>{{ forloop.index }} {% if forloop.last %}+{% endif %}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <div class="quantity-selector" data-quantity-holder>
+          <label for="product-quantity-buttons-{{ section.id }}" class="label-hidden">{{ 'products.product.quantity' | t }}</label>
+
+          <button type="button" class="quantity__btn quantity__btn--decrease" data-quantity-minus data-quantity-button tabindex="0" title="{{ 'general.accessibility.decrease' | t }} - {{ product.title | strip_html -}}">
+            <span class="visually-hidden">{{ 'general.accessibility.decrease' | t }}</span>
+            {%- render 'icon-toggle-minus' -%}
+          </button>
+
+          <input data-quantity-variant-id="{{current_variant.id}}" id="product-quantity-buttons-{{ section.id }}" data-popout-input type="number" class="quantity__selector quantity__input" value="1" min="1" aria-label="quantity" autocomplete="off" name="quantity" data-quantity-field title="{{- 'products.product.quantity' | t }} - {{ product.title | strip_html -}}" pattern="[0-9]*" data-quantity-limitation="{{variant_data_quantity_limitation}}"/>
+
+          <button type="button" class="quantity__btn quantity__btn--increase" data-quantity-plus data-quantity-button tabindex="0" title="{{- 'general.accessibility.increase' | t }} - {{ product.title | strip_html -}}">
+            <span class="visually-hidden">{{ 'general.accessibility.increase' | t }}</span>
+            {%- render 'icon-toggle-plus' -%}
+          </button>
+        </div>
+      </div>
+    </div>
+  {%- endcapture -%}
+
+    {%- capture form_fields -%}
+    {%- unless product.has_only_default_variant -%}
+      {%- assign selects_counter = 0 -%}
+      <div class="product__selectors {% if block.settings.variant_selector_type == 'enhanced' %}enhanced-style{% endif %} selected-style-{{block.settings.variant_selector_selected_style}}">
+        {%- for option in product.options_with_values -%}
+          {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
+
+          {%- assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ',' -%}
+          {%- assign enable_color_swatches = settings.enable_color_swatches_product -%}
+          {%- assign current_option_position = option.position | prepend: 'option' -%}{%- liquid
+  if enable_color_swatches and filter.presentation != 'swatch'
+    comment
+      Determine if current option matches swatch handle translations
+    endcomment
+    assign is_swatch_option = false
+    assign swatch_translation = 'general.swatches.color' | t
+    assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+    if translation_string contains option_name_handle_separator
+      assign is_swatch_option = true
+    endif
+  endif
+-%}{%- comment -%}
+  Determine if current option matches size handle translations
+  Inherited variables:
+    - option_name_handle_separator: {String} handle option.name surrounded by commas
+  Returns variables:
+    - is_size_option: {Boolean}
+{%- endcomment -%}
+
+{%- liquid
+  assign is_size_option = false
+  assign size_translation = 'general.size_chart.size' | t
+  assign translation_string = size_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+  if translation_string contains option_name_handle_separator
+    assign is_size_option = true
+  endif
+-%}{%- liquid
+            assign show_size_guide_as_label = false
+            if show_size_guide and is_size_option and size_chart_button_as_label
+              assign show_size_guide_as_label = true
+            endif
+
+            comment 
+              # we don't use product name character count  approach (03.02.2025)
+              assign longest_value = 0
+              assign shortest_value = 100
+              for value in option.values
+                if value.size > longest_value
+                  assign longest_value = value.size
+                endif
+
+                if value.size < shortest_value
+                  assign shortest_value = value.size
+                endif
+              endfor
+
+              assign flexible = true
+              assign chars_diff = longest_value | minus: shortest_value
+              if chars_diff < 5 and longest_value < 6
+                assign flexible = false
+              endif
+            endcomment 
+
+            assign enable_variant_boxes = false
+
+            comment 
+              # we don't use product name character count  approach (03.02.2025)
+              if variants_style == 'boxes' or variants_style == 'auto' and longest_value < 16
+            endcomment 
+            if variants_style == 'boxes' or variants_style == 'auto'
+              assign enable_variant_boxes = true
+            endif
+
+            capture selector_wrapper_class
+              echo 'selector-wrapper'
+              if enable_variant_boxes
+                echo ' selector-wrapper--boxes'
+
+                comment 
+                  # we don't use product name character count  approach (03.02.2025)
+                  unless flexible or is_swatch_option
+                    echo ' selector-wrapper--grid'
+                  endunless
+                endcomment 
+              endif
+
+              if is_swatch_option
+                echo ' selector-wrapper--swatches'
+              endif
+            endcapture
+          -%}
+
+          <div class="{{ selector_wrapper_class }}"
+            data-option-position="{{ option.position }}"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+              {%- assign animation_delay = animation_delay | plus: 100 -%}
+            {% endif %}>
+            {%- if enable_variant_boxes or is_swatch_option -%}
+              {%- assign current_value = current_variant.options[forloop.index0] -%}
+              <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}"{% if is_swatch_option %} data-swatches-container{% endif %}>
+                <legend class="radio__legend{% if show_size_guide_as_label %} radio__legend--flex{% endif %}"{% if is_swatch_option %} data-swatches-label{% endif %}>
+                  <span class="radio__legend__label label-typography">{{ option.name | escape_once }}</span>
+                  {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
+                </legend>
+                {%- for value in option.values -%}
+                  {%- capture input_id -%}{{ unique }}-{{ product.id }}-{{ option.name | escape_once }}-{{ value | escape_once }}{%- endcapture -%}
+
+                  {%- if is_swatch_option -%}
+                    {%- liquid
+                      assign current_option_variants = product | map: 'variants' | where: current_option_position, value
+                      assign current_option_variants_id = current_option_variants | map: 'id' | join: ','
+                    -%}
+                    <span class="swatch__button swatch__button--{{ settings.color_swatches_product_style }}" data-swatches-button>
+                      <input type="radio"
+                        class="swatch__input"
+                        data-single-option-selector
+                        data-index="{{ current_option_position }}"
+                        name="options[{{ option.name | escape_once }}]"
+                        value="{{ value | escape_once }}"
+                        id="{{ input_id }}"
+                        {% if value == current_value %}checked{% endif %}>
+                      <label for="{{ input_id }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once | capitalize }}" data-swatch-variant="{{ current_option_variants_id }}">
+                        <span class="visually-hidden">{{ value | escape_once }}</span>
+                        {%- if settings.color_swatches_product_style == 'circle' -%}
+                          <span class="icon icon-check"></span>
+                        {%- endif -%}
+                      </label>
+                    </span>
+                  {%- else -%}
+                    {% comment %} radio button {% endcomment %}
+                    <span class="radio__button">
+                      <input
+                        type="radio"
+                        class="radio__input"
+                        data-single-option-selector
+                        data-index="{{ current_option_position }}"
+                        name="options[{{ option.name | escape_once }}]"
+                        value="{{ value | escape_once }}" id="{{ input_id }}"
+                        {% if value == current_value %}checked{% endif %}>
+                      <label for="{{ input_id }}" class="radio__label">
+                        {%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}
+                          {%- liquid
+                            assign current_option_variant = product.variants | where: current_option_position, value | first
+                          -%}
+                          {% if current_option_variant.featured_image %}
+                            <span class="variant-selector-enhanced-image-wrapper">
+                              <img class="variant-selector-enhanced-image desktop-only" src="{{ current_option_variant.featured_image | img_url: '100x' }}" alt="{{ value | escape_once }}" />
+                              <span class="variant-stock-dot {% if current_option_variant.available %}in-stock{% else %}out-of-stock{% endif %}"></span>
+                              {% unless current_option_variant.available %}
+                                <span class="variant-out-of-stock-overlay"></span>
+                              {% endunless %}
+                            </span>
+                          {% endif %}
+                        {% endif %}
+                        <span class="option-value">{{ value | escape_once }}</span>
+                        {%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}
+                          <span class='price {% unless current_option_variant.selling_plan_allocations %} variant-wihtout-subscription-price{% endunless %}'>
+                            <span class='subscription-price'>
+                              {% liquid
+                                if currency_code_enable
+                                  echo current_option_variant.selling_plan_allocations[0].price | money_with_currency
+                                else
+                                  echo current_option_variant.selling_plan_allocations[0].price | money
+                                endif
+                              %}
+                            </span>
+                            {%render 'product-just-price-part',product:product,current_variant:current_option_variant,dont_change_on_variant_change:true%}
+                          </span>
+                        {% endif %}
+                      </label>
+                    </span>
+                  {%- endif -%}
+                {%- endfor -%}
+              </fieldset>
+              {%- if is_swatch_option -%}
+                <button type="button" class="btn btn--text swatch__more" data-swatches-more>
+                  <span>{{ 'products.product.show_more' | t }}</span>
+                  <span>{{ 'products.product.show_less' | t }}</span>
+                </button>
+              {%- endif -%}
+            {%- else -%}
+              {%- assign selects_counter = selects_counter | plus: 1 -%}
+              {%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}
+                {%- assign current_value = current_variant.options[forloop.index0] -%}
+              {%- endif -%}
+              <div class="select__fieldset">
+                {%- capture input_id -%}{{ unique }}-{{ product.id }}-option-{{ option.position }}{%- endcapture -%}
+                <div class="select__label label-typography" id="{{ unique }}-select-{{ option.name | handle }}-label">
+                  {%- if show_size_guide_as_label -%}
+                    {{- size_chart_button -}}
+                  {%- else -%}
+                    {{- option.name | escape_once -}}
+                  {%- endif -%}
+                </div>
+
+                <div class="select-popout" data-popout data-popout-prevent="true">
+                  <button type="button" class="select-popout__toggle" aria-expanded="false" aria-controls="{{ unique }}-select-{{ option.name | handle }}" aria-labelledby="{{ unique }}-select-{{ option.name | handle }}-label" data-popout-toggle>
+                    <span class="select-popout__value" data-popout-text>{%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}{{ current_value }}{%- else -%}{{ option.selected_value }}{%- endif -%}</span>
+                    {%- render 'icon-select' -%}
+                  </button>
+
+                  <div id="{{ unique }}-select-{{ option.name | handle }}" class="select-popout__list" data-popout-list>
+                    <ul class="select-popout__list__scroll">
+                      {%- for value in option.values -%}
+                        <li class="select-popout__item {%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}{% if current_value == value %}select-popout__item--current{% endif %}{%- else -%}{% if option.selected_value == value %}select-popout__item--current{% endif %}{%- endif -%}">
+                          <a class="select-popout__option" href="#" {%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}{% if current_value == value %}aria-current="true"{% endif %}{%- else -%}{% if option.selected_value == value %}aria-current="true"{% endif %}{%- endif -%} data-value="{{ value | escape_once }}" data-popout-option>
+                            <span>
+                              {{ value | escape_once }}
+                            </span>
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                  <input type="hidden" name="options[{{ option.name | escape_once }}]" id="{{ input_id }}" value="{%- if settings.site_brand == 'livingproof' and settings.site_region == 'us' -%}{{ current_value | escape_once }}{%- else -%}{{ option.selected_value | escape_once }}{%- endif -%}" data-popout-input data-single-option-selector data-index="option{{ option.position }}"/>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endunless -%}
+  {%- endcapture -%}
+
+    {{- form_fields -}}
+
+    <noscript>
+      <select
+        name="id"
+        class="product__form__select"
+        aria-label="{{ product.options_with_values | map: 'name' | uniq | join: ', ' }}"
+      >
+        {%- for variant in product.variants -%}
+          <option
+            {% if variant == current_variant %}
+              selected="selected"
+            {% endif %}
+            {% unless variant.available %}
+              disabled="disabled"
+            {% endunless %}
+            value="{{ variant.id }}"
+          >
+            {{- variant.title -}}
+          </option>
+        {%- endfor -%}
+      </select>
+    </noscript>
+
+    {%- if gift_card_recipient_feature_active -%}
+      {%- render 'gift-card-recipient-form',
+        product: product,
+        form: form,
+        section: section,
+        animation_delay: animation_delay,
+        animation_anchor: animation_anchor
+      -%}
+    {%- endif -%}
+
+    {%- if product.selling_plan_groups.size > 0 -%}
+      {%- if enable_subscriptions_selectors -%}
+        {%- render 'subscription-form',
+          product: product,
+          animations_enabled: animations_enabled,
+          animation_anchor: animation_anchor,
+          animation_delay: animation_delay
+        -%}
+      {%- endif -%}
+      {%- assign animation_delay = animation_delay | plus: 100 -%}
+      {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
+      <span data-subscription-watch-price></span>
+    {%- endif -%}
+
+    {%- if show_quantity -%}
+      <div
+        class="selector-wrapper selector-wrapper--qty"
+        {% if animations_enabled %}
+          data-aos="fade-up"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-delay="{{ animation_delay }}"
+          {%- assign animation_delay = animation_delay | plus: 100 -%}
+        {% endif %}
+      >
+        {{ quantity_selector }}
+      </div>
+    {%- endif -%}
+
+    {%- assign sold_out_text = 'products.product.sold_out' | t -%}
+  </div>
+</div>

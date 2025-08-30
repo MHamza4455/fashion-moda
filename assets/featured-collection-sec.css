@@ -1,0 +1,30 @@
+/*
+* PDP CSS
+* REN-232 - List which products are included in a bundle
+*/
+.price_with_label p {
+  margin: 0 10px 0 0;
+  line-height: initial;
+}
+.featured-collection .short_description, .featured-collection .product-cutline{
+  margin: 0;
+  font-size: calc(.9rem * var(--adjust-body));
+}
+.product-grid-item__info .yotpo-reviews-star-ratings-widget {
+  justify-content: center !important;
+}
+.featured-collection .product-grid-variant__title, .variant_lists span{
+  font-size: calc(.9rem * var(--adjust-body)) !important;
+  font-family: var(--FONT-STACK-BODY) !important;
+  font-weight: var(--FONT-WEIGHT-BODY);
+}
+.featured-collection .product-grid-item__info .product-grid-item__title:first-child{
+  text-transform: uppercase;
+}
+.featured-collection .product-grid-item__info .product-grid-item__price{
+  font-size: 14px !important;
+  line-height: 1.5625;
+}
+.variant_lists .product-grid-variant__title {
+  display: inline-block;
+}

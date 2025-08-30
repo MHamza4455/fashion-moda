@@ -1,0 +1,108 @@
+<script>
+  let cart_items_gwp = [];
+
+  {%- assign ids_in_cart = '' -%}
+  {%- for item in cart.items -%}
+    {%- assign ids_in_cart = ids_in_cart | append : item.variant.id | append : ',' -%}
+    cart_items_gwp.push({id:{{item.variant.id}},quantity:{{item.quantity}}});
+  {%- endfor -%}
+
+
+  let gwp_settings = {};
+
+
+  {% for i in (1..11) %}
+    {% liquid 
+      if i <= 5
+        assign tier_number = i
+        assign tier_prefix = tier_number | append : '_tier'
+        assign tier_name = tier_number
+        assign tier_type = "original"
+      else
+        assign tier_number = i | minus : 5
+        assign tier_prefix = tier_number | append: '_tier_cpn'
+        assign tier_name = tier_number | append : '_coupon'
+        assign tier_type = "coupon"
+      endif
+
+      assign gwp_tier_active_param = 'gwp_active_' | append : tier_prefix
+    %}
+
+    
+    {% if settings[gwp_tier_active_param] %}
+
+      {% liquid
+
+        assign gwp_tier_hide_progress_bar = 'gwp_hide_progress_bar_' | append : i | append : '_tier'
+        assign gwp_tier_hide_progress_bar = settings[gwp_tier_hide_progress_bar]
+        if gwp_tier_hide_progress_bar == blank
+          assign gwp_tier_hide_progress_bar = false
+        endif
+
+        assign gwp_tier_threshold_param = 'gwp_threshold_' | append : tier_prefix
+        assign gwp_tier_threshold_max_param = 'gwp_threshold_max_' | append : tier_prefix
+
+        assign gwp_tier_items_condition = 'gwp_items_condition_' | append : tier_prefix
+        assign gwp_tier_items_amount_condition = 'gwp_items_amount_condition_' | append : tier_prefix 
+
+        assign gwp_tier_max_items_param = 'gwp_product_count_' | append : tier_prefix
+        assign gwp_tier_product_param = 'gwp_products_' | append : tier_prefix
+        assign gwp_tier_title_param = 'gwp_title_'  | append : tier_prefix
+        assign gwp_tier_reporting_title_param = 'gwp_reporting_title_'  | append : tier_prefix
+        assign gwp_tier_code = "gwp_code_" | append : tier_prefix
+
+        assign threshold = settings[gwp_tier_threshold_param] | times: 100
+        assign threshold_max = settings[gwp_tier_threshold_max_param] | times: 100 
+        assign gwp_ids = ''
+        assign gwp_in_cart_count = 0
+
+
+        assign gwp_available_products = 0
+
+        for gwp_product in settings[gwp_tier_product_param]
+          if gwp_product.available or ids_in_cart contains gwp_product.variants[0].id
+            assign gwp_available_products = gwp_available_products | plus : 1
+            assign gwp_ids = gwp_ids | append : gwp_product.variants[0].id | append : ','
+          endif
+
+          if ids_in_cart contains gwp_product.variants[0].id
+            assign gwp_in_cart_count = gwp_in_cart_count | plus : 1
+          endif
+        endfor
+
+        if gwp_available_products == 0
+          continue
+        endif
+
+
+
+
+      %}
+        gwp_settings["{{tier_name}}"] = {
+          id:"{{tier_name}}",
+          title:"{{settings[gwp_tier_title_param]}}",
+          reporting_title:"{{settings[gwp_tier_reporting_title_param]}}",
+          threshold:{{threshold}},
+          threshold_max: {{threshold_max}},
+
+          hide_progress_bar:{{gwp_tier_hide_progress_bar}},
+          items_condition:[{{settings[gwp_tier_items_condition] | trim | strip_newlines | remove : " "}}],
+          items_condition_amount:{{settings[gwp_tier_items_amount_condition] | at_least : 0}},
+
+          max_gwp_items:{{settings[gwp_tier_max_items_param] | at_most : gwp_available_products}},
+          products:[{{gwp_ids | remove_last: ','}}],
+          already_in_cart_count:{{gwp_in_cart_count}},
+          gwp_type:'{{tier_type}}'
+          {% if tier_type == 'coupon' %}
+          ,code:"{{settings[gwp_tier_code] | downcase | strip }}"
+          {% endif %}
+        }
+
+    {% endif %}
+  {% endfor %}
+
+  
+  
+  let rc_currency_symbol = "{{cart.currency.symbol}}";
+
+</script>

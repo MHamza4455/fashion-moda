@@ -1,0 +1,393 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": false,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_banner_image_eJiktg": {
+      "type": "section-banner-image",
+      "blocks": {
+        "heading_Rxj9Mz": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Our Science: HairTech</p>",
+            "size": 100,
+            "size_mobile": 90,
+            "line_height": 110,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rxj9Mz"
+      ],
+      "settings": {
+        "height": "original-height",
+        "enable_mobile_height": true,
+        "mobile_height": "original-height-mobile",
+        "image": "shopify://shop_images/Ourscience_banner_Desk_1.jpg",
+        "image_mobile": "shopify://shop_images/Ourscience_banner_mobile_1.jpg",
+        "enable_zoom_animation": false,
+        "text_width": "normal",
+        "text_position": "middle-center",
+        "text_position_vertical_mobile": "same_as_desktop",
+        "text_alignment": "center",
+        "text_alignment_mobile": "default",
+        "text_position_mobile": "over-the-image",
+        "text_color": "text-light",
+        "overlay_opacity": 20,
+        "limitTextoverlaytoBox": false,
+        "limitTextoverlayBoxPadding": 0,
+        "addBlurLayer": false
+      }
+    },
+    "section_text_Y6tPBG": {
+      "type": "section-text",
+      "blocks": {
+        "heading_Fdknfd": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>HairTech is our discovery-based formulation philosophy. It represents our relentless pursuit to deliver novel, proven, luxurious solutions designed to unlock healthier hair from follicle to fiber.</p>",
+            "heading_size": 70,
+            "heading_size_mobile": 70,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Fdknfd"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "section_accordions_VjDcEL": {
+      "type": "section-accordions",
+      "blocks": {
+        "text_wqinWe": {
+          "type": "text",
+          "settings": {
+            "title": "Sili-CLONE HairTech™",
+            "text": "<p>A revolutionary approach to silicone-free formulation, engineered to mimic the 5 key attributes of silicone, but actually transforms the condition of hair.</p>",
+            "image": "shopify://shop_images/SiliCLONE_HairTech.jpg"
+          }
+        },
+        "text_3HxbEF": {
+          "type": "text",
+          "settings": {
+            "title": "Light Enhancing Technology",
+            "text": "<p>A blend of high gloss emollient and optical brightener that creates more visible light on hair, delivering a mirror-like shine. </p>",
+            "image": "shopify://shop_images/LightEnhancing_Tech.jpg"
+          }
+        },
+        "text_QaBCxG": {
+          "type": "text",
+          "settings": {
+            "title": "3D Fortifying Technology",
+            "text": "<p>A patent-pending technology that constructs a 3D network within the hair fiber, helping rebuild its structure and resist damage. </p>",
+            "image": "shopify://shop_images/3DFortifying_Tech.jpg"
+          }
+        },
+        "text_CMDVzk": {
+          "type": "text",
+          "settings": {
+            "title": "Thickening Molecule",
+            "text": "<p>Deposits microscopic thickening dots between strands so hair looks + feels fuller.</p>",
+            "image": "shopify://shop_images/ThickeningMolecule_Tech.jpg"
+          }
+        },
+        "text_4CRfjk": {
+          "type": "text",
+          "settings": {
+            "title": "Volumizing + Texturizing Molecule",
+            "text": "<p>Increases the space between individual hair fibers for long-lasting volume + texture that won’t weigh hair down.</p>",
+            "image": "shopify://shop_images/VolumizingTexturizingMolecule_Tech.jpg"
+          }
+        },
+        "text_C8dUQM": {
+          "type": "text",
+          "settings": {
+            "title": "Time-Release Styling Technology",
+            "text": "<p>Proprietary, time-released tech for long-lasting body + hold without stickiness.</p>",
+            "image": "shopify://shop_images/TimeRelease_Tech.jpg"
+          }
+        },
+        "text_AfDiX7": {
+          "type": "text",
+          "settings": {
+            "title": "Proprietary Smoothing Technology",
+            "text": "<p>Weightlessly shields each strand from humidity + other environmental factors to prevent frizz, leaving hair with long-lasting smoothness. </p>",
+            "image": "shopify://shop_images/ProprietarySmoothing_Tech.jpg"
+          }
+        },
+        "text_rnkBCL": {
+          "type": "text",
+          "settings": {
+            "title": "Density Boosting Technology",
+            "text": "<p>Protects follicles, reduces shedding, and promotes natural growth to revitalize hair from the root.</p>",
+            "image": "shopify://shop_images/DensityBoosting_Tech.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_wqinWe",
+        "text_3HxbEF",
+        "text_QaBCxG",
+        "text_CMDVzk",
+        "text_4CRfjk",
+        "text_C8dUQM",
+        "text_AfDiX7",
+        "text_rnkBCL"
+      ],
+      "settings": {
+        "layout": "one-column",
+        "show_accordion_divider": true,
+        "title": "Our Signature Technologies",
+        "subheading": "",
+        "text": "",
+        "custom_bg_color": "#8b817e",
+        "custom_bg_color_opacity": 15,
+        "tabs_bg_color": "rgba(0,0,0,0)",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "accordion_title_padding": 28,
+        "accordion_title_padding_mobile": 10,
+        "collection_list": [],
+        "product_list": [],
+        "conditionalDisplayLogic": "conditionalDisplayLogic-off",
+        "conditionalDisplayLogic_text": "",
+        "conditionalDisplayLogic_json": "conditionalDisplayLogic_json-faq",
+        "text_alignment": "left"
+      }
+    },
+    "section_banner_image_qQKPwm": {
+      "type": "section-banner-image",
+      "blocks": {
+        "heading_cDJCwp": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Solving the world’s toughest  beauty challenges.</p>",
+            "size": 80,
+            "size_mobile": 80,
+            "line_height": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cDJCwp"
+      ],
+      "settings": {
+        "height": "original-height",
+        "enable_mobile_height": true,
+        "mobile_height": "original-height-mobile",
+        "image": "shopify://shop_images/Oustory_challenges_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Oustory_challenges_mobile.jpg",
+        "enable_zoom_animation": false,
+        "text_width": "normal",
+        "text_position": "middle-center",
+        "text_position_vertical_mobile": "same_as_desktop",
+        "text_alignment": "center",
+        "text_alignment_mobile": "default",
+        "text_position_mobile": "over-the-image",
+        "text_color": "text-light",
+        "overlay_opacity": 20,
+        "limitTextoverlaytoBox": false,
+        "limitTextoverlayBoxPadding": 0,
+        "addBlurLayer": false
+      }
+    },
+    "section_thumbnail_image_carousel_e46HCn": {
+      "type": "section-thumbnail-image-carousel",
+      "blocks": {
+        "slide_E46LXj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/OurScience_Density_9bea60bc-e26d-4008-8e5a-99369b96c1db.jpg",
+            "thumbnail": "shopify://shop_images/OurScience_Density_9bea60bc-e26d-4008-8e5a-99369b96c1db.jpg",
+            "header": "Proven to reduce hair thinning + greying.",
+            "text": "<p>A scalp serum formulated to minimize the appearance of grey hair, reduce shedding, increase hair density, and promote hair growth in as little as 90 days.</p>",
+            "button_text": "SHOP DENSITY SERUM",
+            "button_url": "shopify://products/scalp-care-density-serum",
+            "background_color": "#e7e2e2",
+            "arrow_color_type": "dark"
+          }
+        },
+        "slide_amaWJL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2023-01_Valentines_PDP_Bundle4_ALT2.jpg",
+            "thumbnail": "shopify://shop_images/2023-01_Valentines_PDP_Bundle4_ALT2.jpg",
+            "header": "Actually cleans hair without water.",
+            "text": "<p>This dry shampoo actually cleans hair by absorbing oil, sweat, and odor while also making hair smell clean with a crisp, time-released fragrance.</p>",
+            "button_text": "SHOP DRY SHAMPOO",
+            "button_url": "shopify://products/perfect-hair-day-dry-shampoo",
+            "background_color": "#e7e2e2",
+            "arrow_color_type": "light"
+          }
+        },
+        "slide_zXdBU3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3DFortifying_Tech.jpg",
+            "thumbnail": "shopify://shop_images/3DFortifying_Tech.jpg",
+            "header": "Repairs hair + protects against future damage.",
+            "text": "<p>A weekly leave-in treatment and hair mask that makes hair 8x stronger* + more resistant to future damage while adding softness, smoothness + shine.</p>",
+            "button_text": "SHOP TRIPLE BOND COMPLEX",
+            "button_url": "shopify://products/triple-bond-complex",
+            "background_color": "#e7e2e2",
+            "arrow_color_type": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "slide_E46LXj",
+        "slide_amaWJL",
+        "slide_zXdBU3"
+      ],
+      "name": "Thumbnail Image Carousel",
+      "settings": {
+        "background_color": "rgba(0,0,0,0)",
+        "card_style": true,
+        "width_type": "full",
+        "specific_width": 1504,
+        "height_type": "image",
+        "specific_height": 740
+      }
+    },
+    "section_marquee_qjHE9E": {
+      "type": "section-marquee",
+      "blocks": {
+        "text_qLgmPA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>PETA-CERTIFIED CRUELTY-FREE</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_image": "shopify://shop_images/formulatedWithout-CrueltyFree_1.png",
+            "icon_width": 40,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_tEEPcM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>COLOR SAFE</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_image": "shopify://shop_images/formulatedWithout-ColorSafe_1.png",
+            "icon_width": 40,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_LyjXXc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>SAFE FOR CHEMICALLY TREATED HAIR</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_image": "shopify://shop_images/formulatedWithout-ChemicallyTreated_1.png",
+            "icon_width": 40,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_NkjNB8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>SILICONE-FREE</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_image": "shopify://shop_images/formulatedWithout-Silicones_1.png",
+            "icon_width": 40,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "text_qLgmPA",
+        "text_tEEPcM",
+        "text_LyjXXc",
+        "text_NkjNB8"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "padding": 10,
+        "marquee_speed": 50,
+        "direction": "ticker-rtl",
+        "slider_speed": 7,
+        "show_arrows": false,
+        "text_caps": true,
+        "type_style": "font-body",
+        "text_size": 120,
+        "letter_spacing": 0,
+        "message_spacing": 32,
+        "bg_color": "rgba(0,0,0,0)",
+        "gradient": "",
+        "color": "#000000",
+        "border_color": "#000000",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_banner_image_eJiktg",
+    "section_text_Y6tPBG",
+    "section_accordions_VjDcEL",
+    "section_banner_image_qQKPwm",
+    "section_thumbnail_image_carousel_e46HCn",
+    "section_marquee_qjHE9E"
+  ]
+}

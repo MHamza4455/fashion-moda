@@ -1,0 +1,218 @@
+.page-customer {
+    padding: 0;
+}
+
+.page-customer .section__header .section__heading,
+.page-customer .account__heading {
+    font-size: calc(3rem * var(--adjust-heading));
+    letter-spacing: -0.96px;
+    line-height: 110%;
+    margin-bottom: 0;
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.page-customer .section__header {
+    margin-bottom: 32px;
+    max-width: 440px;
+    width: 100%;
+}
+
+.page-customer input {
+    accent-color: black;
+    border-radius: 4px;
+    font-size: calc(13px * var(--adjust-body));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin-bottom: 16px;
+    padding: 12.5px 12px;
+}
+
+.page-customer button.btn {
+    border-radius: 4px;
+    color: #F9F5F4;
+    font-size: calc(14px * var(--adjust-button));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin-top: 32px;
+    padding: 14px 32px;
+}
+
+.page-customer .return p {
+    color: var(--text);
+    font-size: calc(13px * var(--adjust-body));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin: 0 0 32px;
+    text-align: left;
+}
+
+.page-customer .return p a {
+    color: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+}
+
+.page-customer .account__subheading {
+    font-size: calc(13px * var(--adjust-body));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin-bottom: 0;
+}
+
+.page-customer .wrapper {
+    width: 100vw;
+    padding: 0;
+}
+
+.form-vertical-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 100%;
+    padding: 4px 0;
+}
+
+.login-form-container {
+    align-items: center;
+    background-color: rgba(139, 129, 126, 0.15);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+    justify-content: center;
+    width: calc(50% - 6px);
+    margin-left: 4px;
+}
+
+.login-form-container .form-vertical {
+    max-width: 440px;
+    width: 100%;
+}
+
+#shopify-section-login-image {
+    width: calc(50% - 6px);
+}
+
+.login-image-container {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 120px);
+}
+
+.login-page-image {
+    border-radius: 4px;
+    display: block;
+    height: calc(100vh - 120px);
+    margin-right: 4px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.msg-text {
+    background: rgba(36, 90, 78, 0.50);
+    color: #F9F5F4;
+    font-size: calc(13px * var(--adjust-body));
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin: 0 0 32px;
+    padding: 12px;
+}
+
+.form-error,
+.errors {
+    border-radius: 4px;
+}
+
+/* recover password */
+#RecoverPasswordForm .form-vertical .light-gray {
+    background: rgba(233, 227, 143, 0.60);
+    font-size: calc(13px * var(--adjust-body));
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin: 0 0 32px;
+    padding: 12px;
+}
+
+#RecoverPasswordForm .form-vertical .return.light-gray,
+#CreateCustomer .return.light-gray {
+    background: none;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    width: 100%;
+}
+
+/* Register Page */
+.email_marketing {
+    align-items: flex-start;
+}
+
+.email_marketing label {
+    font-size: 14px;
+    letter-spacing: 0.28px;
+    line-height: 120%;
+    margin-left: 8px;
+    margin-bottom: 16px;
+}
+
+.email_marketing label:last-of-type {
+    margin-bottom: 0;
+}
+
+input#LoyaltyProgram {
+    flex-shrink: 0;
+    height: 20px;
+    width: 20px;
+}
+
+.page-customer .account__heading.heading-register-page {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .page-customer {
+        background-color: rgba(139, 129, 126, 0.15);
+        border-radius: 4px;
+        margin: 4px;
+    }
+
+    .form-vertical-wrapper {
+        padding: 16px;
+    }
+
+    .login-form-container {
+        background-color: transparent;
+        border-radius: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .page-customer .section__header .section__heading,
+    .page-customer .account__heading {
+        font-size: calc(2rem * var(--adjust-heading));
+        letter-spacing: -0.64px;
+    }
+
+    .page-customer input {
+        padding: 10px 12px;
+    }
+
+    .login-image-container {
+        display: none;
+    }
+
+    .page-customer button.btn {
+        padding: 12px 32px;
+        width: 100%;
+    }
+}

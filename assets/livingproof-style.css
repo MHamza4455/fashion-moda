@@ -1,0 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * To apply brand specific CSS overrides for REN use the
+ * CSS identifier .livingproof-style
+ * 
+ * Also make sure that the Theme Setting General Settings ->
+ * Site Brand is correctly set.
+ * ------------------------------------------------------------
+ */
+
+.btn {
+    font-family: var(--font-suisse-intl);
+}
+
+.sticky-with-nav.collection__sticky-bar {
+    z-index: 6;
+}

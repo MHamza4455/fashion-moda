@@ -1,0 +1,41 @@
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+<script>
+    var klaviyo = klaviyo || [];
+    klaviyo.init({
+      account: "{{settings.klaviyo_api_key}}",
+      {% if settings.klaviyo_list_id != blank %}list: "{{ settings.klaviyo_list_id }}",{% endif %}
+      platform: "shopify"
+    });
+    klaviyo.enable("backinstock",{ 
+    trigger: {
+      product_page_text: "Sold Out - Notify Me When It’s Available",
+      product_page_class: "btn btn-klaviyo-not-available",
+      product_page_text_align: "center",
+      product_page_margin: "0px",
+      replace_anchor: true
+    },
+    modal: {
+      headline: "{product_name}",
+      body_content: "Register your email below to receive a notification when this item comes back in stock.",
+      email_field_label: "Your Email",
+      button_label: "Notify me when available",
+      subscription_success_label: "You're in! We'll let you know when it's back in stock.",
+      footer_content: '',
+      additional_styles: "@import url('https://fonts.googleapis.com/css2?family=Suisse+Book:wght@400;500&display=swap'); button[type=submit]{border-radius:30px} #completed_message{font-size:14px;font-weight:500}",
+      drop_background_color: "#000",
+      background_color: "#fff",
+      text_color: "#222",
+      button_text_color: "#fff",
+      button_background_color: "#000",
+      close_button_color: "#ccc",
+      error_background_color: "#fcd6d7",
+      error_text_color: "#C72E2F",
+      success_background_color: "#d3efcd",
+      success_text_color: "#1B9500",
+      newsletter_subscribe_label: "Join our email list to hear about new launches and exclusive offers! You can unsubscribe at any time. See our <a href='/policies/privacy-policy' target='_blank'>Privacy Policy</a> for more information.",
+      subscribe_checked: false,
+      headers_font_family:"Suisse Book",
+      font_family:"Suisse Book"
+    }
+  });
+</script>
