@@ -328,6 +328,38 @@
     "checkout_accent_color": "#0B0B0B",
     "checkout_button_color": "#000000",
     "checkout_error_color": "#d02e2e",
+    "color_schemes": [
+      {
+        "id": "scheme-1",
+        "background": "#f9f5f4",
+        "background_gradient": "",
+        "text": "#272728",
+        "button": "#272728",
+        "button_label": "#ffffff",
+        "secondary_button_label": "#272728",
+        "shadow": "#272728"
+      },
+      {
+        "id": "scheme-2", 
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text": "#0b0b0b",
+        "button": "#0b0b0b",
+        "button_label": "#ffffff",
+        "secondary_button_label": "#0b0b0b",
+        "shadow": "#0b0b0b"
+      },
+      {
+        "id": "scheme-3",
+        "background": "#244c5a",
+        "background_gradient": "",
+        "text": "#ffffff",
+        "button": "#f9f5f4",
+        "button_label": "#272728",
+        "secondary_button_label": "#ffffff",
+        "shadow": "#000000"
+      }
+    ],
     "sections": {
       "login-image": {
         "type": "login-image",
@@ -470,7 +502,29 @@
       "checkout_body_font": "Helvetica Neue",
       "checkout_accent_color": "#0B0B0B",
       "checkout_button_color": "#000000",
-      "checkout_error_color": "#d02e2e"
+      "checkout_error_color": "#d02e2e",
+      "color_schemes": [
+        {
+          "id": "scheme-vibrant-1",
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#0b0b0b",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#000000",
+          "shadow": "#0b0b0b"
+        },
+        {
+          "id": "scheme-vibrant-2",
+          "background": "#fff7f2",
+          "background_gradient": "",
+          "text": "#0b0b0b",
+          "button": "#ff6d6d",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff6d6d",
+          "shadow": "#0b0b0b"
+        }
+      ]
     },
     "Dynamo": {
       "color_body_bg": "#ffffff",

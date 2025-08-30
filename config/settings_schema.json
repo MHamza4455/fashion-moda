@@ -806,6 +806,62 @@
     ]
   },
   {
+    "name": "Color schemes",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.color_schemes.settings.header__1.content"
+      },
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.background.label",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "background_gradient",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.background_gradient.label"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.text.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.button.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.button_label.label",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.secondary_button_label.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "shadow",
+            "label": "t:settings_schema.color_schemes.settings.colors.settings.shadow.label",
+            "default": "#121212"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "General Settings",
     "settings": [
       {
