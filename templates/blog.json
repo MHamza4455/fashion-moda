@@ -1,1 +1,115 @@
-{"sections":{"section_banner_image_ETrJWb":{"type":"section-banner-image","blocks":{"heading_d9jPFE":{"type":"heading","settings":{"text":"<p>Hair 101<\/p>","size":100,"size_mobile":90,"line_height":100,"heading_highlight_type":"italics","highlight_color":"#d43747","highlight_text_color":"#000000"}}},"block_order":["heading_d9jPFE"],"name":"Banner image","settings":{"height":"four-fifty-height","enable_mobile_height":true,"mobile_height":"four-fifty-height-mobile","image":"shopify:\/\/shop_images\/Hair101_hero_desktop.jpg","image_mobile":"shopify:\/\/shop_images\/Hair101_hero_mobile.jpg","enable_zoom_animation":false,"text_width":"normal","text_position":"middle-center","text_position_vertical_mobile":"same_as_desktop","text_alignment":"center","text_alignment_mobile":"default","text_position_mobile":"over-the-image","text_color":"text-light","overlay_opacity":10,"limitTextoverlaytoBox":false,"limitTextoverlayBoxPadding":0,"addBlurLayer":false}},"section_blog_6kLqKM":{"type":"section-blog","name":"Blog posts","settings":{"blog":"hair-101","filter_by":"tags","filter_vlue":"Hair Health","blog_style":"standard","show_mobile_blogs_list":false,"image_aspect_ratio":1,"rows":1,"columns":3,"show_tags":true,"show_author":false,"show_date":false,"show_comments_count":false,"default_color":"none","heading":"Latest Articles","button_text":"","button_color":"btn--black","button_style":"btn--solid","button_size":"btn--small","bg_color":"","bg_color_secondary":false,"text_color":"text-dark","width":"wrapper--full-padded","padding_top":64,"padding_bottom":0}},"main":{"type":"blog","custom_css":["h1 {display: none;}"],"settings":{"default_color":"accent","blog_style":"standard","post_columns":2,"image_aspect_ratio":1,"show_rss_icon":false,"show_date":false,"show_author":false,"show_tags":true,"show_comments_count":false,"tag_alignment":"left","bg_color_secondary":false,"padding_top":64,"padding_bottom":0}},"section_collection_XqJDLe":{"type":"section-collection","name":"Featured collection","settings":{"collection":"bestsellers","linked_products_metafield":true,"products_layout":"carousel","number_of_products":8,"products_per_row_on_desktop":4,"columns_mobile":"2","text_alignment":"text-left","title":"<p>Featured Favorites<\/p>","heading_highlight_type":"circle","highlight_color":"#d43747","highlight_text_color":"#000000","heading_size":80,"text":"","text_size":100,"show_price":true,"price_label":"","show_variant_option":false,"show_cutline":false,"button_text":"","button_color":"btn--black","button_style":"btn--text","button_size":"btn--large","button_full_width_mobile":false,"bg_color_secondary":false,"enable_slider_mobile":true,"width":"wrapper--full-padded","padding_top":80,"padding_bottom":120}}},"order":["section_banner_image_ETrJWb","section_blog_6kLqKM","main","section_collection_XqJDLe"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<p>{{ closest.blog.title }}</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-blog-post-card": {
+          "type": "_blog-post-card",
+          "static": true,
+          "settings": {
+            "alignment": "left"
+          },
+          "blocks": {
+            "heading": {
+              "type": "_heading",
+              "name": "t:names.title",
+              "static": true,
+              "settings": {
+                "type_preset": "h4",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "text": "",
+                "read_only": true,
+                "alignment": "left",
+                "show_alignment": false,
+                "padding-block-start": 0,
+                "padding-block-end": 10,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "blog-post-details": {
+              "type": "_blog-post-info-text",
+              "name": "t:names.details",
+              "static": true,
+              "settings": {
+                "show_date": false,
+                "show_author": false,
+                "type_preset": "",
+                "alignment": "left",
+                "show_alignment": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "image": {
+              "type": "_blog-post-image",
+              "static": true,
+              "settings": {
+                "height": "large",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "title"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,238 +1,219 @@
-<!-- /snippets/video.liquid -->
-{%- liquid
-  assign sizes = image_sizes | default: '100vw'
-  capture image_classes
-    echo 'video-background video-background--image'
-    if image == blank
-      echo ' placeholder-bg'
+{%- doc -%}
+  Renders a video element, from a video object (<video> element) or a video URL (<iframe> element)
+
+  Shared parameters:
+
+  @param {boolean} [video_autoplay] - Whether the video should autoplay
+  @param {boolean} [video_loop] - Whether the video should loop
+  @param {string} [video_class] - Additional classes for the video element
+  @param {string} [video_style] - Additional inline styles
+  @param {object} [video_preview_image] - Preview image to show before video plays
+  @param {string} [widths] - Responsive widths
+  @param {string} [sizes] - Responsive sizes
+  @param {string} [loading] - Loading attribute
+  @param {string} [additional_attributes] - Any additional HTML attributes
+  @param {string} [video_type] - 'youtube' or 'vimeo'
+  @param {boolean} [disable_controls] - Whether to disable controls. If true, only play/pause will be usable.
+  @param {object} video - The Shopify video object or a string containing a YouTube ID or Vimeo ID
+  @param {string} section_id - The section ID
+  @param {object} [block] - The block object
+
+  Video from URL:
+
+  @param {boolean} [video_from_url] - Set to true to use a video from URL instead of a Shopify video object
+  @param {string} [video_alt] - The video alt text
+
+  @example
+  {% render 'video', video: section.settings.video, video_autoplay: true, video_loop: true, section_id: section.id %}
+{%- enddoc -%}
+
+{% assign video_alt = video_alt | default: video.alt %}
+{% assign alt = 'blocks.load_video' | t: description: video_alt | escape %}
+{% assign video_preview_image = video_preview_image | default: video.preview_image %}
+{% assign video_autoplay = video_autoplay | default: block.settings.video_autoplay %}
+{% assign video_loop = video_loop | default: block.settings.video_loop %}
+{% liquid
+  assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
+  assign media_width_mobile = '100vw'
+  assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths = '450, 525, 600, 675, 750, 768, 850, 900, 1024, 1125, 1280, 1440, 1536, 1700, 1920, 2048, 2150, 2304, 2560, 2700, 2880, 3072, 3840, 4320, 5760'
+%}
+
+{% if video_from_url %}
+  {% liquid
+    if video_type == 'youtube'
+      assign video_src = 'https://www.youtube.com/embed/VIDEO_ID?' | replace: 'VIDEO_ID', video
+
+      if video_autoplay == false and video_preview_image != blank
+        assign video_src = video_src | append: '&autoplay=1'
+      endif
+
+      if video_autoplay
+        assign video_src = video_src | append: '&autoplay=1&mute=1'
+      endif
+
+      if video_loop
+        assign video_src = video_src | append: '&playlist=' | append: video | append: '&loop=1'
+      endif
+      if disable_controls
+        assign video_src = video_src | append: '&controls=0'
+        assign video_src = video_src | append: '&enablejsapi=1'
+      endif
+      assign class = 'js-youtube'
+    else
+      assign video_src = 'https://player.vimeo.com/video/VIDEO_ID?' | replace: 'VIDEO_ID', video
+
+      if video_autoplay == false and video_preview_image != blank
+        assign video_src = video_src | append: '&autoplay=1'
+      endif
+
+      if video_autoplay
+        assign video_src = video_src | append: '&autoplay=1&muted=1'
+      endif
+      if video_loop
+        assign video_src = video_src | append: '&loop=1'
+      endif
+      if disable_controls
+        assign video_src = video_src | append: '&controls=0'
+        assign video_src = video_src | append: '&api=1'
+      endif
+      assign class = 'js-vimeo'
     endif
-    if background_video != blank
-      echo ' display_none'
+  %}
+  {% capture video_iframe %}
+      <iframe
+        src="{{ video_src }}"
+        class="{{ class }}"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="{{ video_alt | escape }}"
+      ></iframe>
+  {% endcapture %}
+{% else %}
+  {% liquid
+    if disable_controls
+      assign controls = false
+      assign enable_js_api = true
+    else
+      assign controls = true
+      assign enable_js_api = false
     endif
-  endcapture
--%}
+  %}
 
-{%- capture image_attributes -%}
-  {%- if animations_enabled -%}
-    data-aos="fade"
-    data-aos-anchor="{{ animation_anchor }}"
-    data-aos-delay="{{ animation_delay }}"
-  {%- endif -%}
-{%- endcapture -%}
+  {% capture video_tag %}
+    {% if video.host == 'youtube' %}
+      {{
+        video
+        | external_video_url: autoplay: true, loop: video_loop, playlist: video.external_id, mute: '1', controls: controls, enablejsapi: enable_js_api
+        | external_video_tag: data-video-type: 'youtube'
+      }}
+    {% elsif video.host == 'vimeo' %}
+      {{
+        video
+        | external_video_url: autoplay: true, loop: video_loop, muted: '1', controls: controls, api: enable_js_api
+        | external_video_tag: data-video-type: 'vimeo'
+      }}
+    {% else %}
+      {{ video | video_tag: image_size: '2500x', autoplay: true, loop: video_loop, muted: true, controls: controls }}
+    {% endif %}
+  {% endcapture %}
+{% endif %}
 
-<div class="video__container {{text_position_mobile}} video__container--{{ unique }} {{ text_color }}{% if addBlurLayer %} video-background-blur{% endif %}" id="video-{{ unique }}-container">
+{% if video != blank %}
+  <deferred-media
+    class="{{ video_class }}"
+    style="{{ video_style }}"
+    {% if video_autoplay %}
+      autoplay
+    {% endif %}
+    {{ additional_attributes }}
+  >
+    {% if video_preview_image != blank %}
+      <button
+        class="button deferred-media__poster-button button-unstyled"
+        ref="deferredMediaPlayButton"
+        aria-label="{{ alt }}"
+        type="button"
+        on:click="/showDeferredMedia"
+        style="--video-aspect-ratio: {{ video.aspect_ratio }}"
+      >
+        {{
+          video_preview_image
+          | image_url: width: 1946
+          | image_tag: widths: widths, sizes: sizes, loading: loading, class: 'deferred-media__poster-image'
+        }}
 
-  {%- render 'image-fill',
-    is_background: true,
-    img_object: image,
-    image_attributes: image_attributes,
-    sizes: sizes,
-    classes: image_classes,
-    placeholder_svg: 'lifestyle-1' -%}
-
-  {%- assign video_bg_show = false -%}
-  {%- if background_video != blank or background_video_mobile != blank -%}
-
-    {% if background_video.sources != blank %}
-      {%- assign background_video = background_video.sources[1].url -%}
-      {%- assign background_video_mobile = background_video_mobile.sources[1].url -%}
+        <span class="deferred-media__poster-icon icon-play">
+          <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
+          {{- 'icon-play.svg' | inline_asset_content -}}
+        </span>
+      </button>
     {% endif %}
 
-    {% if background_video.sources == blank and background_video_mobile.sources != blank %}
-      {%- assign background_video = background_video_mobile.sources[1].url -%}
-      {%- assign background_video_mobile = background_video_mobile.sources[1].url -%}
+    {% if disable_controls %}
+      <button
+        class="button button-unstyled deferred-media__poster-button video-interaction-hint hidden"
+        ref="toggleMediaButton"
+        type="button"
+        on:click="/toggleMedia"
+      >
+        <span class="deferred-media__poster-icon icon-play hidden">
+          <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
+          {{- 'icon-play.svg' | inline_asset_content -}}
+        </span>
+        <span class="deferred-media__poster-icon icon-pause hidden">
+          <span class="visually-hidden">{{ 'accessibility.pause_video' | t }}</span>
+          {{- 'icon-pause.svg' | inline_asset_content -}}
+        </span>
+      </button>
     {% endif %}
 
-    {%- assign video_link_bg_downcase = background_video | downcase -%}
-    {%- assign video_link_bg_downcase_mobile = background_video_mobile | downcase -%}
+    <template>
+      {% if video_from_url %}
+        {{ video_iframe }}
+      {% else %}
+        {{ video_tag }}
+      {% endif %}
+    </template>
 
-    {%- if video_link_bg_downcase contains '.mp4' or video_link_bg_downcase_mobile contains '.mp4' -%}
-      {%- assign video_bg_show = true -%}
-
-      {%- capture additional_video_button -%}
-        <a href="#" class="video-text-link" data-video-bg-play>
-          {%- render 'icon-play' -%}
-        </a>
-      {%- endcapture -%}
-
-      {%- if video_link != blank -%}
-        {%- capture additional_video_button -%}
-          <a href="#" class="btn {{ button_style }} {{ button_size }} {{ button_color }}" data-video-bg-play>
-            {{ 'video.play_bg_video' | t }}
-          </a>
-        {%- endcapture -%}
-      {%- endif -%}
-    {%- endif -%}
-  {%- endif -%}
-
-  {%- if video_bg_show -%}
-    <div class="video-background resize-device-change">
-      <div class="video__player is-loading"
-        data-video-player
-        data-video-id="{{ unique }}-video-background">
-        <template data-video-template>
-          <video
-            id="{{ unique }}-video-background"
-            data-video-type="native"
-            data-video-autoplay
-            playsinline
-            autoplay
-            loop
-            muted
-
-            {% unless maintain_raio and maintain_raio != blank %}
-              width="320"
-              height="240"
-            {% endunless %}
-
-            data-desktop-source = "{{background_video}}"
-            data-mobile-source = "{{background_video_mobile}}"
-            data-mobile-resolution = 479
-            >
-            <source  type="video/mp4" />
-          </video>
-
-        </template>
-      </div>
-    </div>
-  {%- endif -%}
-{% unless limitTextoverlaytoBox %}<div class="overlay video__overlay" style="--overlay-opacity: {{ overlay_opacity }};"></div> {% endunless  %}
-</div>
-
-<div class="align--{{ text_position }} {{ text_color }} text-inside {{text_position_mobile}}">
-  {% comment %} Text {% endcomment %}
-  <div class="video-text-wrapper wrapper--narrow video-content-mobile-vertical-{{section.settings.text_position_vertical_mobile}}{% if show_text_shadow %} backdrop--radial{% endif %}{% if addBlurLayer %} background-blur{% endif %}">
-    <div class="video-text-wrapper-inner banner-text-content {{ text_width_class }}">
-    {% if limitTextoverlaytoBox %}<div class="overlay video__overlay" style="--overlay-opacity: {{ overlay_opacity }};"></div> {% endif  %}
-    {%- if video_link != blank -%}
-      {% comment %} Video Play Button {% endcomment %}
-      <div class="main-buttons main-buttons--video align--{{ text_position }}">{%- liquid
-  assign video_link_downcase = video_link | downcase
-  assign video_type = ''
-  assign video_id = ''
-  assign video_parent_id = 'item-video-' | append: unique
-
-  if video_link contains "vimeo.com"
-    assign video_type = "vimeo"
-  elsif video_link contains "youtube.com"
-    assign video_type = "youtube"
-  elsif video_link contains "youtu.be"
-    assign video_type = "youtube"
-    assign youtubeShortlink = true
-  elsif video_link_downcase contains ".mp4"
-    assign video_type = "native"
-  endif
-
-  assign link_array = video_link | split: '/'
-  assign id_with_params = link_array | last
-
-  if video_type == "vimeo" or youtubeShortlink
-  comment
-    https://vimeo.com/[ID]?foo=bar&baz=boo
-    https://youtu.be/[ID]?foo=bar&baz=boo
-  endcomment
-    assign starts_with_id = id_with_params | split: '?'
-    assign video_id = starts_with_id | first
-  elsif video_type == "youtube" 
-  comment
-    https://youtube.com/watch?v=[ID]?foo=bar&baz=boo
-  endcomment
-    assign first_param = id_with_params | split: '&' | first
-    assign watch_then_id = first_param | split: '?'
-    assign equals_id = watch_then_id[1]
-    assign ends_with_id = equals_id | split: '='
-    assign video_id = ends_with_id | last
-  endif
-
-  if video_type == 'youtube'
-    capture video_link
-      echo 'https://www.youtube.com/watch?v=' | append: video_id
-    endcapture
-  elsif video_type == 'vimeo'
-    capture video_link
-      echo 'https://vimeo.com/' | append: video_id
-    endcapture
-  endif
--%}{%- if video_type != '' -%}
-          <div class="main-buttons__item"
-            {% if animations_enabled %}
-              data-aos="fade-up"
-              data-aos-anchor="{{ animation_anchor }}"
-              data-aos-delay="{{ animation_delay }}"
-              {%- assign animation_delay = animation_delay | plus: 150 -%}
-            {% endif %}>
-            <a href="{{ video_link }}"
-              class="video-text-link"
-              data-video-play="{% render 'photoswipe-video-html' item_link: video_link, item_link_type: video_type, item_link_id: video_id, item_id: video_parent_id %}">
-                {%- render 'icon-play' -%}
-            </a>
-          </div>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    {%- if video_bg_show -%}
-      <div class="main-buttons main-buttons--video main-buttons--video-bg align--{{ text_position }}{% if background_video != blank %} display_none{% endif %}">
-        <div class="main-buttons__item"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>
-          {{- additional_video_button -}}
-        </div>
-      </div>
-    {%- endif -%}
-
-    {%- if title != blank -%}
-      <div class="main-heading {{ text_color }}{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {% endif %}>
-        {% render 'title-with-highlights',
-          title: title,
-          heading_highlight_type: heading_highlight_type,
-          has_text_highlight: has_text_highlight %}
-      </div>
-    {%- endif -%}
-
-    {%- if text != blank -%}
-      <div class="main-text h2"
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {% endif %}>
-        {{- text  -}}
-      </div>
-    {%- endif -%}
-
-    {% comment %} Button {% endcomment %}
-    {%- if button_text != blank -%}
-      <div class="main-buttons align--{{ text_position }}">
-        <div class="main-buttons__item"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-          {% endif %}>
-          <a class="btn {{ button_style }} {{ button_size }} {{ button_color }}{% if button_full_width_mobile %} btn--full-width-mobile{% endif %}" href="{{ button_link }}">{{ button_text }}</a>
-        </div>
-      </div>
-    {%- endif -%}
-    </div>
+    {% if video_autoplay or video_preview_image == blank %}
+      {% if video_from_url %}
+        {{ video_iframe }}
+      {% else %}
+        {{ video_tag }}
+      {% endif %}
+    {% endif %}
+  </deferred-media>
+{% else %}
+  <div
+    {{ additional_attributes }}
+    class="{%- if video_class -%}{{ video_class }} {%- endif -%}video-placeholder-wrapper"
+    style="{%- if video_style -%}{{ video_style }} {%- endif -%}--video-placeholder-width: {{ block.settings.custom_width | default: 100 }}%;"
+  >
+    {% if video_preview_image != blank and video_autoplay == false %}
+      {{ video_preview_image | image_url: width: 1946 | image_tag: widths: widths, sizes: sizes, loading: loading }}
+    {% else %}
+      <placeholder-image
+        class="placeholder-video"
+        data-block-id="{{ section_id }}-{{ block.id }}"
+        data-type="general"
+      ></placeholder-image>
+    {% endif %}
+    <span class="video-placeholder-wrapper__poster-icon icon-play">
+      <span class="visually-hidden">{{ 'accessibility.play_video' | t }}</span>
+      {{- 'icon-play.svg' | inline_asset_content -}}
+    </span>
   </div>
-</div>
+{% endif %}
 
-{%- if show_video_flow_controls or show_video_sound_controls -%}
-  {%- render 'video-controls',
-    show_video_flow_controls: show_video_flow_controls,
-    show_video_sound_controls: show_video_sound_controls,
-    use_new_video_icons: use_new_video_icons
-  -%}
-{%- endif -%}
+{% stylesheet %}
+  .video-interaction-hint {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: var(--layer-flat);
+  }
+
+  .video-interaction-hint:hover {
+    opacity: 1;
+  }
+{% endstylesheet %}
