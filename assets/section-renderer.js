@@ -1,5 +1,4 @@
 import { morph } from '@theme/morph';
-import { startViewTransition } from '@theme/utilities';
 
 /**
  * A class to re-render sections using the Section Rendering API
@@ -130,7 +129,7 @@ function buildSectionRenderingURL(sectionId, url = new URL(window.location.href)
  * @param {string} sectionId - The section ID
  * @returns {string} The section selector
  */
-function buildSectionSelector(sectionId) {
+export function buildSectionSelector(sectionId) {
   return `${SECTION_ID_PREFIX}${sectionId}`;
 }
 
@@ -139,7 +138,7 @@ function buildSectionSelector(sectionId) {
  * @param {string} sectionId - The section ID
  * @returns {string} The normalized section ID
  */
-function normalizeSectionId(sectionId) {
+export function normalizeSectionId(sectionId) {
   return sectionId.replace(new RegExp(`^${SECTION_ID_PREFIX}`), '');
 }
 

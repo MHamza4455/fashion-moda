@@ -3,11 +3,6 @@
 {% liquid
   assign max_items = section.settings.max_products
 
-  if section.settings.collection != blank and shop.products_count != 0
-    assign section_products = section.settings.collection.products
-    assign max_items = section_products.size | at_most: section.settings.max_products
-  endif
-
   case section.settings.layout_type
     when 'grid'
       assign classes = 'resource-list--grid'
@@ -37,9 +32,6 @@
     section-resource-list
     spacing-style
     gap-style
-    {% if request.design_mode == false and section.settings.collection == blank %}
-      in-onboarding-state
-    {% endif %}
   "
   style="
     --column-count-mobile: {{ section.settings.mobile_columns }};
@@ -53,24 +45,37 @@
   </div>
 
   {% capture list_items %}
-    {% for i in (1..max_items) %}
-      {% if section_products.size > 0 %}
-        {% assign index = forloop.index0 %}
-        {% assign product = section_products[index] %}
-      {% else %}
-        {% assign product = null %}
-      {% endif %}
-      <div
-        class="resource-list__item"
-      >
-        {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
-      </div>
+    {% if section.settings.collection != blank and shop.products_count != 0 %}
+      {% paginate section.settings.collection.products by max_items %}
+        {% for product in section.settings.collection.products limit: max_items %}
+          <div
+            class="resource-list__item"
+          >
+            {% # theme-check-disable UniqueStaticBlockId %}
+              {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
+            {% # theme-check-enable UniqueStaticBlockId %}
+          </div>
 
-      {% unless forloop.last %}
-        <!--@list/split-->
-      {% endunless %}
+          {% unless forloop.last %}
+            <!--@list/split-->
+          {% endunless %}
+        {% endfor %}
+      {% endpaginate %}
+    {% else %}
+      {% for i in (1..max_items) %}
+        <div
+          class="resource-list__item"
+        >
+          {% # theme-check-disable UniqueStaticBlockId %}
+            {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: null %}
+          {% # theme-check-enable UniqueStaticBlockId %}
+        </div>
 
-    {% endfor %}
+        {% unless forloop.last %}
+          <!--@list/split-->
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
   {% endcapture %}
 
   {% liquid
@@ -519,7 +524,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -696,7 +701,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -878,7 +883,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,

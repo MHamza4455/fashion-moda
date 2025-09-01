@@ -12,13 +12,20 @@
   {% assign loading = 'lazy' %}
 {% endunless %}
 
+{% liquid
+  assign onboarding = false
+  if closest.collection == empty
+    assign onboarding = true
+  endif
+%}
+
 {% if block.settings.show_count %}
   {% assign count = closest.collection.all_products_count %}
   {%- capture count -%}
     &nbsp;<sup class="collection-links__count">{{ count }}</sup>
   {%- endcapture -%}
 
-  {% if closest.collection == empty %}
+  {% if onboarding %}
     {%- capture count -%}
       &nbsp;<sup class="collection-links__count">5</sup>
     {%- endcapture -%}
@@ -30,7 +37,11 @@
 {% endcapture %}
 
 {% capture image_block %}
-  {% content_for 'block', type: '_image', id: 'image', loading: loading %}
+  {%- liquid
+    assign placeholder_variant = index | modulo: 4 | plus: 1
+    assign placeholder_name = 'collection-apparel-' | append: placeholder_variant
+  -%}
+  {% content_for 'block', type: '_image', id: 'image', loading: loading, placeholder: placeholder_name %}
 {% endcapture %}
 
 {% if image_only %}
@@ -38,6 +49,9 @@
     href="{{ closest.collection.url }}"
     class="collection-links__image"
     size="{{ section.settings.image_height }}"
+    {% if onboarding %}
+      data-placeholder="true"
+    {% endif %}
   >
     {{ image_block }}
   </a>
@@ -49,6 +63,9 @@
     on:pointerenter="/select/{{ index }}"
     on:focus="/select/{{ index }}"
     aria-current="{{ current }}"
+    {% if onboarding %}
+      data-placeholder="true"
+    {% endif %}
     {{ block.shopify_attributes }}
   >
     {{ title_block }}

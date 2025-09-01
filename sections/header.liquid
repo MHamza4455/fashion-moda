@@ -73,7 +73,6 @@
     else
       assign order = 'logo,search,menu,localization,mobile_search,actions'
     endif
-    assign search_style = 'inline'
   endif
   capture search
     render 'search', style: search_style, class: search_class
@@ -264,7 +263,7 @@
   }
 
   body:has(> #header-group > header) {
-    --header-height: 50px; /* Reduced from 60px for more compact header */
+    --header-height: 60px;
   }
 
   body:has(> #header-group:empty) {
@@ -292,14 +291,11 @@
     z-index: var(--layer-overlay);
 
     &[transparent='not-sticky'][data-sticky-state='active'],
-    &:hover,
-    /* Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
-    &:has(.header-menu[aria-expanded='true']),
-    &:has(nav[header-menu]:focus-within),
-    &:has(.menu-list__link[data-animating]),
-    &:has(.account-popover[open]),
-    &:has(.localization-wrapper:not([hidden])) {
-      /* should be opaque, negate all transparent properties */
+    /* Only show opaque background when hovering over menu items with children (mega menu)
+       Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
+    &:has(.mega-menu__list:hover),
+    &:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating])),
+    &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])) {
       --header-logo-display: unset;
       --header-logo-inverse-display: unset;
       --header-bg-color: unset;
@@ -324,19 +320,12 @@
     }
   }
 
-  :is(
-      .header[transparent]:not([data-sticky-state='active']),
-      .header[transparent='always'][data-sticky-state='active'],
-      .account-popover[open],
-      .localization-wrapper:not([hidden])
-    )
+  :is(.header[transparent]:not([data-sticky-state='active']), .header[transparent='always'][data-sticky-state='active'])
     .header__row:not(
-      :hover,
       :has(
-          .header-menu[aria-expanded='true'],
-          .menu-list__link[data-animating],
-          .account-popover[open],
-          .localization-wrapper:not([hidden])
+          .mega-menu__list:hover,
+          .menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating]),
+          .menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])
         )
     ) {
     /* while transparent, header-row ignores its color-scheme settings, pull from the header-component */
@@ -348,11 +337,13 @@
     --color-primary-button-text: inherit;
   }
 
+  .header--inherit-color-scheme-on-menu-open:has(.mega-menu__list:hover) .header__row,
   .header--inherit-color-scheme-on-menu-open:has(
-      .mega-menu__list:is(:hover),
-      .header-menu:is([aria-expanded='true']),
-      nav[header-menu]:is(:focus-within),
-      .menu-list__link[data-animating]
+      .menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating])
+    )
+    .header__row,
+  .header--inherit-color-scheme-on-menu-open:has(
+      .menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])
     )
     .header__row {
     --color-foreground: inherit;
@@ -539,6 +530,42 @@
     grid-template-columns: 1fr;
   }
 
+  /* Check for hover support to avoid unnecessary expensive recalculations when tapping on mobile */
+  @media (hover: hover) {
+    /* Column-specific dimming effect when any interactive element is hovered
+      Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
+    .header__column:has(header-menu:hover),
+    .header__column:has(.header-actions__action:hover),
+    .header__column:has(.dropdown-localization__button:hover),
+    .header__column:has(.header__icon--menu:hover) {
+      header-menu:not(:hover),
+      .header-actions__action:not(:hover),
+      .dropdown-localization__button:not(:hover),
+      .header__icon--menu:not(:hover) {
+        opacity: var(--opacity-subdued-text);
+        transition: opacity var(--animation-speed) var(--animation-easing);
+      }
+    }
+  }
+
+  /* Ensure smooth transitions for all interactive elements */
+  header-menu,
+  .header-actions__action,
+  .dropdown-localization__button,
+  .header__icon--menu {
+    transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+
+  /* Extend hover area through padding to prevent flickering on actual menu items */
+  .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__link[aria-haspopup],
+  .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__link,
+  .menu-list__list-item:where(:not([slot='overflow'])) > button.menu-list__link {
+    margin-block: calc(-2 * var(--header-padding));
+    padding-block: calc(2 * var(--header-padding));
+    margin-inline: calc(-1 * var(--gap-xl) / 2);
+    padding-inline: calc(var(--gap-xl) / 2);
+  }
+
   /* Set header paddings based on height setting */
   .header {
     --header-padding: var(--padding-sm);
@@ -593,105 +620,14 @@
       margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
     }
   }
-
-  /* Compact header improvements */
-  .header__columns {
-    padding-block: 8px; /* Reduced padding for more compact look */
-    min-height: unset;
-  }
-
-  .header__column {
-    align-items: center;
-    gap: 12px; /* Tighter spacing between elements */
-  }
-
-  .header__column--left {
-    justify-content: flex-start;
-  }
-
-  .header__column--center {
-    justify-content: center;
-  }
-
-  .header__column--right {
-    justify-content: flex-end;
-  }
-
-  /* Inline search specific styles */
-  .header__column--left:has(.inline-search) {
-    flex: 1;
-    max-width: 350px;
-    margin-right: 20px;
-  }
-
-  /* Mobile search icon for inline search */
-  @media screen and (max-width: 749px) {
-    .header__column--left:has(.inline-search) {
-      flex: unset;
-      max-width: unset;
-      margin-right: unset;
-    }
-    
-    .header__column--left .inline-search {
-      display: none;
-    }
-    
-    .header__column--left .inline-search-mobile-toggle {
-      display: flex;
-    }
-  }
-
-  @media screen and (min-width: 750px) {
-    .header__column--left .inline-search-mobile-toggle {
-      display: none;
-    }
-  }
-
-  /* Logo adjustments for compact header */
-  .header-logo {
-    line-height: 1;
-  }
-
-  .header-logo img,
-  .header-logo svg {
-    max-height: 32px; /* Slightly smaller logo for compact header */
-  }
-
-  /* Menu adjustments */
-  .header-menu {
-    height: auto;
-  }
-
-  .menu-list__link {
-    padding-block: 6px; /* Reduced menu item padding */
-    font-size: 14px; /* Slightly smaller font for compact look */
-    font-weight: 500;
-    letter-spacing: 0.025em;
-  }
-
-  /* Actions area improvements */
-  .header-actions {
-    gap: 8px; /* Tighter spacing for action items */
-  }
-
-  .header-actions__action {
-    width: 36px; /* Smaller action buttons */
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
-  }
-
-  /* Country/language selector improvements */
-  .dropdown-localization {
-    font-size: 13px;
-  }
-
-  .dropdown-localization__button {
-    padding: 4px 8px;
-    height: auto;
-    min-height: unset;
-  }
 {% endstylesheet %}
+
+{% unless request.design_mode %}
+  <script type="module">
+    import { hydrate } from '@theme/section-hydration';
+    hydrate('{{ section.id }}');
+  </script>
+{% endunless %}
 
 {% schema %}
 {
