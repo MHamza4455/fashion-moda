@@ -1,0 +1,440 @@
+{% comment %}
+  Discount Category Carousel Section for Shopify
+  Features: Responsive carousel with category cards, customizable images, text, collection links, and adjustable padding
+{% endcomment %}
+
+{%- liquid
+    assign desktop_slides = section.settings.desktop_slides | default: 5
+    assign mobile_slides = section.settings.mobile_slides | default: 1.5
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 24
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 24
+    assign padding_top_mobile = section.settings.padding_top_mobile | default: 16
+    assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 16
+  -%}
+  
+  <div class="category-carousel-section" data-section-id="{{ section.id }}">
+    <div class="bg-gray-50" style="
+      padding-top: {{ padding_top_desktop }}px;
+      padding-bottom: {{ padding_bottom_desktop }}px;
+    ">
+      <div class="mx-auto max-w-7xl px-4">
+        
+        <style>
+          .category-carousel-{{ section.id }} {
+            --slides-to-show: {{ desktop_slides }};
+            --slides-to-show-mobile: {{ mobile_slides }};
+            --slide-gap: 24px;
+            --slide-gap-mobile: 10px;
+          }
+          
+          .category-carousel-{{ section.id }} .carousel-container {
+            display: flex;
+            gap: var(--slide-gap);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .category-carousel-{{ section.id }} .carousel-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .category-carousel-{{ section.id }} .category-card {
+            flex: 0 0 auto;
+            width: calc((100% - (var(--slides-to-show) - 1) * var(--slide-gap)) / var(--slides-to-show));
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 0px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+          }
+          
+          .category-carousel-{{ section.id }} .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          
+          .category-carousel-{{ section.id }} .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            padding: 1.5rem;
+            color: white;
+          }
+          
+          .category-carousel-{{ section.id }} .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+          }
+          
+          .category-carousel-{{ section.id }} .card-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+          }
+          
+          .category-carousel-{{ section.id }} .card-button:hover {
+            background: white;
+            color: black;
+          }
+          
+          .carousel-controls {
+            position: relative;
+            margin-top: 1rem;
+          }
+          
+          .carousel-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          }
+          
+          .carousel-nav-button.prev {
+            left: -20px;
+          }
+          
+          .carousel-nav-button.next {
+            right: -20px;
+          }
+          
+          /* Mobile Responsive */
+          @media (max-width: 768px) {
+            .category-carousel-section {
+              padding-top: {{ padding_top_mobile }}px !important;
+              padding-bottom: {{ padding_bottom_mobile }}px !important;
+            }
+            
+            .category-carousel-{{ section.id }} .category-card {
+              width: calc((100% - (var(--slides-to-show-mobile) - 1) * var(--slide-gap-mobile)) / var(--slides-to-show-mobile));
+            }
+            
+            .category-carousel-{{ section.id }} .carousel-container {
+              gap: var(--slide-gap-mobile);
+            }
+            
+            .category-carousel-{{ section.id }} .card-overlay {
+              padding: 1rem;
+            }
+            
+            .category-carousel-{{ section.id }} .card-title {
+              font-size: 1rem;
+              margin-bottom: 0.75rem;
+            }
+            
+            .category-carousel-{{ section.id }} .card-button {
+              padding: 0.5rem 1rem;
+              font-size: 0.75rem;
+            }
+            
+            .carousel-nav-button {
+              display: none;
+            }
+          }
+          
+          @media (min-width: 769px) and (max-width: 1024px) {
+            .category-carousel-{{ section.id }} .category-card {
+              width: calc((100% - 2 * var(--slide-gap)) / 3);
+            }
+          }
+          
+          @media (min-width: 1025px) and (max-width: 1280px) {
+            .category-carousel-{{ section.id }} .category-card {
+              width: calc((100% - 3 * var(--slide-gap)) / 4);
+            }
+          }
+        </style>
+        
+        <div class="category-carousel-{{ section.id }} relative">
+          <div class="carousel-container" id="carousel-{{ section.id }}">
+            {%- for block in section.blocks -%}
+              <div class="category-card">
+                <a href="{{ collections[block.settings.collection].url | default: '#' }}" 
+                   class="block w-full h-full">
+                  
+                  {%- if block.settings.image != blank -%}
+                    <img 
+                      src="{{ block.settings.image | image_url: width: 512 }}"
+                      alt="{{ block.settings.image.alt | default: block.settings.title }}"
+                      loading="lazy"
+                      width="512"
+                      height="642"
+                      srcset="
+                        {{ block.settings.image | image_url: width: 280 }} 280w,
+                        {{ block.settings.image | image_url: width: 427 }} 427w,
+                        {{ block.settings.image | image_url: width: 512 }} 512w,
+                        {{ block.settings.image | image_url: width: 640 }} 640w,
+                        {{ block.settings.image | image_url: width: 854 }} 854w
+                      "
+                      sizes="
+                        (max-width: 420px) 280px,
+                        (max-width: 640px) 427px,
+                        (max-width: 767px) 512px,
+                        (max-width: 1024px) 25vw,
+                        20vw
+                      "
+                    >
+                  {%- else -%}
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                      <span class="text-gray-500">No image</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  <div class="card-overlay">
+                    <h3 class="card-title">
+                      {{ block.settings.title | default: 'Category Title' }}
+                    </h3>
+                    
+                    {%- if block.settings.subtitle != blank -%}
+                      <p class="text-sm mb-4 opacity-90">
+                        {{ block.settings.subtitle }}
+                      </p>
+                    {%- endif -%}
+                    
+                    <span class="card-button">
+                      {{ block.settings.button_text | default: 'Shop Now' }}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+          
+          <!-- Navigation buttons for desktop -->
+          <div class="carousel-controls hidden md:block">
+            <button class="carousel-nav-button prev" onclick="scrollCarousel('{{ section.id }}', 'prev')">
+              <svg width="16" height="16" viewBox="0 0 16 16">
+                <path d="M11.854 0.646L4.521 7.999L11.854 15.332" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </button>
+            <button class="carousel-nav-button next" onclick="scrollCarousel('{{ section.id }}', 'next')">
+              <svg width="16" height="16" viewBox="0 0 16 16">
+                <path d="M4.335 15.334L11.668 8.000L4.335 0.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function scrollCarousel(sectionId, direction) {
+      const carousel = document.getElementById('carousel-' + sectionId);
+      const cardWidth = carousel.querySelector('.category-card').offsetWidth;
+      const gap = 24; // Match CSS gap
+      const scrollAmount = cardWidth + gap;
+      
+      if (direction === 'next') {
+        carousel.scrollLeft += scrollAmount;
+      } else {
+        carousel.scrollLeft -= scrollAmount;
+      }
+    }
+    
+    // Touch/swipe support for mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousels = document.querySelectorAll('[id^="carousel-"]');
+      
+      carousels.forEach(carousel => {
+        let isDown = false;
+        let startX;
+        let scrollLeftStart;
+        
+        carousel.addEventListener('mousedown', (e) => {
+          isDown = true;
+          startX = e.pageX - carousel.offsetLeft;
+          scrollLeftStart = carousel.scrollLeft;
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+        
+        carousel.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+        
+        carousel.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - carousel.offsetLeft;
+          const walk = (x - startX) * 2;
+          carousel.scrollLeft = scrollLeftStart - walk;
+        });
+      });
+    });
+  </script>
+  
+  {% schema %}
+  {
+    "name": "Discount Cat Carousel",
+    "tag": "section",
+    "class": "category-carousel-section",
+    "settings": [
+      {
+        "type": "range",
+        "id": "desktop_slides",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "label": "Desktop slides to show",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "mobile_slides",
+        "min": 1,
+        "max": 3,
+        "step": 0.5,
+        "label": "Mobile slides to show",
+        "default": 1.5
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Desktop padding top",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Desktop padding bottom",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Mobile padding top",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Mobile padding bottom",
+        "default": 16
+      }
+    ],
+    "blocks": [
+      {
+        "type": "category_card",
+        "name": "Category Card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Category Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Category Title",
+            "default": "Category Name"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Category Subtitle (optional)",
+            "info": "Additional text below the title"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection to link to"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Discount Category Carousel",
+        "blocks": [
+          {
+            "type": "category_card",
+            "settings": {
+              "title": "Dresses - Up to 30% Off",
+              "button_text": "Shop Now"
+            }
+          },
+          {
+            "type": "category_card",
+            "settings": {
+              "title": "Tops - Up to 30% Off",
+              "button_text": "Shop Now"
+            }
+          },
+          {
+            "type": "category_card",
+            "settings": {
+              "title": "Coats & Jackets - Up to 30% Off",
+              "button_text": "Shop Now"
+            }
+          },
+          {
+            "type": "category_card",
+            "settings": {
+              "title": "Jeans - Up to 30% Off",
+              "button_text": "Shop Now"
+            }
+          },
+          {
+            "type": "category_card",
+            "settings": {
+              "title": "Boots - Up to 30% Off",
+              "button_text": "Shop Now"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
