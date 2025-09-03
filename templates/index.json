@@ -86,6 +86,95 @@
         "padding-block-end": 48
       }
     },
+    "collection_round_cards_b4BEdP": {
+      "type": "collection-round-cards",
+      "blocks": {
+        "card_B7JEr9": {
+          "type": "card",
+          "settings": {
+            "collection": "dresses",
+            "image": "shopify://shop_images/dresses-card.webp",
+            "title": "Dresses",
+            "link": ""
+          }
+        },
+        "card_nAzNbK": {
+          "type": "card",
+          "settings": {
+            "collection": "tops",
+            "image": "shopify://shop_images/tops-card.webp",
+            "title": "Tops",
+            "link": ""
+          }
+        },
+        "card_KC43mC": {
+          "type": "card",
+          "settings": {
+            "collection": "womens",
+            "image": "shopify://shop_images/tracksuit-card.webp",
+            "title": "Tracksuit",
+            "link": ""
+          }
+        },
+        "card_P4xBTq": {
+          "type": "card",
+          "settings": {
+            "collection": "womens",
+            "image": "shopify://shop_images/trouser-card.webp",
+            "title": "Trouser",
+            "link": ""
+          }
+        },
+        "card_KWY7Kz": {
+          "type": "card",
+          "settings": {
+            "collection": "womens",
+            "image": "shopify://shop_images/denim-card.webp",
+            "title": "Denim",
+            "link": ""
+          }
+        },
+        "card_gd8DUr": {
+          "type": "card",
+          "settings": {
+            "collection": "womens",
+            "image": "shopify://shop_images/plus-card.webp",
+            "title": "Plus",
+            "link": ""
+          }
+        },
+        "card_m8KTrB": {
+          "type": "card",
+          "settings": {
+            "collection": "womens",
+            "image": "shopify://shop_images/knitwear-card.webp",
+            "title": "Knitwear",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_B7JEr9",
+        "card_nAzNbK",
+        "card_KC43mC",
+        "card_P4xBTq",
+        "card_KWY7Kz",
+        "card_gd8DUr",
+        "card_m8KTrB"
+      ],
+      "name": "Collection round cards",
+      "settings": {
+        "heading": "Shop by category",
+        "gap": "16px",
+        "image_size": "160px",
+        "title_size": "14px",
+        "cards_per_row_desktop": 8,
+        "cards_per_row_tablet": 4,
+        "cards_per_row_mobile": 3,
+        "section_margin_top": "2rem",
+        "section_margin_bottom": "2rem"
+      }
+    },
     "section_zFGGD4": {
       "type": "section",
       "blocks": {
@@ -1115,10 +1204,83 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "discount_category_carousel_4JgGrL": {
+      "type": "discount-category-carousel",
+      "blocks": {
+        "category_card_FVnByQ": {
+          "type": "category_card",
+          "settings": {
+            "image": "shopify://shop_images/dbz_prod_280825_CATEGORYCAROUSEL_50TO90OFF_UK.webp",
+            "title": "Dresses - Up to 30% Off",
+            "subtitle": "",
+            "collection": "womens",
+            "button_text": "Shop Now"
+          }
+        },
+        "category_card_3BCdgh": {
+          "type": "category_card",
+          "settings": {
+            "image": "shopify://shop_images/discount2.webp",
+            "title": "Tops - Up to 30% Off",
+            "subtitle": "",
+            "collection": "dresses",
+            "button_text": "Shop Now"
+          }
+        },
+        "category_card_HmWEkr": {
+          "type": "category_card",
+          "settings": {
+            "image": "shopify://shop_images/discount4.webp",
+            "title": "Coats & Jackets - Up to 30% Off",
+            "subtitle": "",
+            "collection": "womens",
+            "button_text": "Shop Now"
+          }
+        },
+        "category_card_49hfKH": {
+          "type": "category_card",
+          "settings": {
+            "image": "shopify://shop_images/discount3.webp",
+            "title": "Jeans - Up to 30% Off",
+            "subtitle": "",
+            "collection": "womens",
+            "button_text": "Shop Now"
+          }
+        },
+        "category_card_GjXkzg": {
+          "type": "category_card",
+          "settings": {
+            "image": "shopify://shop_images/discount.webp",
+            "title": "Boots - Up to 30% Off",
+            "subtitle": "",
+            "collection": "womens",
+            "button_text": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "category_card_FVnByQ",
+        "category_card_3BCdgh",
+        "category_card_HmWEkr",
+        "category_card_49hfKH",
+        "category_card_GjXkzg"
+      ],
+      "name": "Discount Category Carousel",
+      "settings": {
+        "desktop_slides": 5,
+        "mobile_slides": 1.5,
+        "padding_top_desktop": 24,
+        "padding_bottom_desktop": 24,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
+      }
     }
   },
   "order": [
     "hero_G7CAX9",
+    "collection_round_cards_b4BEdP",
+    "discount_category_carousel_4JgGrL",
     "section_zFGGD4",
     "product_list_YidTcf",
     "media_with_content_HP7Qpp",
